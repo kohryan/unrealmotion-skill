@@ -6,7 +6,7 @@ import {chromium} from 'playwright';
 import {confinedFile} from './project.mjs';
 
 const skillRoot = fileURLToPath(new URL('../../', import.meta.url));
-const types = {'.html':'text/html', '.mjs':'text/javascript', '.js':'text/javascript', '.json':'application/json', '.png':'image/png', '.jpg':'image/jpeg', '.woff2':'font/woff2', '.glb':'model/gltf-binary', '.gltf':'model/gltf+json', '.bin':'application/octet-stream', '.hdr':'application/octet-stream', '.exr':'application/octet-stream', '.svg':'image/svg+xml'};
+const types = {'.html':'text/html', '.mjs':'text/javascript', '.js':'text/javascript', '.json':'application/json', '.csv':'text/csv', '.png':'image/png', '.jpg':'image/jpeg', '.woff2':'font/woff2', '.glb':'model/gltf-binary', '.gltf':'model/gltf+json', '.bin':'application/octet-stream', '.hdr':'application/octet-stream', '.exr':'application/octet-stream', '.svg':'image/svg+xml'};
 export const captureBackend = options => options.software ? 'swiftshader' : process.platform === 'darwin' ? 'metal' : 'chromium-default';
 
 export async function serve(root, port = 0) {

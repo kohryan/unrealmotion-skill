@@ -1,0 +1,44 @@
+{
+  "frames": [
+    {
+      "time": 0,
+      "values": [
+        {
+          "id": "bath",
+          "label": "Kamar mandi",
+          "value": 50
+        },
+        {
+          "id": "kitchen",
+          "label": "Dapur",
+          "value": 80
+        },
+        {
+          "id": "garden",
+          "label": "Kebun",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "time": 2,
+      "values": [
+        {
+          "id": "bath",
+          "label": "Kamar mandi",
+          "value": 180
+        },
+        {
+          "id": "kitchen",
+          "label": "Dapur",
+          "value": 90
+        },
+        {
+          "id": "garden",
+          "label": "Kebun",
+          "value": 30
+        }
+      ]
+    }
+  ]
+}

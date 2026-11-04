@@ -45,3 +45,5 @@ Inspect all beat frames, cutaway/action extremes, and adjacent encoded frames th
 ## Reference inspection
 
 The user's [Threads reference](https://www.threads.com/@haadziq_f/post/DfOqlnZE_Kd/media) was inspected through the browser: approximately 60 seconds, portrait cutaway illustration, whole-house context, pump close-up, tank fill/control, and a return to the system, with short text annotations. This informs narrative/camera principles; no frames, footage, characters, captions or artwork from that post are redistributed. The water demo uses original vector artwork/copy and a level-controller variant, rather than claiming to duplicate the reference's pressure-switch mechanism.
+
+For new productions, use the version 2 workflow in [dynamic-story.md](dynamic-story.md): multiple consistent ImageGen references, persistent scene roots, shorter causal beats, purposeful transition carriers and dynamic text. Add [data graphics](data-motion.md) only where a quantity clarifies the story. This extends the existing renderer; it does not change the established pastel style or silently migrate version 1 films.

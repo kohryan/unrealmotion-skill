@@ -15,6 +15,7 @@ test('saved ImageGen reference becomes seekable Three.js volumes, a complete sil
   function cli(args,success=true){const r=spawnSync(process.execPath,['scripts/unrealmotion.mjs',...args,...(software?['--software']:[])],{cwd:root,encoding:'utf8',timeout:180000});if(success)assert.equal(r.status,0,r.stderr+r.stdout);else assert.notEqual(r.status,0);return r;}
   try{
     await cp(path.join(root,'examples/water-imagegen-threejs'),dir,{recursive:true,filter:src=>path.basename(src)!=='output'});
+    await cp(path.join(root,'assets/runtime'),path.join(dir,'runtime'),{recursive:true});
     const c=JSON.parse(await readFile(path.join(dir,'project.json')));Object.assign(c,{width:360,height:640,fps:24,duration:6,supersample:1});await writeFile(path.join(dir,'project.json'),JSON.stringify(c));
     const story=JSON.parse(await readFile(path.join(dir,'storyboard.json')));story.duration=6;story.beats.forEach(b=>{b.start/=10;b.end/=10;});await writeFile(path.join(dir,'storyboard.json'),JSON.stringify(story));
     cli(['qa',dir]);const q=JSON.parse(await readFile(path.join(dir,'output/qa/report.json')));

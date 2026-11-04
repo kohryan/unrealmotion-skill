@@ -19,13 +19,13 @@ const help = `UnrealMotion — local Three.js video production
 node scripts/unrealmotion.mjs doctor
 node scripts/unrealmotion.mjs templates
 node scripts/unrealmotion.mjs create <dir> --prompt "brief" [--template optical-studio] [--motion cinematic-orbit] [--width 1920 --height 1080 --fps 60 --duration 12 --supersample 1.5]
-node scripts/unrealmotion.mjs create <dir> --mode explainer --prompt "Jelaskan proses dalam 60 detik" [--duration 60 --width 1080 --height 1920 --fps 30]
+node scripts/unrealmotion.mjs create <dir> --mode explainer --prompt "Jelaskan proses dalam 60 detik" [--pace dynamic|calm --assets multi|single --duration 60 --width 1080 --height 1920 --fps 30]
 node scripts/unrealmotion.mjs preview <dir> [--port 0]
 node scripts/unrealmotion.mjs qa <dir> [--software]
 node scripts/unrealmotion.mjs render <dir> [--output video.mp4] [--audio local.wav] [--final] [--force] [--software]
 node scripts/unrealmotion.mjs probe <video.mp4>
 
-create is a scene starter. The active coding agent generates an ImageGen reference,
+create is a scene starter. The active coding agent generates consistent ImageGen references,
 reconstructs Three.js parts and authors the story/motion for the actual prompt.
 The local CLI does not call an AI API or a video-generation service.
 --final requires an inspected, source-matched review.json (references/quality.md).
@@ -57,6 +57,9 @@ async function render(project, options) {
     const required = ['subjectFidelity','materialsLighting','composition','motionContinuity','transitions','lateMotion'];
     if(project.config.mode==='explainer') required.push('explanation','causalMotion','shotContinuity');
     if(project.config.template==='imagegen-explainer') required.push('promptFidelity','assetConsistency','reconstruction3D');
+    if(project.storyboard?.version===2)required.push('dynamicPacing','kineticText');
+    if(project.storyboard?.version===2&&project.config.assetStrategy!=='single')required.push('multiAssetContinuity');
+    if(qa.samples.some(s=>s.state.graphics?.some(g=>['bar','race','line','donut','counter'].includes(g.type))))required.push('dataAccuracy');
     if (review.sourceHash !== hash || !required.every(k => review.checks?.[k] === true) || !Array.isArray(review.evidence) || review.evidence.length < 3 || typeof review.notes !== 'string' || review.notes.length < 20) throw new Error('Final export requires a current visual review with all checks, evidence, and substantive notes');
     for (const evidence of review.evidence) if (!await exists(path.resolve(project.root, evidence))) throw new Error(`Review evidence is missing: ${evidence}`);
   }
@@ -94,7 +97,7 @@ async function render(project, options) {
 }
 
 async function main() {
-  const {values:o, positionals:p} = parseArgs({allowPositionals:true, options:{prompt:{type:'string'},mode:{type:'string'},template:{type:'string'},motion:{type:'string',default:'cinematic-orbit'},width:{type:'string'},height:{type:'string'},fps:{type:'string'},duration:{type:'string'},supersample:{type:'string'},output:{type:'string'},audio:{type:'string'},port:{type:'string',default:'0'},software:{type:'boolean'},final:{type:'boolean'},force:{type:'boolean'},help:{type:'boolean'}}});
+  const {values:o, positionals:p} = parseArgs({allowPositionals:true, options:{prompt:{type:'string'},mode:{type:'string'},template:{type:'string'},motion:{type:'string',default:'cinematic-orbit'},pace:{type:'string',default:'dynamic'},assets:{type:'string',default:'multi'},width:{type:'string'},height:{type:'string'},fps:{type:'string'},duration:{type:'string'},supersample:{type:'string'},output:{type:'string'},audio:{type:'string'},port:{type:'string',default:'0'},software:{type:'boolean'},final:{type:'boolean'},force:{type:'boolean'},help:{type:'boolean'}}});
   const [command, target] = p;
   if (o.help || !command) { console.log(help); return; }
   if (command === 'templates') { console.log(JSON.stringify({scenes:templates, motion:profiles}, null, 2)); return; }
@@ -113,6 +116,7 @@ async function main() {
     if((mode==='explainer')!==['water-system-explainer','imagegen-explainer'].includes(template))throw new Error('Explainer templates require explainer mode');
     const explainer=mode==='explainer';
     const config = validateConfig({version:1,mode,prompt:o.prompt,template,motion:o.motion,width:Number(o.width??(explainer?1080:1920)),height:Number(o.height??(explainer?1920:1080)),fps:Number(o.fps??(explainer?30:60)),duration:Number(o.duration??(explainer?60:12)),supersample:Number(o.supersample??(explainer?1:1.5)),seed:73});
+    if(template==='imagegen-explainer'){config.pace=o.pace;config.assetStrategy=o.assets;validateConfig(config);}
     await mkdir(dir, {recursive:true});
     await cp(path.join(root,'assets/runtime'), path.join(dir,'runtime'), {recursive:true});
     await rename(path.join(dir,'runtime/index.html'), path.join(dir,'index.html'));
@@ -123,17 +127,17 @@ async function main() {
         story=JSON.parse(await readFile(path.join(root,'assets/scenes/water-system-explainer.storyboard.json'),'utf8'));
         const scale=config.duration/story.duration;story.duration=config.duration;story.beats.forEach(b=>{b.start*=scale;b.end*=scale;});
       } else {
-        story={title:'AUTHOR FOR THE PROMPT',prompt:o.prompt,duration:config.duration,beats:['question','mechanism','resolution'].map((id,i)=>({id,start:i*config.duration/3,end:(i+1)*config.duration/3,caption:'AUTHOR: '+id,detail:'Write readable copy for the actual subject.',action:'Author the visible subject action.',purpose:'Explain the causal link for this beat.',camera:{x:0,y:1,scale:1,position:[7,5,12],target:[0,1,0]}}))};
+        story={version:2,title:'AUTHOR FOR THE PROMPT',prompt:o.prompt,pace:o.pace,duration:config.duration,scenes:[{id:'overview'},{id:'mechanism'},{id:'resolution'}],beats:['question','mechanism','resolution'].map((id,i)=>({id,scene:['overview','mechanism','resolution'][i],assets:[o.assets==='single'?'reference-overview':`reference-${i+1}`],start:i*config.duration/3,end:(i+1)*config.duration/3,caption:'AUTHOR: '+id,detail:'Write concise readable copy for the actual subject.',action:'Author the visible subject action.',purpose:'Explain the causal link for this beat.',text:{preset:'words',layout:'caption'},camera:{x:0,y:1,scale:1,position:[7,5,12],target:[0,1,0]}}))};
         await mkdir(path.join(dir,'assets'));
-        await writeFile(path.join(dir,'reconstruction.json'),JSON.stringify({status:'needs-imagegen-and-3d-model',reference:'',style:'simple pastel cutaway; follow the supplied reference',parts:[],attachments:[],inferredGeometry:[],reviewViews:[]},null,2)+'\n');
+        await writeFile(path.join(dir,'reconstruction.json'),JSON.stringify({status:'needs-imagegen-and-3d-model',reference:'',references:[],style:'simple pastel cutaway; keep identity and palette across the image bundle',parts:[],attachments:[],inferredGeometry:[],reviewViews:[]},null,2)+'\n');
         await copyFile(path.join(root,'assets/scenes/imagegen-explainer.model.mjs'),path.join(dir,'model.mjs'));
-        await writeFile(path.join(dir,'asset-plan.json'),JSON.stringify({prompt:o.prompt,status:'needs-agent-authorship',artDirection:'',assets:[],generationTool:'host image_gen (not this CLI)',provenance:[]},null,2)+'\n');
+        await writeFile(path.join(dir,'asset-plan.json'),JSON.stringify({prompt:o.prompt,status:'needs-agent-authorship',strategy:o.assets,artDirection:'',assets:[],generationTool:'host image_gen (not this CLI)',provenance:[]},null,2)+'\n');
       }
       await writeFile(path.join(dir,'storyboard.json'),JSON.stringify(story,null,2)+'\n');
     }
     await writeFile(path.join(dir,'project.json'), JSON.stringify(config, null, 2) + '\n');
     await writeFile(path.join(dir,'plan.json'), JSON.stringify({prompt:o.prompt,status:'starter-needs-agent-authorship',subject:template,shots:[],datasetReferences:[],assetProvenance:[]}, null, 2) + '\n');
-    console.log(JSON.stringify({project:dir,mode,next:template==='imagegen-explainer'?'Generate a simple reference with host ImageGen; reconstruct real Three.js parts in model.mjs. Author reconstruction.json, asset-plan.json, storyboard.json and plan.json. See references/imagegen-threejs.md. Render silent.':explainer?'Author storyboard.json, scene.mjs and plan.json for the actual explanation. Render without --audio for a silent MP4.':'Author scene.mjs and plan.json for the actual subject, then preview and qa.'}, null, 2)); return;
+    console.log(JSON.stringify({project:dir,mode,next:template==='imagegen-explainer'?'Generate consistent scene references with host ImageGen; reconstruct real Three.js parts in persistent scene roots in model.mjs. Author reconstruction.json, asset-plan.json, storyboard.json and plan.json. See references/imagegen-threejs.md. Render silent.':explainer?'Author storyboard.json, scene.mjs and plan.json for the actual explanation. Render without --audio for a silent MP4.':'Author scene.mjs and plan.json for the actual subject, then preview and qa.'}, null, 2)); return;
   }
   const project = await loadProject(target);
   if (command === 'preview') { const server = await serve(project.root, Number(o.port)); console.log(server.url); for (const s of ['SIGINT','SIGTERM']) process.once(s, async () => { await server.close(); process.exit(0); }); return; }

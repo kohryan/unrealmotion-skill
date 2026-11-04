@@ -1,0 +1,82 @@
+{
+  "format": "unrealmotion-native",
+  "current": "forward",
+  "seams": [
+    {
+      "time": 2.2,
+      "from": "question",
+      "to": "impeller",
+      "type": "camera",
+      "duration": 0.6,
+      "carrier": "same physical system or a persistent meter"
+    },
+    {
+      "time": 4.6,
+      "from": "impeller",
+      "to": "pressure",
+      "type": "camera",
+      "duration": 0.6,
+      "carrier": "same physical system or a persistent meter"
+    },
+    {
+      "time": 7.4,
+      "from": "pressure",
+      "to": "meter",
+      "type": "push",
+      "duration": 0.48,
+      "travel": 0.1,
+      "blur": 6,
+      "carrier": "gold rotor / blue housing"
+    },
+    {
+      "time": 9.2,
+      "from": "meter",
+      "to": "measure",
+      "type": "camera",
+      "duration": 0.6,
+      "carrier": "same physical system or a persistent meter"
+    },
+    {
+      "time": 11.4,
+      "from": "measure",
+      "to": "counter",
+      "type": "camera",
+      "duration": 0.6,
+      "carrier": "same physical system or a persistent meter"
+    },
+    {
+      "time": 13.4,
+      "from": "counter",
+      "to": "bars",
+      "type": "camera",
+      "duration": 0.6,
+      "carrier": "same physical system or a persistent meter"
+    },
+    {
+      "time": 16.5,
+      "from": "bars",
+      "to": "line",
+      "type": "match",
+      "duration": 0.3,
+      "carrier": "same physical system or a persistent meter"
+    },
+    {
+      "time": 19.6,
+      "from": "line",
+      "to": "donut",
+      "type": "match",
+      "duration": 0.3,
+      "carrier": "same physical system or a persistent meter"
+    },
+    {
+      "time": 21.8,
+      "from": "donut",
+      "to": "recap",
+      "type": "pull",
+      "duration": 0.48,
+      "travel": 0.1,
+      "blur": 6,
+      "carrier": "same physical system or a persistent meter"
+    }
+  ]
+}

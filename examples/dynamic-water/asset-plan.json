@@ -1,0 +1,47 @@
+{
+  "status": "authored",
+  "strategy": "multi",
+  "artDirection": "One simple pastel cutaway style and consistent cream / blue / gold materials across overview, pump and meter.",
+  "assets": [
+    {
+      "id": "overview",
+      "path": "assets/overview.png",
+      "prompt": "Use case: scientific-educational.\nAsset type: simple design reference that will be rebuilt as actual Three.js geometry for a silent animated explainer.\nReference image role: use the attached image ONLY for the simple pastel cutaway visual language, clear ink outlines and restrained detail. Do not reproduce its text, labels or composition exactly.\nPrimary request: A simple educational cutaway of a home water system: one cream two-storey flat-roof house, one blue rooftop cylindrical water tank, a small blue surface centrifugal pump with a yellow circular impeller cover beside the house, a narrow well below ground at left, and two visibly separate pale blue pipes, one filling the tank and one supplying a simple tap at the house. The front of the house is open; only a floor slab and one small window inside. The tank has a straightforward open cutaway showing a flat water level and a float ball. No furniture, scenery, ornamental details or extra machinery.\nStyle: same gentle editorial pastel cutaway style as reference, minimal clean geometric illustration with subtle 3D depth, thin charcoal outlines, cream walls, dusty blue tank and pipes, pale turquoise water, muted green ground, warm yellow impeller. Flat color surfaces, very soft shading, pale mint plain background, three-quarter orthographic view. Simple enough to rebuild faithfully with cylinders, extrusions and connected tubes.\nComposition: complete system fits a tall portrait frame with clear separation between well, pump and tank. No text, labels, numbers, logos, arrows, effects or watermark. Do not add a new photoreal, cinematic or detailed architectural style. Keep the visual complexity low.",
+      "sha256": "6f5a0190ead29d7b5ee288089c4a6fa7e3a096b4d4bd1b124af0c80dce8a0635",
+      "role": "Existing whole-system ImageGen reference reused from the original UnrealMotion example.",
+      "tool": "host built-in image_gen.imagegen"
+    },
+    {
+      "id": "pump-detail",
+      "path": "assets/pump-detail.png",
+      "prompt": "Use case: scientific-educational. Asset type: a new appearance reference for an original Three.js educational explainer, not a frame to animate as a flat image.\nThe attached illustration is STYLE AND OBJECT IDENTITY REFERENCE ONLY. Make a close-up of its small pump, not the building. Preserve the same simple pastel cutaway style: sage background, muted blue housing, pale blue pipes, cream supports, warm gold moving parts, restrained dark-teal outlines, soft orthographic 3D shading, very little surface detail.\nObject: compact horizontal electric water pump. A short ribbed blue cylindrical motor is behind a round blue pump casing. One gold circular front cover with a central opening and eight tiny dark bolts is moved a small distance forward-right along a clear assembly path. Inside the casing is ONE gold impeller disk with six curved blades and a small dark hub. Its rim, motor, base and two pale-blue pipe connections stay attached. The exposed housing has visible thickness and a coherent circular cavity. No extra gears, cables, fasteners or unrelated gadgets.\nComposition: portrait illustration, pump fills the middle 60%, whole pump, support and pipe ends inside the frame, generous clean upper/lower margins. Only one assembled mechanism, shown as an intentional small exploded cutaway. The removed front cover is the same cover that would close it. No people, faces, logos, text, arrows, caption cards or numbers. No glossy photorealism, no complex CAD aesthetic.",
+      "sha256": "887d4a72868fb75f027686d5cfbaf3e65d7e15077638b31db39c61fd8f80312f",
+      "role": "New ImageGen cutaway reference for the same pump identity.",
+      "tool": "host built-in image_gen.imagegen"
+    },
+    {
+      "id": "meter-detail",
+      "path": "assets/meter-detail.png",
+      "prompt": "Use case: scientific-educational. Asset type: a new modeling reference for an original Three.js explainer.\nThe attached pump illustration supplies STYLE AND MATERIAL CONTINUITY. Create a different connected component from the same water system: a compact inline water FLOW METER.\nSimple pastel cutaway style, soft sage background, muted blue body, pale-blue inlet and outlet pipes, cream base, warm-gold rotor, restrained dark-teal outlines and soft orthographic dimensional shading. No new art direction, photoreal textures or complex gadgets.\nOne coherent device: two short pale-blue pipes enter from left and leave right on the same horizontal axis. Between them is a rounded rectangular blue measurement housing with a single circular front opening. Inside the open front is one gold paddle rotor with six simple curved blades, centered on a dark axle normal to the front face. A shallow cream circular front bezel has shifted a small distance forward-right for an intentional cutaway/reassembly view. A small cream display box is physically mounted to the top of the housing with one short blue neck. The display surface is blank dark teal; numbers will be added by code. The complete device stands on one simple cream plinth.\nAll main parts share correct alignment; attached pipe flanges, casing, axle and supports. No detached decorative parts, wires, extra wheels or multiple models. Keep generous negative space above and below. Portrait composition, full device inside frame. No text, labels, numbers, arrows, faces, logos or watermark.",
+      "sha256": "321fa9b7d953b758860b12bc69198183045aa46903e7c00582157f822e67c2c4",
+      "role": "New ImageGen reference for the connected measurement scene.",
+      "tool": "host built-in image_gen.imagegen"
+    }
+  ],
+  "provenance": [
+    {
+      "type": "reused-original-imagegen",
+      "id": "overview"
+    },
+    {
+      "type": "new-original-imagegen",
+      "id": "pump-detail",
+      "filename": "exec-1db4d52d-c113-4b01-8a07-6fafda44b81d.png"
+    },
+    {
+      "type": "new-original-imagegen",
+      "id": "meter-detail",
+      "filename": "exec-7015d797-0037-4b29-b864-844969905f33.png"
+    }
+  ]
+}

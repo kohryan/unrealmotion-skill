@@ -29,3 +29,5 @@ At least one interval in the latter half must show subject change, not only text
 Use anticipation and follow-through when supported by the subject. Avoid equal-duration, equal-speed movement on every part. For loops, match both position and velocity at the seam; `sin(2π*t/period + phase)` is seekable. For physics, precompute a fixed-timestep seeded simulation, cache states and interpolate; never advance it from the last requested frame.
 
 Motion blur is optional and is not enabled in the baseline renderer. Proper temporal supersampling requires resetting the complete scene at every sub-frame, accumulating in linear space and keeping crisp typography separate. Do not describe a 60fps export as motion-blurred unless it is.
+
+New explainer choreography uses [dynamic-story.md](dynamic-story.md) for camera/slide/push/pull/match handoffs, [text-motion.md](text-motion.md) for readable kinetic copy, and [data-motion.md](data-motion.md) for quantity-driven graphics. Keep the same rest poses and causal clock across these editorial layers.

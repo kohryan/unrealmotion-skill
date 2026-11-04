@@ -42,13 +42,22 @@ export async function runQA(project, options = {}) {
       const buffer = await capture.frame(f); buffers.push(buffer);
       const stats = imageStats(buffer);
       const state = await capture.page.evaluate(() => window.__unrealmotion.inspect());
-      const overflow = await capture.page.evaluate(() => [...document.querySelectorAll('[data-safe]')].flatMap(e => {
+      const overflow = await capture.page.evaluate(() => {
+        const seam=window.__unrealmotion.inspect().transition;
+        const moving=seam?.active&&!['camera','none'].includes(seam.type);
+        return [...document.querySelectorAll('[data-safe]')].flatMap(e => {
+        if(e.dataset.safe==='visual'&&moving)return [];
         if (getComputedStyle(e).opacity < 0.05) return [];
-        return [...e.children].filter(c => { const r = c.getBoundingClientRect(); return r.left < 0 || r.top < 0 || r.right > innerWidth || r.bottom > innerHeight || c.scrollWidth > c.clientWidth + 2; }).map(c => c.tagName);
-      }).concat([...document.querySelectorAll('[data-safe-label]')].filter(e=>{const s=getComputedStyle(e);if(s.display==='none'||Number(s.opacity)<.05)return false;const r=e.getBoundingClientRect();return r.left<0||r.top<0||r.right>innerWidth||r.bottom>innerHeight;}).map(()=> 'part-label')));
+        if(!e.getClientRects().length)return [];
+        return [...e.children].filter(c => { const r = c.getBoundingClientRect(); return r.left < 0 || r.top < 0 || r.right > innerWidth || r.bottom > innerHeight || (!c.classList.contains('um-word-window') && c.scrollWidth > c.clientWidth + 2); }).map(c => c.tagName);
+      }).concat([...document.querySelectorAll('[data-safe-label]')].filter(e=>{if(moving&&e.closest('#story-visual'))return false;const s=getComputedStyle(e);if(s.display==='none'||Number(s.opacity)<.05)return false;const r=e.getBoundingClientRect();return r.left<0||r.top<0||r.right>innerWidth||r.bottom>innerHeight;}).map(()=> 'part-label'))
+        .concat([...document.querySelectorAll('.um-data svg text')].filter(e=>{if(moving||!e.getClientRects().length)return false;const a=e.getBoundingClientRect(),b=e.ownerSVGElement.getBoundingClientRect();return a.left<b.left-2||a.right>b.right+2||a.top<b.top-2||a.bottom>b.bottom+2;}).map(()=> 'chart-label'));
+      });
       if (stats.deviation < 3) failures.push(`Frame ${f}: blank or almost uniform image`);
       if (state.invalid?.length || (state.renderer === 'svg' ? !state.elements : !state.meshes || !state.triangles)) failures.push(`Frame ${f}: invalid or empty scene`);
       if(project.config.template==='imagegen-explainer' && (state.renderer!=='threejs'||!state.volumes))failures.push(`Frame ${f}: ImageGen explainer requires rendered Three.js volumes`);
+      if(project.storyboard?.version===2&&state.activeScenes?.length!==1)failures.push(`Frame ${f}: exactly one authored scene root must be active`);
+      if(state.graphics?.some(g=>g.invalid))failures.push(`Frame ${f}: invalid chart values`);
       if (overflow.length) failures.push(`Frame ${f}: clipped copy: ${overflow.join(', ')}`);
       const file = `frame-${String(f).padStart(6, '0')}.png`; await writeFile(path.join(dir, file), buffer);
       samples.push({frame:f, seconds:f / project.config.fps, file, ...stats, state});

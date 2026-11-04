@@ -1,0 +1,93 @@
+{
+  "status": "authored",
+  "subject": "A connected water system, pump cutaway, meter and illustrative data",
+  "duration": 24,
+  "pace": "dynamic",
+  "assetStrategy": "multi",
+  "styleLock": "Same simple pastel cutaway, sage ground, cream supports, muted-blue housings, gold rotors and pale-blue water pipes.",
+  "motion": [
+    "Causal pump operation and dependency-ordered cover reassembly.",
+    "Camera motion crosses beat boundaries continuously.",
+    "Circle-to-circle push and pull match cuts; no dissolves.",
+    "Existing Inter font, semantic word emphasis and short readable captions.",
+    "A shared clock drives pump and meter rotor; live counter samples the same flow."
+  ],
+  "data": {
+    "source": "Illustrative demo, not measured performance.",
+    "flowRateUnit": "L/min",
+    "usageUnit": "L/hari",
+    "usageTotal": 300,
+    "categoryColors": "Stable across bar and donut."
+  },
+  "referenceIds": [
+    "overview",
+    "pump-detail",
+    "meter-detail"
+  ],
+  "limits": [
+    "Conceptual pump/meter assemblies; no OEM or calibration accuracy claim.",
+    "All chart values are illustrative and labeled as such."
+  ],
+  "shots": [
+    {
+      "id": "question",
+      "start": 0,
+      "end": 2.2,
+      "action": "Establish the connected water system and launch the explanatory motion."
+    },
+    {
+      "id": "impeller",
+      "start": 2.2,
+      "end": 4.6,
+      "action": "Open the actual pump casing while the impeller turns."
+    },
+    {
+      "id": "pressure",
+      "start": 4.6,
+      "end": 7.4,
+      "action": "Seat the same pump cover laterally, then axially."
+    },
+    {
+      "id": "meter",
+      "start": 7.4,
+      "end": 9.2,
+      "action": "Carry the circular pump opening into the meter rotor close-up."
+    },
+    {
+      "id": "measure",
+      "start": 9.2,
+      "end": 11.4,
+      "action": "Close the meter bezel and read its live model-bound flow."
+    },
+    {
+      "id": "counter",
+      "start": 11.4,
+      "end": 13.4,
+      "action": "Dock the same meter and reveal a model-bound numerical reading."
+    },
+    {
+      "id": "bars",
+      "start": 13.4,
+      "end": 16.5,
+      "action": "Grow category bars and their labels using an immutable common zero baseline."
+    },
+    {
+      "id": "line",
+      "start": 16.5,
+      "end": 19.6,
+      "action": "Reveal recorded flow values with an explicit time axis."
+    },
+    {
+      "id": "donut",
+      "start": 19.6,
+      "end": 21.8,
+      "action": "Retain category identities and colors in a parts-of-whole view."
+    },
+    {
+      "id": "recap",
+      "start": 21.8,
+      "end": 24,
+      "action": "Return to the same operating house/pump/tank model."
+    }
+  ]
+}

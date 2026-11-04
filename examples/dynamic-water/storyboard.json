@@ -1,0 +1,442 @@
+{
+  "version": 2,
+  "title": "ALIRAN JADI DATA",
+  "duration": 24,
+  "pace": "dynamic",
+  "cameraSpan": 13.8,
+  "scenes": [
+    {
+      "id": "system"
+    },
+    {
+      "id": "meter"
+    }
+  ],
+  "beats": [
+    {
+      "id": "question",
+      "start": 0,
+      "end": 2.2,
+      "scene": "system",
+      "assets": [
+        "overview"
+      ],
+      "caption": "Ikuti ALIRANNYA.",
+      "detail": "Dari pompa menuju data.",
+      "action": "Establish the connected water system and launch the explanatory motion.",
+      "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
+      "camera": {
+        "x": -0.25,
+        "y": 2.25,
+        "scale": 1,
+        "target": [
+          -0.25,
+          2.25,
+          0.3
+        ],
+        "position": [
+          4.15,
+          4.65,
+          18.3
+        ]
+      },
+      "text": {
+        "preset": "words",
+        "layout": "hero",
+        "emphasis": [
+          "ALIRANNYA"
+        ]
+      },
+      "transition": {
+        "type": "camera",
+        "duration": 0.6
+      },
+      "markers": [
+        1.4300000000000002
+      ]
+    },
+    {
+      "id": "impeller",
+      "start": 2.2,
+      "end": 4.6,
+      "scene": "system",
+      "assets": [
+        "pump-detail"
+      ],
+      "caption": "Buka. Lihat geraknya.",
+      "detail": "Impeller mendorong air.",
+      "action": "Open the actual pump casing while the impeller turns.",
+      "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
+      "camera": {
+        "x": -0.95,
+        "y": 0.45,
+        "scale": 3.2,
+        "target": [
+          -0.95,
+          0.45,
+          1.2
+        ],
+        "position": [
+          3.45,
+          2.85,
+          19.2
+        ]
+      },
+      "text": {
+        "preset": "words",
+        "layout": "caption",
+        "emphasis": [
+          "geraknya"
+        ]
+      },
+      "transition": {
+        "type": "camera",
+        "duration": 0.6
+      },
+      "markers": [
+        3.76
+      ]
+    },
+    {
+      "id": "pressure",
+      "start": 4.6,
+      "end": 7.4,
+      "scene": "system",
+      "assets": [
+        "pump-detail"
+      ],
+      "caption": "Rakit. Alirkan.",
+      "detail": "Komponen kembali ke tempatnya.",
+      "action": "Seat the same pump cover laterally, then axially.",
+      "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
+      "camera": {
+        "x": -0.95,
+        "y": 0.5,
+        "scale": 3.2,
+        "target": [
+          -0.95,
+          0.5,
+          1.2
+        ],
+        "position": [
+          3.45,
+          2.9,
+          19.2
+        ]
+      },
+      "text": {
+        "preset": "impact",
+        "layout": "caption",
+        "emphasis": [
+          "Alirkan"
+        ]
+      },
+      "transition": {
+        "type": "camera",
+        "duration": 0.6
+      },
+      "markers": [
+        6.42
+      ]
+    },
+    {
+      "id": "meter",
+      "start": 7.4,
+      "end": 9.2,
+      "scene": "meter",
+      "assets": [
+        "meter-detail"
+      ],
+      "caption": "Aliran jadi terukur.",
+      "detail": "Rotor mengikuti gerak air.",
+      "action": "Carry the circular pump opening into the meter rotor close-up.",
+      "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
+      "camera": {
+        "x": 0.7,
+        "y": 0.27,
+        "scale": 1.8,
+        "target": [
+          0.7,
+          0.27,
+          0.2
+        ],
+        "position": [
+          5.1000000000000005,
+          2.67,
+          18.2
+        ]
+      },
+      "text": {
+        "preset": "words",
+        "layout": "caption",
+        "emphasis": [
+          "terukur"
+        ]
+      },
+      "transition": {
+        "type": "push",
+        "duration": 0.48,
+        "travel": 0.1,
+        "blur": 6
+      },
+      "markers": [
+        8.57
+      ]
+    },
+    {
+      "id": "measure",
+      "start": 9.2,
+      "end": 11.4,
+      "scene": "meter",
+      "assets": [
+        "meter-detail"
+      ],
+      "caption": "Baca debitnya.",
+      "detail": "Angka mengikuti model aliran.",
+      "action": "Close the meter bezel and read its live model-bound flow.",
+      "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
+      "camera": {
+        "x": 0,
+        "y": 0.6,
+        "scale": 1.03,
+        "target": [
+          0,
+          0.6,
+          0.2
+        ],
+        "position": [
+          4.4,
+          3.0,
+          18.2
+        ]
+      },
+      "text": {
+        "preset": "words",
+        "layout": "caption",
+        "emphasis": [
+          "debitnya"
+        ]
+      },
+      "transition": {
+        "type": "camera",
+        "duration": 0.6
+      },
+      "markers": [
+        10.63
+      ]
+    },
+    {
+      "id": "counter",
+      "start": 11.4,
+      "end": 13.4,
+      "scene": "meter",
+      "assets": [
+        "meter-detail"
+      ],
+      "caption": "16 liter per menit.",
+      "detail": "Contoh nilai saat pompa aktif.",
+      "action": "Dock the same meter and reveal a model-bound numerical reading.",
+      "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
+      "camera": {
+        "x": 0,
+        "y": 0.9,
+        "scale": 1,
+        "target": [
+          0,
+          0.9,
+          0.2
+        ],
+        "position": [
+          4.4,
+          3.3,
+          18.2
+        ]
+      },
+      "text": {
+        "preset": "impact",
+        "layout": "caption",
+        "emphasis": [
+          "16"
+        ]
+      },
+      "transition": {
+        "type": "camera",
+        "duration": 0.6
+      },
+      "markers": [
+        12.700000000000001
+      ]
+    },
+    {
+      "id": "bars",
+      "start": 13.4,
+      "end": 16.5,
+      "scene": "meter",
+      "assets": [
+        "meter-detail"
+      ],
+      "caption": "Bandingkan pemakaian.",
+      "detail": "Kategori yang sama, skala yang sama.",
+      "action": "Grow category bars and their labels using an immutable common zero baseline.",
+      "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
+      "camera": {
+        "x": 0,
+        "y": 0.9,
+        "scale": 1,
+        "target": [
+          0,
+          0.9,
+          0.2
+        ],
+        "position": [
+          4.4,
+          3.3,
+          18.2
+        ]
+      },
+      "text": {
+        "preset": "words",
+        "layout": "caption",
+        "emphasis": [
+          "Bandingkan"
+        ]
+      },
+      "transition": {
+        "type": "camera",
+        "duration": 0.6
+      },
+      "markers": [
+        15.415
+      ]
+    },
+    {
+      "id": "line",
+      "start": 16.5,
+      "end": 19.6,
+      "scene": "meter",
+      "assets": [
+        "meter-detail"
+      ],
+      "caption": "Lihat perubahan waktunya.",
+      "detail": "Puncak dan penurunan terbaca.",
+      "action": "Reveal recorded flow values with an explicit time axis.",
+      "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
+      "camera": {
+        "x": 0,
+        "y": 0.9,
+        "scale": 1,
+        "target": [
+          0,
+          0.9,
+          0.2
+        ],
+        "position": [
+          4.4,
+          3.3,
+          18.2
+        ]
+      },
+      "text": {
+        "preset": "words",
+        "layout": "caption",
+        "emphasis": [
+          "perubahan"
+        ]
+      },
+      "transition": {
+        "type": "match",
+        "duration": 0.3
+      },
+      "markers": [
+        18.515
+      ]
+    },
+    {
+      "id": "donut",
+      "start": 19.6,
+      "end": 21.8,
+      "scene": "meter",
+      "assets": [
+        "meter-detail"
+      ],
+      "caption": "Ke mana airnya?",
+      "detail": "Contoh pembagian 300 liter per hari.",
+      "action": "Retain category identities and colors in a parts-of-whole view.",
+      "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
+      "camera": {
+        "x": 0,
+        "y": 0.9,
+        "scale": 1,
+        "target": [
+          0,
+          0.9,
+          0.2
+        ],
+        "position": [
+          4.4,
+          3.3,
+          18.2
+        ]
+      },
+      "text": {
+        "preset": "wipe",
+        "layout": "caption",
+        "emphasis": [
+          "airnya"
+        ]
+      },
+      "transition": {
+        "type": "match",
+        "duration": 0.3
+      },
+      "markers": [
+        21.03
+      ]
+    },
+    {
+      "id": "recap",
+      "start": 21.8,
+      "end": 24,
+      "scene": "system",
+      "assets": [
+        "overview",
+        "pump-detail"
+      ],
+      "caption": "Ukur. Pahami. Kendalikan.",
+      "detail": "Satu aliran, cerita yang terhubung.",
+      "action": "Return to the same operating house/pump/tank model.",
+      "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
+      "camera": {
+        "x": -0.25,
+        "y": 0.25,
+        "scale": 1,
+        "target": [
+          -0.25,
+          0.25,
+          0.3
+        ],
+        "position": [
+          4.15,
+          2.65,
+          18.3
+        ]
+      },
+      "text": {
+        "preset": "words",
+        "layout": "caption",
+        "emphasis": [
+          "Pahami"
+        ]
+      },
+      "transition": {
+        "type": "pull",
+        "duration": 0.48,
+        "travel": 0.1,
+        "blur": 6
+      },
+      "markers": [
+        23.23
+      ]
+    }
+  ]
+}

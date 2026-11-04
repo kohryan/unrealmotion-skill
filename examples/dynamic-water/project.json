@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "mode": "explainer",
+  "prompt": "Jelaskan bagaimana aliran air dipompa, diukur dan dipahami lewat data. Gunakan beberapa referensi ImageGen yang konsisten, cutaway dan reassembly cepat, teks kinetik, counter, bar chart, line chart dan donut. Style pastel cutaway sederhana yang sama. Semua angka adalah ilustratif, tanpa audio.",
+  "template": "imagegen-explainer",
+  "motion": "cinematic-orbit",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 24,
+  "supersample": 1,
+  "seed": 73,
+  "pace": "dynamic",
+  "assetStrategy": "multi"
+}

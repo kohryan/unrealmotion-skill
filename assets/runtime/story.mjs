@@ -1,7 +1,17 @@
 import {clamp, mix, progress, smoother} from './motion.mjs';
+import {editorialState, paces, transitionTypes, transitionSpec} from './editorial.mjs';
+import {textPresets} from './typography.mjs';
 
 export function validateStoryboard(story, duration) {
   if (!story || !Array.isArray(story.beats) || story.beats.length < 3) throw new Error('An explainer needs at least three authored beats');
+  if (story.pace !== undefined && !paces.includes(story.pace)) throw new Error('Unknown story pace');
+  if (story.version !== undefined && ![1,2].includes(story.version)) throw new Error('Unsupported storyboard version');
+  const scenes = new Set();
+  for (const scene of story.scenes || []) {
+    if (!scene.id || typeof scene.id !== 'string' || scenes.has(scene.id)) throw new Error('Scene ids must be unique strings');
+    scenes.add(scene.id);
+  }
+  if (story.version === 2 && !scenes.size) throw new Error('Version 2 needs named scene contexts');
   const ids = new Set(); let cursor = 0;
   for (const beat of story.beats) {
     if (typeof beat.id !== 'string' || !beat.id || ids.has(beat.id)) throw new Error('Storyboard beat ids must be unique');
@@ -10,7 +20,16 @@ export function validateStoryboard(story, duration) {
     for (const field of ['caption','detail','action','purpose']) if (typeof beat[field] !== 'string' || !beat[field].trim()) throw new Error(`Missing ${field} in beat ${beat.id}`);
     if (!beat.camera || !['x','y','scale'].every(k => Number.isFinite(beat.camera[k])) || beat.camera.scale <= 0) throw new Error(`Invalid camera in beat ${beat.id}`);
     if(beat.camera.position || beat.camera.target) for(const field of ['position','target']) if(!Array.isArray(beat.camera[field])||beat.camera[field].length!==3||!beat.camera[field].every(Number.isFinite))throw new Error(`Invalid 3D camera ${field} in beat ${beat.id}`);
+    if (story.version === 2 && !scenes.has(beat.scene)) throw new Error(`Unknown scene in beat ${beat.id}`);
+    if (beat.assets !== undefined && (!Array.isArray(beat.assets) || !beat.assets.length || !beat.assets.every(x=>typeof x==='string'&&x))) throw new Error(`Invalid asset references in ${beat.id}`);
+    if (beat.text && (!textPresets.includes(beat.text.preset || 'words') || !['caption','hero','side'].includes(beat.text.layout || 'caption') || (beat.text.emphasis !== undefined && (!Array.isArray(beat.text.emphasis) || !beat.text.emphasis.every(x=>typeof x==='string'))))) throw new Error(`Invalid text direction in ${beat.id}`);
+    for (const time of beat.markers || []) if (!Number.isFinite(time) || time < beat.start || time > beat.end) throw new Error(`Action marker outside ${beat.id}`);
     cursor = beat.end;
+  }
+  for (let i=1;i<story.beats.length;i++) if (story.version===2 || story.beats[i].transition) {
+    const spec=transitionSpec(story,i),before=story.beats[i-1],after=story.beats[i];
+    if (!transitionTypes.includes(spec.type) || !['x','y'].includes(spec.axis) || ![-1,1].includes(spec.direction) || !Number.isFinite(spec.duration) || spec.duration<=0 || spec.duration>Math.min(before.end-before.start,after.end-after.start) || !Number.isFinite(spec.travel) || spec.travel<0 || spec.travel>.2 || !Number.isFinite(spec.blur) || spec.blur<0 || spec.blur>12) throw new Error(`Invalid transition into ${after.id}`);
+    if (spec.type==='camera' && before.scene!==after.scene) throw new Error(`Use a match/slide/zoom for different scene roots: ${after.id}`);
   }
   if (Math.abs(cursor - duration) > 1e-6) throw new Error('Storyboard must cover the complete video duration');
   return story;
@@ -21,6 +40,15 @@ export function storyState(story, seconds) {
   const index = Math.max(0, story.beats.findIndex(b => time < b.end));
   const i = time >= story.beats.at(-1).end ? story.beats.length - 1 : index;
   const beat = story.beats[i], previous = story.beats[Math.max(0, i - 1)];
+  if (story.version===2) {
+    const direction=editorialState(story,time,i);
+    const composed=i>0&&transitionSpec(story,i).type!=='camera';
+    const seam=direction.transition;
+    // Clear a title's reserved space before a close-up moves into it.
+    const exitingTitle=beat.text?.layout && beat.text.layout!=='caption' && seam.active && seam.type==='camera' && seam.phase==='exit';
+    const captionOpacity=exitingTitle?1-smoother(clamp(seam.progress*2)):1;
+    return {beat,index:i,localTime:time-beat.start,progress:progress(time,beat.start,beat.end),captionOpacity,...direction,textComposed:composed};
+  }
   const transition = Math.min(1.25, (beat.end - beat.start) * 0.25);
   const cameraProgress = smoother(progress(time, beat.start, beat.start + transition));
   const camera = Object.fromEntries(['x','y','scale'].map(k => [k, mix(previous.camera[k], beat.camera[k], cameraProgress)]));

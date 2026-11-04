@@ -1,0 +1,77 @@
+{
+  "status": "authored",
+  "reference": "assets/overview.png",
+  "references": [
+    {
+      "id": "overview",
+      "path": "assets/overview.png",
+      "parts": [
+        "house",
+        "pump",
+        "tank"
+      ]
+    },
+    {
+      "id": "pump-detail",
+      "path": "assets/pump-detail.png",
+      "parts": [
+        "pump",
+        "impeller",
+        "cover"
+      ]
+    },
+    {
+      "id": "meter-detail",
+      "path": "assets/meter-detail.png",
+      "parts": [
+        "meter-housing",
+        "meter-rotor",
+        "meter-bezel",
+        "meter-display"
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "id": "house"
+    },
+    {
+      "id": "pump"
+    },
+    {
+      "id": "impeller"
+    },
+    {
+      "id": "cover"
+    },
+    {
+      "id": "tank"
+    },
+    {
+      "id": "meter-housing"
+    },
+    {
+      "id": "meter-rotor"
+    },
+    {
+      "id": "meter-bezel"
+    },
+    {
+      "id": "meter-display"
+    }
+  ],
+  "style": "Same simple pastel cutaway, sage ground, cream supports, muted-blue housings, gold rotors and pale-blue water pipes.",
+  "attachments": [
+    "The original system retains one named pump and tank hierarchy through every camera shot.",
+    "Meter flanges, rotor axle, display neck and feet share a single fixed body hierarchy.",
+    "Bezel, glass and bolts retain one rest pose and return to the casing face."
+  ],
+  "inferredGeometry": [
+    "The new reference front window is an actual circular hole in an extruded rounded housing.",
+    "ImageGen appearance is reconstructed as original mesh volumes; no reference plane is rendered."
+  ],
+  "reviewViews": [
+    "Main front-oblique view at every beat and seam.",
+    "Second oblique on open/closed pump and meter states."
+  ]
+}

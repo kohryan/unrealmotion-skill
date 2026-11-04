@@ -37,6 +37,7 @@ test('source hash ignores generated output, detects source edits and rejects sym
   try {
     await writeFile(path.join(dir,'scene.mjs'),'first');const first=await sourceHash(dir);
     await mkdir(path.join(dir,'output'));await writeFile(path.join(dir,'output/video.mp4'),'video');assert.equal(await sourceHash(dir),first);
+    await writeFile(path.join(dir,'.DS_Store'),'finder metadata');assert.equal(await sourceHash(dir),first);
     await writeFile(path.join(dir,'scene.mjs'),'second');assert.notEqual(await sourceHash(dir),first);
     assert.equal(await confinedFile(dir,'scene.mjs'),path.join(await realpath(dir),'scene.mjs'));
     await assert.rejects(confinedFile(dir,'../outside'));

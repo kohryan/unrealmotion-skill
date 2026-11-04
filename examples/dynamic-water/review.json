@@ -1,0 +1,63 @@
+{
+  "sourceHash": "a3446aa867151393503af0bdc02c4c3a3f5874fc593ed81bc60321f012adbb7e",
+  "checks": {
+    "subjectFidelity": true,
+    "materialsLighting": true,
+    "composition": true,
+    "motionContinuity": true,
+    "transitions": true,
+    "lateMotion": true,
+    "explanation": true,
+    "causalMotion": true,
+    "shotContinuity": true,
+    "promptFidelity": true,
+    "assetConsistency": true,
+    "reconstruction3D": true,
+    "dynamicPacing": true,
+    "kineticText": true,
+    "multiAssetContinuity": true,
+    "dataAccuracy": true
+  },
+  "evidence": [
+    "output/qa/contact-sheet.png",
+    "output/qa/frame-000033.png",
+    "output/qa/frame-000449.png",
+    "output/qa/frame-000554.png",
+    "output/qa/frame-000630.png",
+    "output/inspection/push-seam.png",
+    "output/inspection/bezel-close.png",
+    "output/inspection/oblique-100.png",
+    "output/inspection/oblique-300.png",
+    "output/qa/frame-000064.png"
+  ],
+  "notes": "Inspected 107 sampled native frames via contact sheets and selected native renders, plus adjacent push-handoff and bezel-insertion intervals. The blue/cream/gold reference identities survive the operating system, pump detail and meter context. Opposite oblique views verify housing depth, actual circular openings, rotor, attached pipes/display and rest-pose seating. Ten short beats preserve readable settled copy; hero framing reserves title space. Bars show 180/90/30 L per day on a fixed 0–200 domain; the same category colors and 300 total feed the donut. Line observations are 6/16/10/18/8 L/min and the live counter reads 16 during the active pump phase. Source captions mark all data/mechanics illustrative. This is an authored concept mechanism, not measured flow physics, CAD recovery or universal prompt-quality certification. Encoded verification is recorded after export. Follow-up opening review clears the outgoing hero text before the pump close-up enters its reserved space; unit and browser integration checks passed on the updated runtime.",
+  "encodedVerification": {
+    "file": "../media/dynamic-water.mp4",
+    "sha256": "e9fa0cd71550c13ce44670265bc57d75471dcc8360d3996a63fa00e903dfee08",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration": 24,
+    "frames": 720,
+    "audioStreams": 0,
+    "fullDecode": "passed",
+    "inspectedIntervals": {
+      "opening": [
+        55,
+        72
+      ],
+      "push": [
+        214,
+        231
+      ],
+      "insertion": [
+        288,
+        305
+      ],
+      "bars": [
+        402,
+        419
+      ]
+    }
+  }
+}

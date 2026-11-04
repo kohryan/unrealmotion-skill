@@ -9,6 +9,21 @@ Skill untuk coding agent dengan pipeline **prompt → ImageGen → rekonstruksi 
 
 [![OPTIC — rendered with UnrealMotion](assets/og-image.jpg)](examples/media/optical-studio.mp4)
 
+## Baru di 1.1 — motion yang lebih dinamis
+
+Beberapa referensi ImageGen yang konsisten → scene Three.js dengan identitas bagian tetap → transisi cutaway/reassembly → teks kinetik dan grafik data → MP4 tanpa audio. Style pastel sederhana dan renderer lokal tetap dipertahankan.
+
+- Pace `dynamic` atau `calm`, dengan camera handoff, slide, push, pull dan match cut yang mengikuti alur cerita.
+- Teks word/character reveal, wipe dan impact; ruang baca tetap diperhitungkan.
+- Bar, line, donut, counter dan bar-chart race dari CSV/JSON lokal; domain tetap, unit, sumber dan label data ilustratif.
+- Bundle referensi per adegan dengan prompt, hash dan part binding; bukan satu gambar yang digerakkan sepanjang video.
+
+[![Aliran Jadi Data — demo motion dinamis](examples/media/dynamic-water.jpg)](examples/media/dynamic-water.mp4)
+
+**Aliran Jadi Data** · 24 detik · 9:16 · 1080×1920 · 30 fps · tanpa audio. Tiga referensi ImageGen, dua konteks 3D, sepuluh beat, reassembly sensor dan empat bentuk grafik. Angka serta mekanismenya ilustratif. [Tonton MP4](examples/media/dynamic-water.mp4) · [Source dan aset](examples/dynamic-water) · [Changelog versi](CHANGELOG.md).
+
+Tambahan prompt opsional: `Pace: dinamis, tetap terbaca`, `Data: [file CSV/JSON + unit + sumber]`, dan `Fokus data: [perbandingan/tren/pembagian]`. Jika tidak ada data faktual, gunakan ilustrasi yang diberi label atau jelaskan prosesnya tanpa angka rekaan. [Panduan motion](references/dynamic-story.md) · [Data motion](references/data-motion.md) · [Teks dinamis](references/text-motion.md).
+
 ## Contoh Video Motion Graphics
 
 Dua explainer lengkap dengan alur **ImageGen → Three.js → video tanpa audio**. Klik thumbnail atau **Tonton MP4** untuk membuka videonya.
@@ -113,7 +128,7 @@ Tanpa suara atau musik.
 
 Jika durasi/format belum ditentukan, explainer memakai **60 detik, 9:16, 1080×1920, 30 fps, tanpa audio**. Agent menyusun storyboard dan motion sesuai topik. Untuk mekanisme, Anda bisa menambahkan arahan seperti “buka casing, jelaskan komponen aktif, rakit kembali, lalu perlihatkan operasinya”. Output yang dituju adalah **MP4 yang bisa diputar beserta source yang bisa diedit**.
 
-Agent membaca [SKILL.md](SKILL.md), menghasilkan referensi melalui ImageGen bawaan host, menulis model/scene khusus, melakukan QA visual, dan merender lokal. CLI `create --prompt` membuat starter serta menyimpan brief; perintah itu **tidak menafsirkan prompt atau menggantikan authoring oleh agent**. ImageGen bawaan tidak memerlukan API key tambahan.
+Agent membaca [SKILL.md](SKILL.md), menghasilkan referensi adegan yang konsisten melalui ImageGen bawaan host, menulis model/scene khusus, melakukan QA visual, dan merender lokal. CLI `create --prompt` membuat starter serta menyimpan brief; perintah itu **tidak menafsirkan prompt atau menggantikan authoring oleh agent**. ImageGen bawaan tidak memerlukan API key tambahan.
 
 ## Metode pembangunan UnrealMotion
 
@@ -145,10 +160,10 @@ Dataset digunakan sebagai korpus referensi. Prinsip upstream diadaptasi ke runti
 flowchart TD
     P["Prompt pengguna di Codex"] --> Q["Agent menyusun brief,<br/>pesan utama dan storyboard"]
     Q --> R["Referensi sesuai topik<br/>CCORE / SimReady / gambar pengguna"]
-    R --> S["ImageGen bawaan host<br/>Referensi sederhana dengan style konsisten"]
+    R --> S["ImageGen bawaan host<br/>2–4 referensi adegan sederhana<br/>Identitas dan style konsisten"]
     S --> T["Inspeksi dan spesifikasi model<br/>Bagian, proporsi, attachment dan pivot"]
-    T --> U["Rekonstruksi Three.js nyata<br/>Satu hierarchy mesh untuk seluruh film"]
-    U --> V["Material, cahaya, kamera dan motion<br/>State diturunkan dari waktu/frame absolut"]
+    T --> U["Rekonstruksi Three.js nyata<br/>Hierarchy tetap per objek<br/>Scene root untuk tiap konteks"]
+    U --> V["Material, kamera, motion dan teks<br/>CSV/JSON opsional untuk grafik data<br/>Semua state dari waktu/frame absolut"]
     V --> W["Preview dan QA<br/>Frame native, batas adegan dan random seek"]
     W --> X{"Visual dan teknis lolos?"}
     X -->|Revisi model / gerak| U
@@ -166,7 +181,7 @@ Retrieval dipakai saat relevan: SimReady berperan untuk aset yang sesuai, sement
 node scripts/unrealmotion.mjs create output/explainer --mode explainer --prompt "Jelaskan mekanisme sesuai brief, tanpa audio"
 ```
 
-Default: 60 detik, 1080×1920, 30fps, tanpa audio. Agent membuat referensi ImageGen, spesifikasi bagian/attachment, model Three.js nyata, lalu storyboard dan motion yang menjelaskan sebab-akibat. Referensi tidak diputar sebagai plane atau potongan gambar. Starter meminta authoring sebelum bisa dirender, agar prompt lain tidak menghasilkan contoh air yang sama.
+Default: 60 detik, 1080×1920, 30fps, tanpa audio, `--pace dynamic --assets multi`. Agent membuat referensi ImageGen, spesifikasi bagian/attachment, model Three.js nyata, lalu storyboard dan motion yang menjelaskan sebab-akibat. Referensi tidak diputar sebagai plane atau potongan gambar. Starter meminta authoring sebelum bisa dirender, agar prompt lain tidak menghasilkan contoh air yang sama.
 
 Pilihan motion dalam style yang sama: **ikuti aliran**, **cutaway mekanisme**, **explode → reassemble → operate**, **akumulasi → ambang → respons**, dan **perbandingan/transformasi**. Pilih sesuai ide yang dijelaskan. [Pipeline lengkap](references/imagegen-threejs.md) · [source contoh](examples/water-imagegen-threejs) · [prompt ImageGen dan provenance](examples/water-imagegen-threejs/asset-plan.json).
 
@@ -284,6 +299,21 @@ A coding-agent skill with a **prompt → ImageGen → Three.js reconstruction �
 
 [![OPTIC — rendered with UnrealMotion](assets/og-image.jpg)](examples/media/optical-studio.mp4)
 
+## New in 1.1 — more dynamic motion
+
+Consistent ImageGen references → Three.js scenes with stable part identities → cutaway/reassembly handoffs → kinetic text and data graphics → silent MP4. The simple pastel style and local renderer remain the foundation.
+
+- `dynamic` or `calm` pacing, with camera handoffs, slides, pushes, pulls and authored match cuts.
+- Word/character reveals, wipes and impact text, with time reserved for reading.
+- Bar, line, donut, counter and bar-chart race graphics from local CSV/JSON; fixed domains, units, sources and illustrative-data labels.
+- Per-scene reference bundles with exact prompts, image hashes and part bindings, rather than one image stretched into a whole film.
+
+[![Aliran Jadi Data — dynamic motion demo](examples/media/dynamic-water.jpg)](examples/media/dynamic-water.mp4)
+
+**Aliran Jadi Data** · 24 seconds · 9:16 · 1080×1920 · 30 fps · no audio. Three ImageGen references, two 3D contexts, ten beats, sensor reassembly and four chart forms. Values and mechanics are illustrative. [Watch MP4](examples/media/dynamic-water.mp4) · [Source and assets](examples/dynamic-water) · [Version changelog](CHANGELOG.md).
+
+Optional prompt additions: `Pace: dynamic, readable`, `Data: [CSV/JSON file + units + source]`, and `Data focus: [comparison/trend/share]`. Without factual data, clearly label illustrative values or explain the process without invented numbers. [Motion guide](references/dynamic-story.md) · [Data motion](references/data-motion.md) · [Kinetic text](references/text-motion.md).
+
 ## Motion Graphic Video Examples
 
 Two full explainers made with **ImageGen → Three.js → silent video**. Click a thumbnail or **Watch MP4** to open the video.
@@ -388,7 +418,7 @@ No voice or music.
 
 If duration and format are unspecified, explainers default to **60 seconds, 9:16, 1080×1920, 30 fps, without audio**. The agent builds a storyboard and motion around the topic. For mechanisms, you can add directions such as “open the casing, explain the active components, reassemble them, then show the mechanism working.” The intended delivery is a **playable MP4 and editable source**.
 
-The agent reads [SKILL.md](SKILL.md), generates a reference with the host's built-in ImageGen, writes a custom model/scene, reviews the visuals, and renders locally. The CLI's `create --prompt` command creates a starter and saves the brief; it **does not interpret the prompt or replace agent authoring**. Built-in ImageGen requires no additional API key.
+The agent reads [SKILL.md](SKILL.md), generates consistent scene references with the host's built-in ImageGen, writes a custom model/scene, reviews the visuals, and renders locally. The CLI's `create --prompt` command creates a starter and saves the brief; it **does not interpret the prompt or replace agent authoring**. Built-in ImageGen requires no additional API key.
 
 ## How UnrealMotion was built
 
@@ -420,10 +450,10 @@ The datasets serve as reference corpora. Upstream principles are adapted to the 
 flowchart TD
     P["User prompt in Codex"] --> Q["Agent prepares the brief,<br/>key message and storyboard"]
     Q --> R["Topic-specific references<br/>CCORE / SimReady / user images"]
-    R --> S["Host's built-in ImageGen<br/>Simple reference with a consistent style"]
+    R --> S["Host's built-in ImageGen<br/>2–4 simple scene references<br/>Consistent identities and style"]
     S --> T["Inspection and model specification<br/>Parts, proportions, attachments and pivots"]
-    T --> U["Actual Three.js reconstruction<br/>One mesh hierarchy throughout the film"]
-    U --> V["Materials, lighting, camera and motion<br/>State derived from absolute time / frame"]
+    T --> U["Actual Three.js reconstruction<br/>Stable hierarchy per object<br/>Persistent scene roots for contexts"]
+    U --> V["Materials, camera, motion and text<br/>Optional local CSV/JSON data graphics<br/>State derived from absolute time / frame"]
     V --> W["Preview and QA<br/>Native frames, scene boundaries and random seeking"]
     W --> X{"Visual and technical checks pass?"}
     X -->|Revise model / motion| U
