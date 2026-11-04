@@ -1,22 +1,32 @@
 {
   "version": 2,
   "title": "ALIRAN JADI DATA",
-  "duration": 24,
-  "pace": "dynamic",
+  "duration": 32,
+  "pace": "calm",
   "cameraSpan": 13.8,
   "scenes": [
     {
-      "id": "system"
+      "id": "system",
+      "position": [
+        0,
+        0,
+        0
+      ]
     },
     {
-      "id": "meter"
+      "id": "meter",
+      "position": [
+        5.6,
+        0.9,
+        1.3
+      ]
     }
   ],
   "beats": [
     {
       "id": "question",
       "start": 0,
-      "end": 2.2,
+      "end": 3.2,
       "scene": "system",
       "assets": [
         "overview"
@@ -26,19 +36,19 @@
       "action": "Establish the connected water system and launch the explanatory motion.",
       "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
       "camera": {
-        "x": -0.25,
-        "y": 2.25,
-        "scale": 1,
         "target": [
-          -0.25,
-          2.25,
-          0.3
+          -0.2,
+          2.3,
+          0.4
         ],
         "position": [
-          4.15,
-          4.65,
-          18.3
-        ]
+          4.2,
+          4.699999999999999,
+          18.4
+        ],
+        "scale": 1,
+        "x": -0.2,
+        "y": 2.3
       },
       "text": {
         "preset": "words",
@@ -47,40 +57,36 @@
           "ALIRANNYA"
         ]
       },
-      "transition": {
-        "type": "camera",
-        "duration": 0.6
-      },
       "markers": [
-        1.4300000000000002
+        1.6
       ]
     },
     {
       "id": "impeller",
-      "start": 2.2,
-      "end": 4.6,
+      "start": 3.2,
+      "end": 6.8,
       "scene": "system",
       "assets": [
         "pump-detail"
       ],
       "caption": "Buka. Lihat geraknya.",
-      "detail": "Impeller mendorong air.",
-      "action": "Open the actual pump casing while the impeller turns.",
+      "detail": "Pompa berhenti sebelum dibuka.",
+      "action": "Stop the drive, unthread the bolts, then withdraw the cover axially and laterally.",
       "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
       "camera": {
-        "x": -0.95,
-        "y": 0.45,
-        "scale": 3.2,
         "target": [
-          -0.95,
-          0.45,
-          1.2
+          -0.75,
+          0.5,
+          1.25
         ],
         "position": [
-          3.45,
-          2.85,
-          19.2
-        ]
+          1.4500000000000002,
+          2.1,
+          19.25
+        ],
+        "scale": 3.25,
+        "x": -0.75,
+        "y": 0.5
       },
       "text": {
         "preset": "words",
@@ -89,40 +95,36 @@
           "geraknya"
         ]
       },
-      "transition": {
-        "type": "camera",
-        "duration": 0.6
-      },
       "markers": [
-        3.76
+        5.0
       ]
     },
     {
       "id": "pressure",
-      "start": 4.6,
-      "end": 7.4,
+      "start": 6.8,
+      "end": 10.2,
       "scene": "system",
       "assets": [
         "pump-detail"
       ],
       "caption": "Rakit. Alirkan.",
-      "detail": "Komponen kembali ke tempatnya.",
-      "action": "Seat the same pump cover laterally, then axially.",
+      "detail": "Penutup dan baut kembali duduk.",
+      "action": "Align the same cover laterally, seat it axially, tighten its bolts, then restart the pump.",
       "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
       "camera": {
-        "x": -0.95,
-        "y": 0.5,
-        "scale": 3.2,
         "target": [
-          -0.95,
-          0.5,
-          1.2
+          -1.1,
+          0.4,
+          1.3
         ],
         "position": [
-          3.45,
-          2.9,
-          19.2
-        ]
+          -7.1,
+          1.5,
+          19.3
+        ],
+        "scale": 3.5,
+        "x": -1.1,
+        "y": 0.4
       },
       "text": {
         "preset": "impact",
@@ -131,40 +133,36 @@
           "Alirkan"
         ]
       },
-      "transition": {
-        "type": "camera",
-        "duration": 0.6
-      },
       "markers": [
-        6.42
+        8.5
       ]
     },
     {
       "id": "meter",
-      "start": 7.4,
-      "end": 9.2,
+      "start": 10.2,
+      "end": 13.5,
       "scene": "meter",
       "assets": [
         "meter-detail"
       ],
-      "caption": "Aliran jadi terukur.",
-      "detail": "Rotor mengikuti gerak air.",
-      "action": "Carry the circular pump opening into the meter rotor close-up.",
+      "caption": "Ikuti pipanya.",
+      "detail": "Air menuju meter.",
+      "action": "Follow the connected outlet pipe into the adjacent meter assembly.",
       "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
       "camera": {
-        "x": 0.7,
-        "y": 0.27,
-        "scale": 1.8,
         "target": [
-          0.7,
-          0.27,
-          0.2
+          -1.15,
+          0.45,
+          1.2
         ],
         "position": [
-          5.1000000000000005,
-          2.67,
-          18.2
-        ]
+          3.85,
+          2.85,
+          19.2
+        ],
+        "scale": 3.5,
+        "x": -1.15,
+        "y": 0.45
       },
       "text": {
         "preset": "words",
@@ -173,42 +171,36 @@
           "terukur"
         ]
       },
-      "transition": {
-        "type": "push",
-        "duration": 0.48,
-        "travel": 0.1,
-        "blur": 6
-      },
       "markers": [
-        8.57
+        11.85
       ]
     },
     {
       "id": "measure",
-      "start": 9.2,
-      "end": 11.4,
+      "start": 13.5,
+      "end": 17.5,
       "scene": "meter",
       "assets": [
         "meter-detail"
       ],
-      "caption": "Baca debitnya.",
-      "detail": "Angka mengikuti model aliran.",
-      "action": "Close the meter bezel and read its live model-bound flow.",
+      "caption": "Rakit. Lalu jalankan.",
+      "detail": "Semua bagian duduk pada porosnya.",
+      "action": "Seat bearing, rotor, gasket, bezel and individual bolts in dependency order.",
       "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
       "camera": {
-        "x": 0,
-        "y": 0.6,
-        "scale": 1.03,
         "target": [
-          0,
-          0.6,
-          0.2
+          5.6,
+          1.1,
+          2.0
         ],
         "position": [
-          4.4,
-          3.0,
-          18.2
-        ]
+          -1.4000000000000004,
+          3.1,
+          20.0
+        ],
+        "scale": 1.8,
+        "x": 5.6,
+        "y": 1.1
       },
       "text": {
         "preset": "words",
@@ -217,82 +209,74 @@
           "debitnya"
         ]
       },
-      "transition": {
-        "type": "camera",
-        "duration": 0.6
-      },
       "markers": [
-        10.63
+        15.5
       ]
     },
     {
       "id": "counter",
-      "start": 11.4,
-      "end": 13.4,
+      "start": 17.5,
+      "end": 20.5,
       "scene": "meter",
       "assets": [
         "meter-detail"
       ],
-      "caption": "16 liter per menit.",
-      "detail": "Contoh nilai saat pompa aktif.",
-      "action": "Dock the same meter and reveal a model-bound numerical reading.",
+      "caption": "Baca debitnya.",
+      "detail": "Angka mengikuti aliran.",
+      "action": "Raise the camera from the operating meter to its world-anchored live counter.",
       "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
       "camera": {
-        "x": 0,
-        "y": 0.9,
-        "scale": 1,
         "target": [
-          0,
-          0.9,
-          0.2
+          5.6,
+          1.4,
+          1.3
         ],
         "position": [
-          4.4,
-          3.3,
-          18.2
-        ]
+          9.6,
+          3.4,
+          19.3
+        ],
+        "scale": 1.65,
+        "x": 5.6,
+        "y": 1.4
       },
       "text": {
-        "preset": "impact",
+        "preset": "words",
         "layout": "caption",
         "emphasis": [
-          "16"
+          "debitnya"
         ]
       },
-      "transition": {
-        "type": "camera",
-        "duration": 0.6
-      },
       "markers": [
-        12.700000000000001
+        19.0
       ]
     },
     {
       "id": "bars",
-      "start": 13.4,
-      "end": 16.5,
+      "start": 20.5,
+      "end": 24.2,
       "scene": "meter",
       "assets": [
         "meter-detail"
       ],
       "caption": "Bandingkan pemakaian.",
       "detail": "Kategori yang sama, skala yang sama.",
-      "action": "Grow category bars and their labels using an immutable common zero baseline.",
+      "action": "Truck the actual camera to the stationary zero-baseline comparison panel.",
       "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
       "camera": {
-        "x": 0,
-        "y": 0.9,
-        "scale": 1,
         "target": [
-          0,
-          0.9,
-          0.2
+          7.7,
+          2.9,
+          1.3
         ],
         "position": [
-          4.4,
-          3.3,
-          18.2
-        ]
+          8.7,
+          4.2,
+          19.3
+        ],
+        "scale": 1.5,
+        "x": 7.7,
+        "y": 2.9
       },
       "text": {
         "preset": "words",
@@ -301,40 +285,36 @@
           "Bandingkan"
         ]
       },
-      "transition": {
-        "type": "camera",
-        "duration": 0.6
-      },
       "markers": [
-        15.415
+        22.35
       ]
     },
     {
       "id": "line",
-      "start": 16.5,
-      "end": 19.6,
+      "start": 24.2,
+      "end": 27.8,
       "scene": "meter",
       "assets": [
         "meter-detail"
       ],
       "caption": "Lihat perubahan waktunya.",
       "detail": "Puncak dan penurunan terbaca.",
-      "action": "Reveal recorded flow values with an explicit time axis.",
+      "action": "Lift the camera through the same world to the recorded-flow panel.",
       "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
       "camera": {
-        "x": 0,
-        "y": 0.9,
-        "scale": 1,
         "target": [
-          0,
-          0.9,
-          0.2
+          10.3,
+          2.5,
+          1.3
         ],
         "position": [
-          4.4,
-          3.3,
-          18.2
-        ]
+          12.0,
+          4.0,
+          19.3
+        ],
+        "scale": 1.35,
+        "x": 10.3,
+        "y": 2.5
       },
       "text": {
         "preset": "words",
@@ -343,40 +323,36 @@
           "perubahan"
         ]
       },
-      "transition": {
-        "type": "match",
-        "duration": 0.3
-      },
       "markers": [
-        18.515
+        26.0
       ]
     },
     {
       "id": "donut",
-      "start": 19.6,
-      "end": 21.8,
+      "start": 27.8,
+      "end": 30.3,
       "scene": "meter",
       "assets": [
         "meter-detail"
       ],
       "caption": "Ke mana airnya?",
-      "detail": "Contoh pembagian 300 liter per hari.",
-      "action": "Retain category identities and colors in a parts-of-whole view.",
+      "detail": "Total ilustrasi: 300 L/hari.",
+      "action": "Arc toward the share panel while preserving category identities and colors.",
       "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
       "camera": {
-        "x": 0,
-        "y": 0.9,
-        "scale": 1,
         "target": [
-          0,
-          0.9,
-          0.2
+          5.3,
+          8.8,
+          1.3
         ],
         "position": [
-          4.4,
           3.3,
-          18.2
-        ]
+          10.3,
+          19.3
+        ],
+        "scale": 1.3,
+        "x": 5.3,
+        "y": 8.8
       },
       "text": {
         "preset": "wipe",
@@ -385,41 +361,37 @@
           "airnya"
         ]
       },
-      "transition": {
-        "type": "match",
-        "duration": 0.3
-      },
       "markers": [
-        21.03
+        29.05
       ]
     },
     {
       "id": "recap",
-      "start": 21.8,
-      "end": 24,
+      "start": 30.3,
+      "end": 32,
       "scene": "system",
       "assets": [
         "overview",
         "pump-detail"
       ],
-      "caption": "Ukur. Pahami. Kendalikan.",
-      "detail": "Satu aliran, cerita yang terhubung.",
-      "action": "Return to the same operating house/pump/tank model.",
+      "caption": "Satu aliran.",
+      "detail": "Ukur dan pahami.",
+      "action": "Widen the same continuous world to reveal the complete visual route.",
       "purpose": "Advance from physical flow to measurement, comparison and a clear return to context.",
       "camera": {
-        "x": -0.25,
-        "y": 0.25,
-        "scale": 1,
         "target": [
-          -0.25,
-          0.25,
-          0.3
+          5.1,
+          8.9,
+          1.3
         ],
         "position": [
-          4.15,
-          2.65,
-          18.3
-        ]
+          6.6,
+          10.4,
+          19.3
+        ],
+        "scale": 1.25,
+        "x": 5.1,
+        "y": 8.9
       },
       "text": {
         "preset": "words",
@@ -428,15 +400,342 @@
           "Pahami"
         ]
       },
-      "transition": {
-        "type": "pull",
-        "duration": 0.48,
-        "travel": 0.1,
-        "blur": 6
-      },
       "markers": [
-        23.23
+        31.15
       ]
+    }
+  ],
+  "continuous": true,
+  "cameraPath": [
+    {
+      "time": 0,
+      "target": [
+        -0.2,
+        2.3,
+        0.4
+      ],
+      "position": [
+        4.2,
+        4.699999999999999,
+        18.4
+      ],
+      "scale": 1,
+      "roll": -0.025
+    },
+    {
+      "time": 1.4,
+      "target": [
+        -0.2,
+        2.5,
+        0.4
+      ],
+      "position": [
+        3.5999999999999996,
+        5.3,
+        18.4
+      ],
+      "scale": 1.07,
+      "roll": -0.01
+    },
+    {
+      "time": 2.6,
+      "target": [
+        -0.75,
+        1.2,
+        1
+      ],
+      "position": [
+        2.05,
+        3.2,
+        19
+      ],
+      "scale": 1.5,
+      "roll": 0.025
+    },
+    {
+      "time": 3.8,
+      "target": [
+        -0.75,
+        0.5,
+        1.25
+      ],
+      "position": [
+        1.4500000000000002,
+        2.1,
+        19.25
+      ],
+      "scale": 3.25,
+      "roll": 0.035
+    },
+    {
+      "time": 5.2,
+      "target": [
+        -0.75,
+        0.45,
+        1.3
+      ],
+      "position": [
+        -4.75,
+        1.95,
+        19.3
+      ],
+      "scale": 3.6,
+      "roll": 0.015
+    },
+    {
+      "time": 6.8,
+      "target": [
+        -1.1,
+        0.4,
+        1.3
+      ],
+      "position": [
+        -7.1,
+        1.5,
+        19.3
+      ],
+      "scale": 3.5,
+      "roll": -0.035
+    },
+    {
+      "time": 8.8,
+      "target": [
+        -1.35,
+        0.35,
+        1.35
+      ],
+      "position": [
+        1.4499999999999997,
+        1.75,
+        19.35
+      ],
+      "scale": 4.5,
+      "roll": -0.01
+    },
+    {
+      "time": 9.8,
+      "target": [
+        -1.15,
+        0.45,
+        1.2
+      ],
+      "position": [
+        3.85,
+        2.85,
+        19.2
+      ],
+      "scale": 3.5,
+      "roll": 0
+    },
+    {
+      "time": 11.2,
+      "target": [
+        2.25,
+        1.6,
+        1.25
+      ],
+      "position": [
+        6.25,
+        3.6,
+        19.25
+      ],
+      "scale": 0.9,
+      "roll": 0.035
+    },
+    {
+      "time": 12.7,
+      "target": [
+        5.5,
+        1.1,
+        2.0
+      ],
+      "position": [
+        -4.5,
+        6.1,
+        17.0
+      ],
+      "scale": 1.7,
+      "roll": 0.02
+    },
+    {
+      "time": 14.1,
+      "target": [
+        5.6,
+        1.1,
+        2.0
+      ],
+      "position": [
+        -4.4,
+        6.1,
+        17.0
+      ],
+      "scale": 1.8,
+      "roll": -0.025
+    },
+    {
+      "time": 15.8,
+      "target": [
+        5.6,
+        1.05,
+        1.7
+      ],
+      "position": [
+        13.6,
+        4.55,
+        17.7
+      ],
+      "scale": 2.1,
+      "roll": -0.035
+    },
+    {
+      "time": 17.2,
+      "target": [
+        5.6,
+        1.4,
+        1.3
+      ],
+      "position": [
+        9.6,
+        3.4,
+        19.3
+      ],
+      "scale": 1.65,
+      "roll": 0
+    },
+    {
+      "time": 18.7,
+      "target": [
+        5.6,
+        3.8,
+        1.3
+      ],
+      "position": [
+        7.6,
+        5.0,
+        19.3
+      ],
+      "scale": 1.8,
+      "roll": 0.015
+    },
+    {
+      "time": 20.1,
+      "target": [
+        7.7,
+        2.9,
+        1.3
+      ],
+      "position": [
+        8.7,
+        4.2,
+        19.3
+      ],
+      "scale": 1.5,
+      "roll": -0.015
+    },
+    {
+      "time": 21.7,
+      "target": [
+        10.5,
+        2.4,
+        1.3
+      ],
+      "position": [
+        10.0,
+        3.4,
+        19.3
+      ],
+      "scale": 1.3,
+      "roll": 0
+    },
+    {
+      "time": 23.3,
+      "target": [
+        10.3,
+        2.5,
+        1.3
+      ],
+      "position": [
+        12.0,
+        4.0,
+        19.3
+      ],
+      "scale": 1.35,
+      "roll": 0.01
+    },
+    {
+      "time": 25.2,
+      "target": [
+        10.5,
+        6.5,
+        1.3
+      ],
+      "position": [
+        13.0,
+        8.0,
+        19.3
+      ],
+      "scale": 1.3,
+      "roll": 0.02
+    },
+    {
+      "time": 26.9,
+      "target": [
+        10.4,
+        6.7,
+        1.3
+      ],
+      "position": [
+        8.9,
+        7.4,
+        19.3
+      ],
+      "scale": 1.35,
+      "roll": -0.02
+    },
+    {
+      "time": 28.7,
+      "target": [
+        5.3,
+        8.8,
+        1.3
+      ],
+      "position": [
+        3.3,
+        10.3,
+        19.3
+      ],
+      "scale": 1.3,
+      "roll": -0.015
+    },
+    {
+      "time": 29.7,
+      "target": [
+        5.1,
+        8.9,
+        1.3
+      ],
+      "position": [
+        6.6,
+        10.4,
+        19.3
+      ],
+      "scale": 1.25,
+      "roll": 0
+    },
+    {
+      "time": 32,
+      "target": [
+        4.7,
+        3.6,
+        0.9
+      ],
+      "position": [
+        10.7,
+        7.6,
+        18.9
+      ],
+      "scale": 0.44,
+      "roll": 0
     }
   ]
 }

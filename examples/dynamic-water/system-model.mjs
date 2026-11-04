@@ -1,7 +1,14 @@
 import * as THREE from 'three';
 import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
-import {waterSystemAt} from './runtime/story.mjs';
+import {rampIntegral} from './runtime/story.mjs';
 import {smoother,progress} from './runtime/motion.mjs';
+
+export function mechanismAt(t){
+  const pump=smoother(progress(t,.2,.7))-smoother(progress(t,2.5,3))+smoother(progress(t,10.0,10.7));
+  const travel=rampIntegral(t,.2,.5)-rampIntegral(t,2.5,.5)+rampIntegral(t,10,.7);
+  const draw=smoother(progress(t,17.35,17.95)),drawTravel=rampIntegral(t,17.35,.6);
+  return {pump,travel,draw,drawTravel,level:.24+.45*Math.min(1,travel/20),impellerAngle:travel*235};
+}
 
 export async function createModel(stage,config){
   const root=stage.group,parts={};
@@ -51,9 +58,10 @@ export async function createModel(stage,config){
   }
   const hub=cylinder(.075,.07,palette.dark,rotor,[0,0,.045]);hub.rotation.x=Math.PI/2;
   const cover=new THREE.Group();cover.position.set(0,0,.38);pump.add(cover);parts.cover=cover;cover.name='cover';
-  const ring=add(new THREE.RingGeometry(.105,.38,48),palette.gold,cover,[0,0,0],'cover-face');ring.material.side=THREE.DoubleSide;
+  const coverShape=new THREE.Shape();coverShape.absarc(0,0,.38,0,Math.PI*2,false);const coverBore=new THREE.Path();coverBore.absarc(0,0,.105,0,Math.PI*2,true);coverShape.holes.push(coverBore);
+  add(new THREE.ExtrudeGeometry(coverShape,{depth:.08,bevelEnabled:true,bevelSize:.008,bevelThickness:.008,bevelSegments:2,curveSegments:48,steps:1}),palette.gold,cover,[0,0,0],'cover-face');
   add(new THREE.TorusGeometry(.38,.025,8,48),palette.gold,cover,[0,0,0]);add(new THREE.TorusGeometry(.105,.016,8,36),palette.dark,cover,[0,0,0]);
-  for(let i=0;i<8;i++){const a=i*Math.PI/4;add(new THREE.SphereGeometry(.018,8,6),palette.dark,cover,[Math.sin(a)*.335,Math.cos(a)*.335,.02]);}
+  const coverBolts=Array.from({length:8},(_,i)=>{const a=i*Math.PI/4;const bolt=cylinder(.025,.035,palette.dark,cover,[Math.sin(a)*.335,Math.cos(a)*.335,.10],`cover-bolt-${i}`);bolt.rotation.x=Math.PI/2;return bolt;});
   function pipe(id,points){const curve=new THREE.CatmullRomCurve3(points.map(p=>new THREE.Vector3(...p)),false,'centripetal');const tube=add(new THREE.TubeGeometry(curve,100,.085,12,false),palette.pipe,root,[0,0,0],id);const dots=Array.from({length:16},(_,i)=>add(new THREE.SphereGeometry(.038,10,6),palette.water,root,[0,0,0],undefined,false));return {id,curve,tube,dots};}
   const suction=pipe('suction',[[-2.65,-2.65,1.02],[-2.65,-.15,1.02],[-2.2,.3,1.25],[-1.35,.3,1.55],[-1.35,.3,1.32]]);
   const inlet=pipe('fill-pipe',[[-1.03,.48,1.08],[-.72,.58,1.08],[-.72,1.1,1.08],[-.72,5.5,.5],[-.65,5.7,.35],[.4,5.7,.2],[.55,5.6,.2]]);
@@ -69,11 +77,12 @@ export async function createModel(stage,config){
   let system,coverOpen=0;
   function flow(path,travel,active){for(let i=0;i<path.dots.length;i++){const p=path.curve.getPointAt((travel*.23+i/path.dots.length)%1);p.z+=.09;path.dots[i].position.copy(p);path.dots[i].visible=active>.02;path.dots[i].scale.setScalar(Math.max(.01,active));}}
   function update(seconds,u){
-    const t=seconds/config.duration*60;system=waterSystemAt(t);
+    const t=seconds/config.duration*32;system=mechanismAt(t);
     rotor.rotation.z=-system.impellerAngle*Math.PI/180;
-    const axial=smoother(progress(t,9.2,10))-smoother(progress(t,21.4,22));
-    const lateral=smoother(progress(t,10,10.8))-smoother(progress(t,20.8,21.4));
+    const axial=smoother(progress(t,3.7,4.5))-smoother(progress(t,7.8,8.9));
+    const lateral=smoother(progress(t,4.5,5.3))-smoother(progress(t,6.8,7.8));
     cover.position.set(lateral*.88,0,.38+axial*.65);coverOpen=axial;
+    coverBolts.forEach((bolt,i)=>{const lift=smoother(progress(t,3+i*.025,3.35+i*.025))-smoother(progress(t,8.95+i*.045,9.4+i*.045));bolt.position.z=.10+.18*lift;bolt.rotation.y=lift*Math.PI*4;});
     const height=.05+system.level*1.24;water.scale.y=height;water.position.y=.07+height/2;float.position.y=.07+height+.07;
     const surface=4.38+.07+height;falling.scale.y=Math.max(.01,5.6-surface);falling.position.y=(5.6+surface)/2;falling.visible=system.pump>.02;
     internal.forEach((dot,i)=>{const v=(system.travel*.8+i/internal.length)%1,a=i%6*Math.PI/3-v*1.4;dot.position.set(Math.cos(a)*v*.3,Math.sin(a)*v*.3,.31);dot.visible=coverOpen>.8&&system.pump>.02;});

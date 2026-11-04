@@ -1,5 +1,5 @@
 import {clamp, mix, progress, smoother} from './motion.mjs';
-import {editorialState, paces, transitionTypes, transitionSpec} from './editorial.mjs';
+import {editorialState, paces, transitionTypes, transitionSpec, sampleCameraPath} from './editorial.mjs';
 import {textPresets} from './typography.mjs';
 
 export function validateStoryboard(story, duration) {
@@ -12,6 +12,19 @@ export function validateStoryboard(story, duration) {
     scenes.add(scene.id);
   }
   if (story.version === 2 && !scenes.size) throw new Error('Version 2 needs named scene contexts');
+  if(story.continuous!==undefined&&typeof story.continuous!=='boolean')throw new Error('continuous must be a boolean');
+  if(story.continuous && !story.cameraPath)throw new Error('Continuous stories require an authored cameraPath');
+  if(story.cameraPath){
+    if(story.version!==2||!Array.isArray(story.cameraPath)||story.cameraPath.length<2)throw new Error('Invalid camera path');
+    let previous=-1;
+    for(const knot of story.cameraPath){
+      if(!Number.isFinite(knot.time)||knot.time<0||knot.time<=previous||knot.time>duration||!Number.isFinite(knot.scale)||knot.scale<=0||!['position','target'].every(k=>Array.isArray(knot[k])&&knot[k].length===3&&knot[k].every(Number.isFinite))||(knot.roll!==undefined&&!Number.isFinite(knot.roll)))throw new Error('Invalid timed camera knot');
+      if(Math.hypot(...knot.position.map((v,i)=>v-knot.target[i]))<.1)throw new Error('Camera must remain outside its target');
+      previous=knot.time;
+    }
+    if(story.cameraPath[0].time!==0||story.cameraPath.at(-1).time!==duration)throw new Error('Camera path must cover the complete story');
+  }
+  for(const scene of story.scenes||[])if(scene.position&&(!Array.isArray(scene.position)||scene.position.length!==3||!scene.position.every(Number.isFinite)))throw new Error('Invalid world scene position');
   const ids = new Set(); let cursor = 0;
   for (const beat of story.beats) {
     if (typeof beat.id !== 'string' || !beat.id || ids.has(beat.id)) throw new Error('Storyboard beat ids must be unique');
@@ -26,7 +39,7 @@ export function validateStoryboard(story, duration) {
     for (const time of beat.markers || []) if (!Number.isFinite(time) || time < beat.start || time > beat.end) throw new Error(`Action marker outside ${beat.id}`);
     cursor = beat.end;
   }
-  for (let i=1;i<story.beats.length;i++) if (story.version===2 || story.beats[i].transition) {
+  for (let i=1;i<story.beats.length;i++) if ((!story.continuous && story.version===2) || story.beats[i].transition) {
     const spec=transitionSpec(story,i),before=story.beats[i-1],after=story.beats[i];
     if (!transitionTypes.includes(spec.type) || !['x','y'].includes(spec.axis) || ![-1,1].includes(spec.direction) || !Number.isFinite(spec.duration) || spec.duration<=0 || spec.duration>Math.min(before.end-before.start,after.end-after.start) || !Number.isFinite(spec.travel) || spec.travel<0 || spec.travel>.2 || !Number.isFinite(spec.blur) || spec.blur<0 || spec.blur>12) throw new Error(`Invalid transition into ${after.id}`);
     if (spec.type==='camera' && before.scene!==after.scene) throw new Error(`Use a match/slide/zoom for different scene roots: ${after.id}`);
@@ -41,12 +54,12 @@ export function storyState(story, seconds) {
   const i = time >= story.beats.at(-1).end ? story.beats.length - 1 : index;
   const beat = story.beats[i], previous = story.beats[Math.max(0, i - 1)];
   if (story.version===2) {
-    const direction=editorialState(story,time,i);
-    const composed=i>0&&transitionSpec(story,i).type!=='camera';
+    const direction=story.cameraPath?{camera:sampleCameraPath(story.cameraPath,time),transition:{active:false,type:'world',x:0,y:0,scale:1,blur:0},scene:beat.scene}:editorialState(story,time,i);
+    const composed=!story.continuous&&i>0&&transitionSpec(story,i).type!=='camera';
     const seam=direction.transition;
     // Clear a title's reserved space before a close-up moves into it.
     const exitingTitle=beat.text?.layout && beat.text.layout!=='caption' && seam.active && seam.type==='camera' && seam.phase==='exit';
-    const captionOpacity=exitingTitle?1-smoother(clamp(seam.progress*2)):1;
+    const captionOpacity=story.continuous&&beat.text?.layout==='hero'?1-smoother(progress(time,beat.end-.8,beat.end-.4)):exitingTitle?1-smoother(clamp(seam.progress*2)):1;
     return {beat,index:i,localTime:time-beat.start,progress:progress(time,beat.start,beat.end),captionOpacity,...direction,textComposed:composed};
   }
   const transition = Math.min(1.25, (beat.end - beat.start) * 0.25);

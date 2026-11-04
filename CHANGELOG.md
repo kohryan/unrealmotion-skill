@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0] — 2026-11-05
+
+- New explainers use a continuous world-space camera path with velocity-continuous position, target, logarithmic zoom and restrained roll. Scene roots persist throughout; camera travel replaces canvas-wrapper handoffs.
+- World-anchored data panels follow the same projection and remain in place as the camera moves between subjects.
+- Revised demo slows from 24 to 32 seconds (0.75×), connects the house/pump/meter physically, and adds axial bearing → rotor → gasket → bezel → bolt assembly before operation.
+- Improved mesh details: volumetric pump cover, shaft/rotor bores, grooved bearing race, perforated cage, bezel holes and individual fasteners.
+- Camera-knot QA, continuous-camera/assembly review gates, arbitrary-seek checks and legacy-runtime coverage. No new dependency or art direction.
+
 ## [1.1.0] — 2026-11-04
 
 ### Added
@@ -30,3 +38,5 @@
 
 [1.1.0]: https://github.com/kohryan/unrealmotion-skill/compare/12fc787dfb4d4c6e46ba441f6426c5f2c4112b72...v1.1.0
 [1.0.0]: https://github.com/kohryan/unrealmotion-skill/tree/12fc787dfb4d4c6e46ba441f6426c5f2c4112b72
+
+[1.2.0]: https://github.com/kohryan/unrealmotion-skill/compare/v1.1.0...v1.2.0

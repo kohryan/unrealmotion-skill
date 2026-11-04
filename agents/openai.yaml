@@ -1,6 +1,6 @@
 interface:
   display_name: "UnrealMotion"
   short_description: "Explainer Three.js, kinetic text dan data motion"
-  default_prompt: "Gunakan $unrealmotion: buat beberapa referensi ImageGen konsisten dengan style pastel cutaway sesuai contoh, rekonstruksi menjadi model Three.js nyata, terapkan pace dinamis yang terbaca, transisi sebab-akibat/cutaway/reassembly, teks dinamis dan grafik data bila relevan sesuai prompt, lalu render video explainer tanpa suara atau musik beserta source yang bisa diedit."
+  default_prompt: "Gunakan $unrealmotion: buat beberapa referensi ImageGen konsisten dengan style pastel cutaway sesuai contoh, rekonstruksi menjadi model Three.js nyata, terapkan kamera 3D kontinu dalam satu dunia, pace yang terbaca, cutaway dan reassembly berurutan, teks dinamis dan grafik data bila relevan sesuai prompt, lalu render video explainer tanpa suara atau musik beserta source yang bisa diedit."
 policy:
   allow_implicit_invocation: true

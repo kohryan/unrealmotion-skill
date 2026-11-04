@@ -58,6 +58,18 @@
     },
     {
       "id": "meter-display"
+    },
+    {
+      "id": "meter-bearing",
+      "role": "Grooved annular race, perforated cage and retained balls; inferred internal support."
+    },
+    {
+      "id": "meter-drive-shaft",
+      "role": "Rear-supported shaft aligned with rotor bore."
+    },
+    {
+      "id": "meter-gasket",
+      "role": "Axial seal seated before the front bezel."
     }
   ],
   "style": "Same simple pastel cutaway, sage ground, cream supports, muted-blue housings, gold rotors and pale-blue water pipes.",
@@ -68,7 +80,8 @@
   ],
   "inferredGeometry": [
     "The new reference front window is an actual circular hole in an extruded rounded housing.",
-    "ImageGen appearance is reconstructed as original mesh volumes; no reference plane is rendered."
+    "ImageGen appearance is reconstructed as original mesh volumes; no reference plane is rendered.",
+    "Internal bearing race/balls, shaft clearance, annular rotor bore, gasket and through-hole bolt seats are illustrative hidden geometry, not extracted CAD."
   ],
   "reviewViews": [
     "Main front-oblique view at every beat and seam.",

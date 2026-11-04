@@ -113,12 +113,13 @@ export async function createDataGraphic(stage,spec) {
     const response=await fetch(input);if(!response.ok)throw new Error(`Missing chart data: ${input}`);
     input=input.toLowerCase().endsWith('.csv')?dataFromCSV(await response.text()):await response.json();
   }
+  if(spec.anchor&&(!Array.isArray(spec.anchor)||spec.anchor.length!==3||!spec.anchor.every(finite)||!finite(spec.worldWidth)||spec.worldWidth<=0))throw new Error('Invalid world chart anchor');
   const data=prepareData(input,spec),rect={x:7,y:29,width:86,height:33,...spec.rect};
   if(!Object.values(rect).every(finite)||rect.x<0||rect.y<0||rect.width<=0||rect.height<=0||rect.x+rect.width>100||rect.y+rect.height>100)throw new Error('Chart rectangle must fit the frame');
-  const element=document.createElement('div');element.className='um-data';element.dataset.safe='visual';element.dataset.chartId=spec.id;
+  const element=document.createElement('div');element.className='um-data';element.dataset.safe=spec.anchor?'world':'visual';element.dataset.chartId=spec.id;
   Object.assign(element.style,{position:'absolute',left:`${rect.x}%`,top:`${rect.y}%`,width:`${rect.width}%`,height:`${rect.height}%`,color:'#233e48',fontFamily:'UnrealInter,Arial,sans-serif'});
   const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 720 400');svg.setAttribute('width','100%');svg.setAttribute('height','100%');svg.setAttribute('role','img');svg.setAttribute('aria-label',spec.title||spec.id);element.append(svg);
-  (stage.overlay||document.querySelector('#stage')).append(element);
+  (spec.anchor?stage.worldOverlay:stage.overlay||document.querySelector('#stage')).append(element);
   function node(tag,attrs={},text,parent=svg){const el=document.createElementNS(svg.namespaceURI,tag);for(const [key,value]of Object.entries(attrs))el.setAttribute(key,value);if(text!==undefined)el.textContent=text;parent.append(el);return el;}
   const base=node('rect',{x:0,y:0,width:720,height:400,rx:24,fill:'#fff8e8'});
   const title=node('text',{x:28,y:37,fill:'#233e48','font-size':25,'font-weight':780},spec.title||'');
@@ -165,7 +166,7 @@ export async function createDataGraphic(stage,spec) {
   let current=[],active=false;
   function update(seconds,state={}) {
     active=(!spec.scene||state.scene===spec.scene)&&(!spec.beats||spec.beats.includes(state.beat?.id))&&seconds>=(spec.start||0)&&seconds<(spec.end??Infinity);
-    element.style.display=active?'block':'none';
+    element.style.display=active&&(!stage.projectGraphic||stage.projectGraphic(element,spec))?'block':'none';
     const local=(seconds-(spec.start||0))*(spec.timeScale||1),reveal=1-(1-clamp((seconds-(spec.start||0))/(spec.enter||.6)))**3;
     current=sampleData(data,local,reveal);
     if(spec.sample){const values=spec.sample(seconds);if(!Array.isArray(values)||values.length!==data.ids.length)throw new Error('Model data binding changed category count');current=current.map(row=>{const next=values.find(v=>v.id===row.id);if(!next||!finite(next.value)||next.value<data.domain[0]||next.value>data.domain[1])throw new Error('Model value lies outside the fixed data domain');return {...row,value:next.value*reveal};});}
@@ -189,6 +190,6 @@ export async function createDataGraphic(stage,spec) {
       }
     });
   }
-  const graphic={id:spec.id,element,update,inspect:()=>({id:spec.id,type:data.type,active,domain:data.domain,source:spec.source||'illustrative',illustrative:Boolean(spec.illustrative),values:current.map(({id,value,rank})=>({id,value,rank})),invalid:current.some(row=>row.value!==null&&!finite(row.value))})};
+  const graphic={id:spec.id,element,update,inspect:()=>({id:spec.id,type:data.type,active,anchor:spec.anchor,domain:data.domain,source:spec.source||'illustrative',illustrative:Boolean(spec.illustrative),values:current.map(({id,value,rank})=>({id,value,rank})),invalid:current.some(row=>row.value!==null&&!finite(row.value))})};
   stage.registerGraphic?.(graphic);return graphic;
 }

@@ -1,5 +1,5 @@
 {
-  "sourceHash": "a3446aa867151393503af0bdc02c4c3a3f5874fc593ed81bc60321f012adbb7e",
+  "sourceHash": "895b48c8f51042d6e8eb7edf848931dc1d65575441d38c7a641c530985484694",
   "checks": {
     "subjectFidelity": true,
     "materialsLighting": true,
@@ -16,47 +16,52 @@
     "dynamicPacing": true,
     "kineticText": true,
     "multiAssetContinuity": true,
-    "dataAccuracy": true
+    "dataAccuracy": true,
+    "continuousCamera": true,
+    "assemblyFit": true
   },
   "evidence": [
     "output/qa/contact-sheet.png",
-    "output/qa/frame-000033.png",
-    "output/qa/frame-000449.png",
-    "output/qa/frame-000554.png",
-    "output/qa/frame-000630.png",
-    "output/inspection/push-seam.png",
-    "output/inspection/bezel-close.png",
-    "output/inspection/oblique-100.png",
-    "output/inspection/oblique-300.png",
-    "output/qa/frame-000064.png"
+    "output/qa/frame-000419.png",
+    "output/qa/frame-000474.png",
+    "output/qa/frame-000480.png",
+    "output/qa/frame-000525.png",
+    "output/qa/frame-000670.png",
+    "output/inspection/connected-travel.png",
+    "output/inspection/axial-assembly-final.png",
+    "output/inspection/data-travel.png"
   ],
-  "notes": "Inspected 107 sampled native frames via contact sheets and selected native renders, plus adjacent push-handoff and bezel-insertion intervals. The blue/cream/gold reference identities survive the operating system, pump detail and meter context. Opposite oblique views verify housing depth, actual circular openings, rotor, attached pipes/display and rest-pose seating. Ten short beats preserve readable settled copy; hero framing reserves title space. Bars show 180/90/30 L per day on a fixed 0–200 domain; the same category colors and 300 total feed the donut. Line observations are 6/16/10/18/8 L/min and the live counter reads 16 during the active pump phase. Source captions mark all data/mechanics illustrative. This is an authored concept mechanism, not measured flow physics, CAD recovery or universal prompt-quality certification. Encoded verification is recorded after export. Follow-up opening review clears the outgoing hero text before the pump close-up enters its reserved space; unit and browser integration checks passed on the updated runtime.",
+  "notes": "Reviewed 154 native QA samples through paged sheets, selected full-resolution opening/assembly/data frames and moving camera/axial insertion intervals. One stationary world retains both scene roots and a physical connector; a 22-knot actual camera path widens from the pump, travels to the meter, arcs through opposing oblique views and reaches world-anchored graphics without canvas handoff transforms. The 32-second pacing lengthens the prior film by 1/0.75. Bearing/race/cage, shaft bore, rotor, gasket, bezel and bolts preserve local identities. Bolts seat before flow begins; exposed pump maintenance stops its drive. Captured final assembly errors are zero. The outgoing auxiliary title clears before the approaching counter. Daily values 180/90/30 L/hari and line observations 6/16/10/18/8 L/min match fixed domains and original category colors; live display/counter read the same valve state. Intentional peripheral panel cropping protects the fixed header/caption while the camera passes. These are illustrative inferred mechanisms and quantities, not engineering dimensions, CAD recovery or measured fluid simulation.",
   "encodedVerification": {
     "file": "../media/dynamic-water.mp4",
-    "sha256": "e9fa0cd71550c13ce44670265bc57d75471dcc8360d3996a63fa00e903dfee08",
+    "sha256": "ccb9bdccc6a30596824df78502b970f3d79c28f32ffac7a17e04b67c3d851073",
     "width": 1080,
     "height": 1920,
     "fps": 30,
-    "duration": 24,
-    "frames": 720,
+    "duration": 32,
+    "frames": 960,
     "audioStreams": 0,
     "fullDecode": "passed",
     "inspectedIntervals": {
-      "opening": [
-        55,
-        72
+      "widen": [
+        313,
+        330
       ],
-      "push": [
-        214,
-        231
+      "arrival": [
+        372,
+        389
       ],
-      "insertion": [
-        288,
-        305
+      "assembly": [
+        462,
+        479
       ],
-      "bars": [
-        402,
-        419
+      "seating": [
+        507,
+        524
+      ],
+      "data": [
+        718,
+        735
       ]
     }
   }

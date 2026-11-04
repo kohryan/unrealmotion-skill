@@ -5,7 +5,7 @@ import {tmpdir} from 'node:os';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {PNG} from 'pngjs';
-import {handoff,readingSeconds,transitionSpec} from '../assets/runtime/editorial.mjs';
+import {handoff,readingSeconds,transitionSpec,sampleCameraPath} from '../assets/runtime/editorial.mjs';
 import {fragmentState,splitText} from '../assets/runtime/typography.mjs';
 import {prepareData,sampleData,linePath,parseCSV,dataFromCSV,formatValue} from '../assets/runtime/dataviz.mjs';
 import {validateStoryboard,storyState} from '../assets/runtime/story.mjs';
@@ -120,4 +120,16 @@ test('multi-image contracts reject duplicate images, missing prompts, bad hashes
     await save('storyboard.json',story());await writeFile(path.join(root,images[1].path),PNG.sync.write(new PNG({width:2,height:2,fill:true})));
     const duplicate=structuredClone(reconstruction);duplicate.references[1].path=duplicate.references[0].path;await save('reconstruction.json',duplicate);await assert.rejects(loadProject(root),/same image/);
   }finally{await rm(root,{recursive:true,force:true});}
+});
+
+test('continuous camera knots preserve position, zoom and roll velocity and reject incomplete paths',()=>{
+  const knots=[{time:0,position:[0,3,18],target:[0,1,0],scale:1},{time:2,position:[3,4,17],target:[2,1,1],scale:2,roll:.05},{time:6,position:[8,3,18],target:[7,1,1],scale:1.2}];
+  const h=1e-5;
+  const a=sampleCameraPath(knots,2-h),b=sampleCameraPath(knots,2),c=sampleCameraPath(knots,2+h);
+  for(const key of ['scale','roll'])assert.ok(Math.abs((b[key]-a[key])/h-(c[key]-b[key])/h)<1e-4);
+  for(let i=0;i<3;i++)assert.ok(Math.abs((b.position[i]-a.position[i])/h-(c.position[i]-b.position[i])/h)<1e-4);
+  assert.ok(Math.abs(c.position[0]-a.position[0])>h);sampleCameraPath(knots,0);assert.deepEqual(sampleCameraPath(knots,2),b);
+  const s=story();s.continuous=true;s.cameraPath=knots;validateStoryboard(s,6);assert.equal(storyState(s,2).transition.type,'world');
+  const frames=sampleFrames({duration:6,fps:30},s);for(const f of [59,60,61])assert.ok(frames.includes(f));
+  s.cameraPath=knots.slice(0,2);assert.throws(()=>validateStoryboard(s,6),/complete story/);
 });

@@ -9,20 +9,21 @@ Skill untuk coding agent dengan pipeline **prompt → ImageGen → rekonstruksi 
 
 [![OPTIC — rendered with UnrealMotion](assets/og-image.jpg)](examples/media/optical-studio.mp4)
 
-## Baru di 1.1 — motion yang lebih dinamis
+## Baru di 1.2 — kamera kontinu dan reassembly
 
 Beberapa referensi ImageGen yang konsisten → scene Three.js dengan identitas bagian tetap → transisi cutaway/reassembly → teks kinetik dan grafik data → MP4 tanpa audio. Style pastel sederhana dan renderer lokal tetap dipertahankan.
 
-- Pace `dynamic` atau `calm`, dengan camera handoff, slide, push, pull dan match cut yang mengikuti alur cerita.
+- Kamera 3D bergerak kontinu dalam satu dunia: mendekati mekanisme, berputar ke sudut oblique, mengikuti pipa, lalu menuju grafik yang menetap di ruang yang sama.
+- Reassembly bertahap dengan lubang/poros, bearing, rotor, seal, bezel dan baut yang duduk sebelum mekanisme bekerja. Pace default `calm`; `dynamic` tetap tersedia.
 - Teks word/character reveal, wipe dan impact; ruang baca tetap diperhitungkan.
 - Bar, line, donut, counter dan bar-chart race dari CSV/JSON lokal; domain tetap, unit, sumber dan label data ilustratif.
 - Bundle referensi per adegan dengan prompt, hash dan part binding; bukan satu gambar yang digerakkan sepanjang video.
 
 [![Aliran Jadi Data — demo motion dinamis](examples/media/dynamic-water.jpg)](examples/media/dynamic-water.mp4)
 
-**Aliran Jadi Data** · 24 detik · 9:16 · 1080×1920 · 30 fps · tanpa audio. Tiga referensi ImageGen, dua konteks 3D, sepuluh beat, reassembly sensor dan empat bentuk grafik. Angka serta mekanismenya ilustratif. [Tonton MP4](examples/media/dynamic-water.mp4) · [Source dan aset](examples/dynamic-water) · [Changelog versi](CHANGELOG.md).
+**Aliran Jadi Data** · 32 detik · 9:16 · 1080×1920 · 30 fps · tanpa audio. Tiga referensi ImageGen, dua konteks 3D, sepuluh beat, kamera kontinu, reassembly sensor dan empat bentuk grafik. Tempo diperpanjang dari 24 menjadi 32 detik (0,75×). Angka serta mekanismenya ilustratif. [Tonton MP4](examples/media/dynamic-water.mp4) · [Source dan aset](examples/dynamic-water) · [Changelog versi](CHANGELOG.md).
 
-Tambahan prompt opsional: `Pace: dinamis, tetap terbaca`, `Data: [file CSV/JSON + unit + sumber]`, dan `Fokus data: [perbandingan/tren/pembagian]`. Jika tidak ada data faktual, gunakan ilustrasi yang diberi label atau jelaskan prosesnya tanpa angka rekaan. [Panduan motion](references/dynamic-story.md) · [Data motion](references/data-motion.md) · [Teks dinamis](references/text-motion.md).
+Tambahan prompt opsional: `Pace: dinamis, tetap terbaca`, `Data: [file CSV/JSON + unit + sumber]`, dan `Fokus data: [perbandingan/tren/pembagian]`. Jika tidak ada data faktual, gunakan ilustrasi yang diberi label atau jelaskan prosesnya tanpa angka rekaan. [Kamera kontinu](references/continuous-camera.md) · [Data motion](references/data-motion.md) · [Teks dinamis](references/text-motion.md).
 
 ## Contoh Video Motion Graphics
 
@@ -163,7 +164,7 @@ flowchart TD
     R --> S["ImageGen bawaan host<br/>2–4 referensi adegan sederhana<br/>Identitas dan style konsisten"]
     S --> T["Inspeksi dan spesifikasi model<br/>Bagian, proporsi, attachment dan pivot"]
     T --> U["Rekonstruksi Three.js nyata<br/>Hierarchy tetap per objek<br/>Scene root untuk tiap konteks"]
-    U --> V["Material, kamera, motion dan teks<br/>CSV/JSON opsional untuk grafik data<br/>Semua state dari waktu/frame absolut"]
+    U --> V["Kamera 3D kontinu, reassembly dan teks<br/>CSV/JSON opsional di ruang yang sama<br/>Semua state dari waktu/frame absolut"]
     V --> W["Preview dan QA<br/>Frame native, batas adegan dan random seek"]
     W --> X{"Visual dan teknis lolos?"}
     X -->|Revisi model / gerak| U
@@ -181,7 +182,7 @@ Retrieval dipakai saat relevan: SimReady berperan untuk aset yang sesuai, sement
 node scripts/unrealmotion.mjs create output/explainer --mode explainer --prompt "Jelaskan mekanisme sesuai brief, tanpa audio"
 ```
 
-Default: 60 detik, 1080×1920, 30fps, tanpa audio, `--pace dynamic --assets multi`. Agent membuat referensi ImageGen, spesifikasi bagian/attachment, model Three.js nyata, lalu storyboard dan motion yang menjelaskan sebab-akibat. Referensi tidak diputar sebagai plane atau potongan gambar. Starter meminta authoring sebelum bisa dirender, agar prompt lain tidak menghasilkan contoh air yang sama.
+Default: 60 detik, 1080×1920, 30fps, tanpa audio, `--pace calm --assets multi`. Agent membuat referensi ImageGen, spesifikasi bagian/attachment, model Three.js nyata, lalu storyboard dan motion yang menjelaskan sebab-akibat. Referensi tidak diputar sebagai plane atau potongan gambar. Starter meminta authoring sebelum bisa dirender, agar prompt lain tidak menghasilkan contoh air yang sama.
 
 Pilihan motion dalam style yang sama: **ikuti aliran**, **cutaway mekanisme**, **explode → reassemble → operate**, **akumulasi → ambang → respons**, dan **perbandingan/transformasi**. Pilih sesuai ide yang dijelaskan. [Pipeline lengkap](references/imagegen-threejs.md) · [source contoh](examples/water-imagegen-threejs) · [prompt ImageGen dan provenance](examples/water-imagegen-threejs/asset-plan.json).
 
@@ -299,20 +300,21 @@ A coding-agent skill with a **prompt → ImageGen → Three.js reconstruction �
 
 [![OPTIC — rendered with UnrealMotion](assets/og-image.jpg)](examples/media/optical-studio.mp4)
 
-## New in 1.1 — more dynamic motion
+## New in 1.2 — continuous camera and reassembly
 
 Consistent ImageGen references → Three.js scenes with stable part identities → cutaway/reassembly handoffs → kinetic text and data graphics → silent MP4. The simple pastel style and local renderer remain the foundation.
 
-- `dynamic` or `calm` pacing, with camera handoffs, slides, pushes, pulls and authored match cuts.
+- An actual 3D camera travels continuously through one world: close-ups, oblique arcs, a connected pipe and data panels anchored in the same space.
+- Dependency-ordered reassembly: shaft clearances, bearing, rotor, seal, bezel and bolts seat before operation. `calm` is the default pace; `dynamic` remains available.
 - Word/character reveals, wipes and impact text, with time reserved for reading.
 - Bar, line, donut, counter and bar-chart race graphics from local CSV/JSON; fixed domains, units, sources and illustrative-data labels.
 - Per-scene reference bundles with exact prompts, image hashes and part bindings, rather than one image stretched into a whole film.
 
 [![Aliran Jadi Data — dynamic motion demo](examples/media/dynamic-water.jpg)](examples/media/dynamic-water.mp4)
 
-**Aliran Jadi Data** · 24 seconds · 9:16 · 1080×1920 · 30 fps · no audio. Three ImageGen references, two 3D contexts, ten beats, sensor reassembly and four chart forms. Values and mechanics are illustrative. [Watch MP4](examples/media/dynamic-water.mp4) · [Source and assets](examples/dynamic-water) · [Version changelog](CHANGELOG.md).
+**Aliran Jadi Data** · 32 seconds · 9:16 · 1080×1920 · 30 fps · no audio. Three ImageGen references, two 3D contexts, ten beats, a continuous camera, sensor reassembly and four chart forms. Pacing extends the former 24-second demo to 32 seconds (0.75×). Values and mechanics are illustrative. [Watch MP4](examples/media/dynamic-water.mp4) · [Source and assets](examples/dynamic-water) · [Version changelog](CHANGELOG.md).
 
-Optional prompt additions: `Pace: dynamic, readable`, `Data: [CSV/JSON file + units + source]`, and `Data focus: [comparison/trend/share]`. Without factual data, clearly label illustrative values or explain the process without invented numbers. [Motion guide](references/dynamic-story.md) · [Data motion](references/data-motion.md) · [Kinetic text](references/text-motion.md).
+Optional prompt additions: `Pace: dynamic, readable`, `Data: [CSV/JSON file + units + source]`, and `Data focus: [comparison/trend/share]`. Without factual data, clearly label illustrative values or explain the process without invented numbers. [Continuous camera](references/continuous-camera.md) · [Data motion](references/data-motion.md) · [Kinetic text](references/text-motion.md).
 
 ## Motion Graphic Video Examples
 
@@ -453,7 +455,7 @@ flowchart TD
     R --> S["Host's built-in ImageGen<br/>2–4 simple scene references<br/>Consistent identities and style"]
     S --> T["Inspection and model specification<br/>Parts, proportions, attachments and pivots"]
     T --> U["Actual Three.js reconstruction<br/>Stable hierarchy per object<br/>Persistent scene roots for contexts"]
-    U --> V["Materials, camera, motion and text<br/>Optional local CSV/JSON data graphics<br/>State derived from absolute time / frame"]
+    U --> V["Continuous 3D camera, assembly and text<br/>Optional CSV/JSON panels in the same world<br/>State derived from absolute time / frame"]
     V --> W["Preview and QA<br/>Native frames, scene boundaries and random seeking"]
     W --> X{"Visual and technical checks pass?"}
     X -->|Revise model / motion| U

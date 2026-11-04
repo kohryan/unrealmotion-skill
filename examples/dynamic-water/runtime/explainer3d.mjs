@@ -18,10 +18,11 @@ export async function createExplainerStage(config){
   const group=new THREE.Group();scene.add(group);
   const stage=document.querySelector('#stage');stage.style.background='#e5eee8';
   const overlay=document.createElement('div');overlay.id='story-visual';Object.assign(overlay.style,{position:'absolute',inset:'0',transformOrigin:'50% 48%'});overlay.append(renderer.domElement);stage.append(overlay);
+  const worldOverlay=document.createElement('div');Object.assign(worldOverlay.style,{position:'absolute',inset:'0',clipPath:'inset(10% 0 23% 0)'});overlay.append(worldOverlay);
   document.querySelector('#mark').style.display='none';
   const copy=document.querySelector('#copy');copy.dataset.safe='true';
   Object.assign(copy.style,{left:'7%',top:'auto',bottom:'8%',width:'86%',background:'#233e48',borderRadius:'2.8cqw',padding:'3.8%',boxShadow:'0 8px 0 #1c35451a'});
-  const style=document.createElement('style');style.textContent=`@font-face{font-family:UnrealInter;src:url('./runtime/fonts/inter-latin-wght-normal.woff2');font-weight:100 900}#frame{font-family:UnrealInter,Arial,sans-serif}#copy h1,#frame.portrait #copy h1{font-size:5.6cqw;line-height:1.12;letter-spacing:-.045em;font-weight:750;color:#fff9e7;margin:0 0 .25em}#copy p,#frame.portrait #copy p{font-size:2.8cqw;line-height:1.4;color:#edf0dd;max-width:none}#story-header{position:absolute;left:7%;right:7%;top:4.7%;display:flex;justify-content:space-between;color:#233e48;font-size:2.2cqw;font-weight:750;letter-spacing:.1em}#story-header span{background:#fff8df;padding:1.3% 2%;border-radius:1.4cqw}.part-label{position:absolute;background:#233e48;color:#fff8df;border:1px solid #fff8df;border-radius:1cqw;padding:.65cqw 1cqw;font-size:2cqw;white-space:nowrap;transform:translate(-50%,-50%);pointer-events:none}.story-progress{position:absolute;left:7%;right:7%;bottom:4.8%;height:3px;background:#233e4820}.story-progress i{display:block;height:100%;background:#527a78;transform-origin:left}.um-word-window{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.12em;margin-bottom:-.12em}.um-word{display:inline-block;transform-origin:50% 60%;white-space:pre}.um-emphasis{color:#edca82}#copy[data-layout=hero] h1,#frame.portrait #copy[data-layout=hero] h1{font-size:9.8cqw;line-height:1.04;color:#233e48}#copy[data-layout=side] h1,#frame.portrait #copy[data-layout=side] h1{font-size:6.7cqw;color:#233e48}#copy[data-layout=hero] p,#copy[data-layout=side] p,#frame.portrait #copy[data-layout=hero] p,#frame.portrait #copy[data-layout=side] p{color:#49676c}#copy[data-layout=hero] .um-emphasis,#copy[data-layout=side] .um-emphasis,.um-kinetic .um-emphasis{color:#477f88}.um-kinetic{position:absolute;font-size:6cqw;font-weight:800;color:#233e48;line-height:1.08;letter-spacing:-.035em}`;
+  const style=document.createElement('style');style.textContent=`@font-face{font-family:UnrealInter;src:url('./runtime/fonts/inter-latin-wght-normal.woff2');font-weight:100 900}#frame{font-family:UnrealInter,Arial,sans-serif}#copy h1,#frame.portrait #copy h1{font-size:5.6cqw;line-height:1.12;letter-spacing:-.045em;font-weight:750;color:#fff9e7;margin:0 0 .25em}#copy p,#frame.portrait #copy p{font-size:2.8cqw;line-height:1.4;color:#edf0dd;max-width:none}#story-header{position:absolute;left:7%;right:7%;top:4.7%;display:flex;justify-content:space-between;color:#233e48;font-size:2.2cqw;font-weight:750;letter-spacing:.1em}#story-header span{background:#fff8df;padding:1.3% 2%;border-radius:1.4cqw}.part-label{position:absolute;background:#233e48;color:#fff8df;border:1px solid #fff8df;border-radius:1cqw;padding:.65cqw 1cqw;font-size:3.2cqw;white-space:nowrap;transform:translate(-50%,-50%);pointer-events:none}.story-progress{position:absolute;left:7%;right:7%;bottom:4.8%;height:3px;background:#233e4820}.story-progress i{display:block;height:100%;background:#527a78;transform-origin:left}.um-word-window{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.12em;margin-bottom:-.12em}.um-word{display:inline-block;transform-origin:50% 60%;white-space:pre}.um-emphasis{color:#edca82}#copy[data-layout=hero] h1,#frame.portrait #copy[data-layout=hero] h1{font-size:9.8cqw;line-height:1.04;color:#233e48}#copy[data-layout=side] h1,#frame.portrait #copy[data-layout=side] h1{font-size:6.7cqw;color:#233e48}#copy[data-layout=hero] p,#copy[data-layout=side] p,#frame.portrait #copy[data-layout=hero] p,#frame.portrait #copy[data-layout=side] p{color:#49676c}#copy[data-layout=hero] .um-emphasis,#copy[data-layout=side] .um-emphasis,.um-kinetic .um-emphasis{color:#477f88}.um-kinetic{position:absolute;font-size:6cqw;font-weight:800;color:#233e48;line-height:1.08;letter-spacing:-.035em}`;
   document.head.append(style);
   const heading=document.createElement('h1'),detail=document.createElement('p');copy.replaceChildren(heading,detail);
   const header=document.createElement('div');header.id='story-header';const title=document.createElement('span'),chapter=document.createElement('span');title.textContent=story.title;header.append(title,chapter);stage.append(header);
@@ -30,7 +31,16 @@ export async function createExplainerStage(config){
   const labels=[],roots=new Map(),graphics=new Map(),type=createKineticText(heading);let state;
   function sceneRoot(id){
     if(!story.scenes?.some(s=>s.id===id)||roots.has(id))throw new Error(`Unknown or duplicate scene root: ${id}`);
-    const node=new THREE.Group();node.name=id;group.add(node);roots.set(id,node);return node;
+    const node=new THREE.Group();node.name=id;const placement=story.scenes.find(s=>s.id===id).position;if(placement)node.position.set(...placement);group.add(node);roots.set(id,node);return node;
+  }
+  function projectGraphic(element,spec){
+    if(!spec.anchor)return true;
+    camera.updateMatrixWorld(true);
+    const center=new THREE.Vector3(...spec.anchor),right=new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld,0).multiplyScalar(spec.worldWidth/2);
+    const a=center.clone().sub(right).project(camera),b=center.clone().add(right).project(camera),p=center.project(camera);
+    const width=Math.abs(b.x-a.x)*50,height=width*config.width/config.height*(spec.worldHeight||spec.worldWidth*400/720)/spec.worldWidth;
+    Object.assign(element.style,{left:`${(p.x+1)*50-width/2}%`,top:`${(1-p.y)*50-height/2}%`,width:`${width}%`,height:`${height}%`});
+    return p.z>=-1&&p.z<=1;
   }
   function registerGraphic(graphic){if(graphics.has(graphic.id))throw new Error(`Duplicate graphic id: ${graphic.id}`);graphics.set(graphic.id,graphic);}
   function kinetic(spec){
@@ -39,21 +49,21 @@ export async function createExplainerStage(config){
     const rect={x:7,y:14,width:86,...spec.rect};if(!Object.values(rect).every(Number.isFinite)||rect.x<0||rect.y<0||rect.width<=0||rect.x+rect.width>100)throw new Error('Invalid text rectangle');
     Object.assign(element.style,{left:`${rect.x}%`,top:`${rect.y}%`,width:`${rect.width}%`,...(spec.fontSize?{fontSize:`${spec.fontSize}cqw`}:{})});overlay.append(element);
     const writer=createKineticText(element);writer.set(spec.text,spec);
-    const graphic={id:spec.id,update(t,s){const active=(!spec.scene||s.scene===spec.scene)&&(!spec.beats||spec.beats.includes(s.beat.id))&&t>=(spec.start||0)&&t<(spec.end??Infinity);element.style.display=active?'block':'none';writer.update(t,spec.start||0);},inspect:()=>({id:spec.id,type:'text',...writer.inspect(),invalid:false})};registerGraphic(graphic);return graphic;
+    const graphic={id:spec.id,update(t,s){const active=(!spec.scene||s.scene===spec.scene)&&(!spec.beats||spec.beats.includes(s.beat.id))&&t>=(spec.start||0)&&t<(spec.end??Infinity);element.style.display=active?'block':'none';const leave=Math.max(0,Math.min(1,((spec.end??Infinity)-t)/.25));element.style.opacity=leave;element.style.transform=`translateY(${-12*(1-leave)}px)`;writer.update(t,spec.start||0);},inspect:()=>({id:spec.id,type:'text',...writer.inspect(),invalid:false})};registerGraphic(graphic);return graphic;
   }
   function label({node,offset=[0,0,0],text,beats}){
     const element=document.createElement('div');element.className='part-label';element.dataset.safeLabel='true';element.textContent=text;overlay.append(element);labels.push({node,offset:new THREE.Vector3(...offset),element,beats});return element;
   }
   function updateStory(seconds,u){
     state=storyState(story,seconds);const c=state.camera;
-    camera.position.set(...c.position);camera.lookAt(...c.target);camera.zoom=c.scale;camera.updateProjectionMatrix();
+    camera.position.set(...c.position);camera.up.set(0,1,0);camera.lookAt(...c.target);camera.rotateZ(c.roll||0);camera.zoom=c.scale;camera.updateProjectionMatrix();
     if(story.version===2){
       const layout=state.beat.text?.layout||'caption';copy.dataset.layout=layout;
       Object.assign(copy.style,layout==='caption'?{top:'auto',bottom:'8%',width:'86%',padding:'3.8%',background:'#233e48',boxShadow:'0 8px 0 #1c35451a'}:{top:layout==='hero'?'12%':'33%',bottom:'auto',width:layout==='hero'?'86%':'43%',padding:'0',background:'transparent',boxShadow:'none'});
       type.set(state.beat.caption,state.beat.text);type.update(seconds,state.beat.start,state.textComposed);
       const seam=state.transition;overlay.style.transform=`translate3d(${seam.x*config.width}px,${seam.y*config.height}px,0) scale(${seam.scale})`;overlay.style.filter=seam.blur>0?`blur(${seam.blur}px)`:'none';
       if(!roots.has(state.scene))throw new Error(`Missing authored scene root: ${state.scene}`);
-      for(const [id,node]of roots)node.visible=id===state.scene;
+      for(const [id,node]of roots)node.visible=Boolean(story.continuous)||id===state.scene;
     }else heading.textContent=state.beat.caption;
     detail.textContent=state.beat.detail;copy.style.opacity=state.captionOpacity;copy.style.transform=`translateY(${(1-state.captionOpacity)*10}px)`;chapter.textContent=`${String(state.index+1).padStart(2,'0')} / ${story.beats.length}`;fill.style.transform=`scaleX(${u})`;
     for(const graphic of graphics.values())graphic.update(seconds,state);
@@ -71,6 +81,6 @@ export async function createExplainerStage(config){
     }
     renderer.render(scene,camera);renderer.getContext().finish();
   }
-  function inspect(){let meshes=0,volumes=0;const invalid=[];scene.traverse(o=>{if(o.isMesh){meshes++;o.geometry.computeBoundingBox();const size=o.geometry.boundingBox.getSize(new THREE.Vector3());if(Math.min(size.x,size.y,size.z)>1e-4)volumes++;}if(![...o.position,...o.scale,...o.quaternion].every(Number.isFinite))invalid.push(o.name||o.type);});return {renderer:'threejs',meshes,volumes,triangles:renderer.info.render.triangles,invalid,camera:[...camera.position],target:state.camera.target,zoom:camera.zoom,beat:state.beat.id,action:state.beat.action,purpose:state.beat.purpose,scene:state.scene,transition:state.transition,activeScenes:[...roots].filter(([,node])=>node.visible).map(([id])=>id),graphics:[...graphics.values()].map(g=>g.inspect())};}
-  return {THREE,scene,group,camera,renderer,story,overlay,sceneRoot,registerGraphic,kinetic,label,updateStory,draw,inspect};
+  function inspect(){let meshes=0,volumes=0;const invalid=[];scene.traverse(o=>{if(o.isMesh){meshes++;o.geometry.computeBoundingBox();const size=o.geometry.boundingBox.getSize(new THREE.Vector3());if(Math.min(size.x,size.y,size.z)>1e-4)volumes++;}if(![...o.position,...o.scale,...o.quaternion].every(Number.isFinite))invalid.push(o.name||o.type);});return {renderer:'threejs',cameraMode:story.continuous?'continuous-world':'beat-handoff',cameraRoll:state.camera.roll||0,meshes,volumes,triangles:renderer.info.render.triangles,invalid,camera:[...camera.position],target:state.camera.target,zoom:camera.zoom,beat:state.beat.id,action:state.beat.action,purpose:state.beat.purpose,scene:state.scene,transition:state.transition,activeScenes:[...roots].filter(([,node])=>node.visible).map(([id])=>id),graphics:[...graphics.values()].map(g=>g.inspect())};}
+  return {THREE,scene,group,camera,renderer,story,overlay,worldOverlay,sceneRoot,registerGraphic,projectGraphic,kinetic,label,updateStory,draw,inspect};
 }

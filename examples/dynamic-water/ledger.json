@@ -1,82 +1,65 @@
 {
   "format": "unrealmotion-native",
-  "current": "forward",
-  "seams": [
+  "method": "continuous-world-camera",
+  "cameraKnots": 22,
+  "canvasTransitions": false,
+  "assemblyOrder": [
+    "bearing",
+    "rotor",
+    "seal",
+    "bezel",
+    "bolts"
+  ],
+  "beats": [
     {
-      "time": 2.2,
-      "from": "question",
-      "to": "impeller",
-      "type": "camera",
-      "duration": 0.6,
-      "carrier": "same physical system or a persistent meter"
+      "time": 0,
+      "id": "question",
+      "carrier": "Establish the connected water system and launch the explanatory motion."
     },
     {
-      "time": 4.6,
-      "from": "impeller",
-      "to": "pressure",
-      "type": "camera",
-      "duration": 0.6,
-      "carrier": "same physical system or a persistent meter"
+      "time": 3.2,
+      "id": "impeller",
+      "carrier": "Stop the drive, unthread the bolts, then withdraw the cover axially and laterally."
     },
     {
-      "time": 7.4,
-      "from": "pressure",
-      "to": "meter",
-      "type": "push",
-      "duration": 0.48,
-      "travel": 0.1,
-      "blur": 6,
-      "carrier": "gold rotor / blue housing"
+      "time": 6.8,
+      "id": "pressure",
+      "carrier": "Align the same cover laterally, seat it axially, tighten its bolts, then restart the pump."
     },
     {
-      "time": 9.2,
-      "from": "meter",
-      "to": "measure",
-      "type": "camera",
-      "duration": 0.6,
-      "carrier": "same physical system or a persistent meter"
+      "time": 10.2,
+      "id": "meter",
+      "carrier": "Follow the connected outlet pipe into the adjacent meter assembly."
     },
     {
-      "time": 11.4,
-      "from": "measure",
-      "to": "counter",
-      "type": "camera",
-      "duration": 0.6,
-      "carrier": "same physical system or a persistent meter"
+      "time": 13.5,
+      "id": "measure",
+      "carrier": "Seat bearing, rotor, gasket, bezel and individual bolts in dependency order."
     },
     {
-      "time": 13.4,
-      "from": "counter",
-      "to": "bars",
-      "type": "camera",
-      "duration": 0.6,
-      "carrier": "same physical system or a persistent meter"
+      "time": 17.5,
+      "id": "counter",
+      "carrier": "Raise the camera from the operating meter to its world-anchored live counter."
     },
     {
-      "time": 16.5,
-      "from": "bars",
-      "to": "line",
-      "type": "match",
-      "duration": 0.3,
-      "carrier": "same physical system or a persistent meter"
+      "time": 20.5,
+      "id": "bars",
+      "carrier": "Truck the actual camera to the stationary zero-baseline comparison panel."
     },
     {
-      "time": 19.6,
-      "from": "line",
-      "to": "donut",
-      "type": "match",
-      "duration": 0.3,
-      "carrier": "same physical system or a persistent meter"
+      "time": 24.2,
+      "id": "line",
+      "carrier": "Lift the camera through the same world to the recorded-flow panel."
     },
     {
-      "time": 21.8,
-      "from": "donut",
-      "to": "recap",
-      "type": "pull",
-      "duration": 0.48,
-      "travel": 0.1,
-      "blur": 6,
-      "carrier": "same physical system or a persistent meter"
+      "time": 27.8,
+      "id": "donut",
+      "carrier": "Arc toward the share panel while preserving category identities and colors."
+    },
+    {
+      "time": 30.3,
+      "id": "recap",
+      "carrier": "Widen the same continuous world to reveal the complete visual route."
     }
   ]
 }

@@ -39,3 +39,5 @@ CSV uses `id,label,value`, optionally `time,x`. Quoted commas/newlines are suppo
 - `decimals:0..6` and `locale` control numeric display. Preserve units, observation dates and sources in the project. Do not imply that illustrative physics or simulated rates were measured.
 
 Review chart entry, fully settled values, category crossings, extrema and missing observations. Compare shown numbers with the local data and rendered mark dimensions. Inspect reverse/random seeks and an encoded moving interval. Add `dataAccuracy:true` to final review only after this inspection. The runtime validates finite values and scales; it does not establish factual truth or statistical validity.
+
+To place charts along the actual camera route, supply `anchor:[x,y,z]` and positive `worldWidth`, optionally `worldHeight`. The same camera projects these billboard panels; they persist in space. See [continuous-camera.md](continuous-camera.md).

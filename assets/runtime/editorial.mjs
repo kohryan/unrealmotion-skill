@@ -52,3 +52,15 @@ export function editorialState(story, seconds, index) {
 export function readingSeconds(text, wordsPerSecond = 3) {
   return Math.max(1.2, String(text).trim().split(/\s+/u).filter(Boolean).length / wordsPerSecond);
 }
+
+// Timed Hermite knots preserve velocity through shot boundaries and arbitrary seeks.
+export function sampleCameraPath(knots, seconds) {
+  const time=clamp(seconds,knots[0].time,knots.at(-1).time);
+  let index=knots.findIndex(k=>k.time>time)-1;if(index<0)index=time<knots[0].time?0:knots.length-2;
+  const a=knots[index],b=knots[index+1],dt=b.time-a.time,u=(time-a.time)/dt;
+  const value=(k,key,j)=>key==='scale'?Math.log(k.scale):key==='roll'?(k.roll||0):k[key][j];
+  const tangent=(i,key,j)=>i===0||i===knots.length-1?0:(value(knots[i+1],key,j)-value(knots[i-1],key,j))/(knots[i+1].time-knots[i-1].time);
+  const at=(key,j)=>{const x=value(a,key,j),y=value(b,key,j);return (2*u**3-3*u**2+1)*x+(u**3-2*u**2+u)*dt*tangent(index,key,j)+(-2*u**3+3*u**2)*y+(u**3-u**2)*dt*tangent(index+1,key,j);};
+  const target=[0,1,2].map(j=>at('target',j));
+  return {position:[0,1,2].map(j=>at('position',j)),target,x:target[0],y:target[1],scale:Math.exp(at('scale')),roll:at('roll')};
+}

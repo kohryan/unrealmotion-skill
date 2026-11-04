@@ -1,6 +1,6 @@
 # Dynamic stories without a new renderer
 
-Version 2 storyboards extend the existing frame-driven Three.js stage. Version 1 projects keep their original camera/caption behavior. New explainers default to `--pace dynamic --assets multi`; `--pace calm` and `--assets single` are deliberate alternatives.
+Version 2 storyboards extend the existing frame-driven Three.js stage. Version 1 projects keep their original camera/caption behavior. New explainers default to `--pace calm --assets multi`; `--pace dynamic` and `--assets single` are deliberate alternatives.
 
 ## Story and asset plan
 
@@ -8,7 +8,7 @@ Start with a causal answer, then plan distinct visual questions. For a 30-second
 
 Generate 2–4 useful ImageGen references: context, active cutaway, and another explanatory situation or measurement. Feed the approved context reference into subsequent generations. Lock silhouette, palette, proportions, part count and attachment positions. Inspect all images together; resolve contradictions before modeling. These are appearance references for actual meshes, not rendered slideshow backgrounds.
 
-Maintain one hierarchy and stable part IDs per physical object. Multiple story contexts use persistent `stage.sceneRoot(id)` groups; all groups update from absolute time even while hidden. Exactly one scene root is visible. The same object must not be rebuilt with different proportions merely because the camera changes.
+Maintain one hierarchy and stable part IDs per physical object. Multiple story contexts use persistent `stage.sceneRoot(id)` groups; all groups update from absolute time even while hidden. In the default continuous-world route, every root remains visible and the actual camera travels between them. See [continuous-camera.md](continuous-camera.md). Legacy handoff stories show one root at a time. The same object must not be rebuilt with different proportions merely because the camera changes.
 
 ```json
 {
@@ -39,7 +39,7 @@ Maintain one hierarchy and stable part IDs per physical object. Multiple story c
 
 Each `reconstruction.references` row has `id`, local `path`, and `parts` matching top-level authored part IDs. Each matching `asset-plan.assets` row has `id`, `path`, exact `prompt`, `sha256`, plus tool/provenance information. Bind every beat's `assets` to those IDs. Multi-reference mode checks at least two distinct image hashes; every reference must actually be used. Single-reference mode is explicit, not a workaround for an incomplete multi-scene brief.
 
-## Transition choices
+## Legacy beat handoff choices
 
 | Type | Use and obligation |
 | --- | --- |
@@ -53,4 +53,4 @@ The transition belongs to the incoming beat. Default duration is 0.48 seconds (d
 
 Within beats, use timed opening, insertion, a flowing carrier, a measurement or a meaningful change in scale. No idle wobble. Seat dependencies before closing shells. Use `markers: [seconds]` for insertion/contact/data extremes; QA samples these and their neighbors as well as seam edges, cuts and beat midpoints.
 
-Read [text-motion.md](text-motion.md), [data-motion.md](data-motion.md), and the original [reassembly.md](reassembly.md) only as needed. The complete authored example is [dynamic-water](../examples/dynamic-water), with three references, two persistent contexts, ten beats and four chart forms.
+Read [text-motion.md](text-motion.md), [data-motion.md](data-motion.md), and the original [reassembly.md](reassembly.md) only as needed. New productions should use continuous world-space camera travel instead of these canvas-wrapper handoffs. The complete authored example is [dynamic-water](../examples/dynamic-water), with three references, two persistent contexts, ten beats and four chart forms.

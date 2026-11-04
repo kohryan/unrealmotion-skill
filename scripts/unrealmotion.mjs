@@ -58,6 +58,8 @@ async function render(project, options) {
     if(project.config.mode==='explainer') required.push('explanation','causalMotion','shotContinuity');
     if(project.config.template==='imagegen-explainer') required.push('promptFidelity','assetConsistency','reconstruction3D');
     if(project.storyboard?.version===2)required.push('dynamicPacing','kineticText');
+    if(project.storyboard?.continuous)required.push('continuousCamera');
+    if(qa.samples.some(s=>s.state.assembly?.length))required.push('assemblyFit');
     if(project.storyboard?.version===2&&project.config.assetStrategy!=='single')required.push('multiAssetContinuity');
     if(qa.samples.some(s=>s.state.graphics?.some(g=>['bar','race','line','donut','counter'].includes(g.type))))required.push('dataAccuracy');
     if (review.sourceHash !== hash || !required.every(k => review.checks?.[k] === true) || !Array.isArray(review.evidence) || review.evidence.length < 3 || typeof review.notes !== 'string' || review.notes.length < 20) throw new Error('Final export requires a current visual review with all checks, evidence, and substantive notes');
@@ -97,7 +99,7 @@ async function render(project, options) {
 }
 
 async function main() {
-  const {values:o, positionals:p} = parseArgs({allowPositionals:true, options:{prompt:{type:'string'},mode:{type:'string'},template:{type:'string'},motion:{type:'string',default:'cinematic-orbit'},pace:{type:'string',default:'dynamic'},assets:{type:'string',default:'multi'},width:{type:'string'},height:{type:'string'},fps:{type:'string'},duration:{type:'string'},supersample:{type:'string'},output:{type:'string'},audio:{type:'string'},port:{type:'string',default:'0'},software:{type:'boolean'},final:{type:'boolean'},force:{type:'boolean'},help:{type:'boolean'}}});
+  const {values:o, positionals:p} = parseArgs({allowPositionals:true, options:{prompt:{type:'string'},mode:{type:'string'},template:{type:'string'},motion:{type:'string',default:'cinematic-orbit'},pace:{type:'string',default:'calm'},assets:{type:'string',default:'multi'},width:{type:'string'},height:{type:'string'},fps:{type:'string'},duration:{type:'string'},supersample:{type:'string'},output:{type:'string'},audio:{type:'string'},port:{type:'string',default:'0'},software:{type:'boolean'},final:{type:'boolean'},force:{type:'boolean'},help:{type:'boolean'}}});
   const [command, target] = p;
   if (o.help || !command) { console.log(help); return; }
   if (command === 'templates') { console.log(JSON.stringify({scenes:templates, motion:profiles}, null, 2)); return; }
@@ -127,7 +129,7 @@ async function main() {
         story=JSON.parse(await readFile(path.join(root,'assets/scenes/water-system-explainer.storyboard.json'),'utf8'));
         const scale=config.duration/story.duration;story.duration=config.duration;story.beats.forEach(b=>{b.start*=scale;b.end*=scale;});
       } else {
-        story={version:2,title:'AUTHOR FOR THE PROMPT',prompt:o.prompt,pace:o.pace,duration:config.duration,scenes:[{id:'overview'},{id:'mechanism'},{id:'resolution'}],beats:['question','mechanism','resolution'].map((id,i)=>({id,scene:['overview','mechanism','resolution'][i],assets:[o.assets==='single'?'reference-overview':`reference-${i+1}`],start:i*config.duration/3,end:(i+1)*config.duration/3,caption:'AUTHOR: '+id,detail:'Write concise readable copy for the actual subject.',action:'Author the visible subject action.',purpose:'Explain the causal link for this beat.',text:{preset:'words',layout:'caption'},camera:{x:0,y:1,scale:1,position:[7,5,12],target:[0,1,0]}}))};
+        story={version:2,title:'AUTHOR FOR THE PROMPT',prompt:o.prompt,pace:o.pace,duration:config.duration,continuous:true,cameraPath:[{time:0,position:[7,5,12],target:[0,1,0],scale:1},{time:config.duration,position:[9,6,12],target:[1,1,0],scale:1}],scenes:[{id:'overview'},{id:'mechanism'},{id:'resolution'}],beats:['question','mechanism','resolution'].map((id,i)=>({id,scene:['overview','mechanism','resolution'][i],assets:[o.assets==='single'?'reference-overview':`reference-${i+1}`],start:i*config.duration/3,end:(i+1)*config.duration/3,caption:'AUTHOR: '+id,detail:'Write concise readable copy for the actual subject.',action:'Author the visible subject action.',purpose:'Explain the causal link for this beat.',text:{preset:'words',layout:'caption'},camera:{x:0,y:1,scale:1,position:[7,5,12],target:[0,1,0]}}))};
         await mkdir(path.join(dir,'assets'));
         await writeFile(path.join(dir,'reconstruction.json'),JSON.stringify({status:'needs-imagegen-and-3d-model',reference:'',references:[],style:'simple pastel cutaway; keep identity and palette across the image bundle',parts:[],attachments:[],inferredGeometry:[],reviewViews:[]},null,2)+'\n');
         await copyFile(path.join(root,'assets/scenes/imagegen-explainer.model.mjs'),path.join(dir,'model.mjs'));
@@ -137,7 +139,7 @@ async function main() {
     }
     await writeFile(path.join(dir,'project.json'), JSON.stringify(config, null, 2) + '\n');
     await writeFile(path.join(dir,'plan.json'), JSON.stringify({prompt:o.prompt,status:'starter-needs-agent-authorship',subject:template,shots:[],datasetReferences:[],assetProvenance:[]}, null, 2) + '\n');
-    console.log(JSON.stringify({project:dir,mode,next:template==='imagegen-explainer'?'Generate consistent scene references with host ImageGen; reconstruct real Three.js parts in persistent scene roots in model.mjs. Author reconstruction.json, asset-plan.json, storyboard.json and plan.json. See references/imagegen-threejs.md. Render silent.':explainer?'Author storyboard.json, scene.mjs and plan.json for the actual explanation. Render without --audio for a silent MP4.':'Author scene.mjs and plan.json for the actual subject, then preview and qa.'}, null, 2)); return;
+    console.log(JSON.stringify({project:dir,mode,next:template==='imagegen-explainer'?'Generate consistent scene references with host ImageGen; reconstruct real Three.js parts in a connected world in model.mjs. Author a continuous cameraPath, dependency-ordered reassembly and world-anchored charts. Author reconstruction.json, asset-plan.json, storyboard.json and plan.json. See references/imagegen-threejs.md. Render silent.':explainer?'Author storyboard.json, scene.mjs and plan.json for the actual explanation. Render without --audio for a silent MP4.':'Author scene.mjs and plan.json for the actual subject, then preview and qa.'}, null, 2)); return;
   }
   const project = await loadProject(target);
   if (command === 'preview') { const server = await serve(project.root, Number(o.port)); console.log(server.url); for (const s of ['SIGINT','SIGTERM']) process.once(s, async () => { await server.close(); process.exit(0); }); return; }

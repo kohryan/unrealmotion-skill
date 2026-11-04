@@ -79,5 +79,6 @@ export function sampleFrames(c, storyboard) {
     for(const time of beat.markers||[])frames.push(Math.round(time*c.fps)-1,Math.round(time*c.fps),Math.round(time*c.fps)+1);
     if(i>0){const half=(beat.transition?.duration??(storyboard.pace==='calm'?.9:.48))/2;for(const time of [beat.start-half,beat.start,beat.start+half])frames.push(Math.round(time*c.fps));}
   }
+  for(const knot of storyboard?.cameraPath||[])frames.push(Math.round(knot.time*c.fps)-1,Math.round(knot.time*c.fps),Math.round(knot.time*c.fps)+1);
   return [...new Set(frames.map(f=>Math.min(n-1,Math.max(0,f))))].sort((a,b)=>a-b);
 }
