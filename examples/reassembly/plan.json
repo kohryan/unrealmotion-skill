@@ -1,0 +1,55 @@
+{
+  "prompt": "Reassembly thrust bearing berdasarkan referensi visual SimReady dan ImageGen. Balls masuk pocket brass cage, carrier turun ke race, top race mengunci lalu berputar. 6 detik, smooth dan konsisten.",
+  "status": "authored",
+  "subject": "Concept thrust ball bearing based on SimReady appearance and ImageGen reference",
+  "shots": [
+    {
+      "start": 0,
+      "end": 1.95,
+      "action": "Each ball drops axially into its matching cage pocket while both races stay clear"
+    },
+    {
+      "start": 1.95,
+      "end": 3.6,
+      "action": "Ball-cage carrier descends as one stable assembly around the lower hub"
+    },
+    {
+      "start": 3.6,
+      "end": 5.05,
+      "action": "Upper race descends axially; bore clears hub"
+    },
+    {
+      "start": 5.05,
+      "end": 6,
+      "action": "Upper race accelerates smoothly; cage follows at half angle and balls roll visually"
+    }
+  ],
+  "datasetReferences": [],
+  "assetProvenance": [
+    {
+      "source": "NVIDIA SimReady consumable_bearing_ball_a01 thumbnail only",
+      "license": "CC-BY-4.0",
+      "reference": "../../assets/references/bearing/nvidia-provenance.json"
+    },
+    {
+      "source": "Built-in ImageGen appearance-reference sheet, not measured CAD or extracted mesh",
+      "reference": "../../assets/references/bearing/imagegen-reference.png"
+    },
+    {
+      "source": "Original procedural Three.js lathe/extrude/sphere geometry and analytic reassembly",
+      "license": "MIT"
+    }
+  ],
+  "identity": [
+    "two concentric ground steel raceways",
+    "lower integral open-bore hub",
+    "thin brass annular cage with 18 ball pockets",
+    "18 polished steel balls",
+    "outer flange recesses"
+  ],
+  "limitations": [
+    "Appearance-guided approximate reconstruction; no NVIDIA USD geometry was downloaded.",
+    "ImageGen views can invent hidden internals; raceway, bore and cage clearances were reauthored explicitly.",
+    "Reassembly is an explanatory visualization, not a validated manufacturing/service sequence."
+  ]
+}

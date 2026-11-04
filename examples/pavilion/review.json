@@ -1,0 +1,18 @@
+{
+  "sourceHash": "6ff5a784cd11bec4aef303c5c8e2a0d7a5698c6322e789d0b9d00991bafa2e40",
+  "checks": {
+    "subjectFidelity": true,
+    "materialsLighting": true,
+    "composition": true,
+    "motionContinuity": true,
+    "transitions": true,
+    "lateMotion": true
+  },
+  "evidence": [
+    "output/qa/frame-000000.png",
+    "output/qa/frame-000233.png",
+    "output/qa/frame-000359.png",
+    "output/qa/contact-sheet.png"
+  ],
+  "notes": "Inspected native 1080p middle/end and transition contact sheet. Bronze supports, timber slats, thin glass and stepped plinth stay coherent while roof lifts and returns with eased alignment. Copy revised to avoid roof overlap. Late roof descent remains visible. This is a simplified architectural concept, with illustrative plants and raster glazing rather than engineering or photoreal construction."
+}

@@ -1,0 +1,3 @@
+# Optional: offline metadata search does not need Python packages.
+pyarrow==21.0.0
+certifi==2026.10.23

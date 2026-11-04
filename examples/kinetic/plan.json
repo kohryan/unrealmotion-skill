@@ -1,0 +1,35 @@
+{
+  "prompt": "Film tipografi ringkas Indonesia dan bentuk kinetik metal dengan spring elegan, 6 detik",
+  "status": "authored",
+  "subject": "kinetic-editorial",
+  "identity": [
+    "five coherent metal spline bands",
+    "minimal Indonesian typography"
+  ],
+  "shots": [
+    {
+      "start": 0,
+      "end": 2,
+      "purpose": "Recognition and gradual reveal",
+      "camera": "editorial-spring"
+    },
+    {
+      "start": 2,
+      "end": 4,
+      "purpose": "Subject transformation: optical stack/roof assembly or kinetic band deformation"
+    },
+    {
+      "start": 4,
+      "end": 6,
+      "purpose": "Resolved silhouette with continuing mechanical/band motion"
+    }
+  ],
+  "datasetReferences": [],
+  "assetProvenance": [
+    {
+      "source": "Original procedural Three.js geometry and generated canvas surface maps",
+      "license": "MIT"
+    }
+  ],
+  "limitations": "Concept visualization; not measured industrial design, architectural engineering, or ray-traced photorealism."
+}

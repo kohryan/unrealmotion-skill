@@ -1,0 +1,27 @@
+{
+  "output": "optical-studio.mp4",
+  "backend": "metal",
+  "sourceHash": "0aa6bced1d115739165f832e7d58dcfc64a9e9617659a94f6d34f872ddca4dec",
+  "sha256": "2ae6e999d04aa407902c33391618ae98a35f7aa8e1ea8c6cfde7d1a421219e57",
+  "verified": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "60/1",
+        "duration": "6.000000",
+        "nb_read_frames": "360"
+      }
+    ],
+    "format": {
+      "duration": "6.000000"
+    }
+  },
+  "visualReview": "passed",
+  "frames": 360,
+  "fps": 60
+}

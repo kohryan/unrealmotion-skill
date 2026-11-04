@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "prompt": "Film tipografi ringkas Indonesia dan bentuk kinetik metal dengan spring elegan, 6 detik",
+  "template": "kinetic-editorial",
+  "motion": "editorial-spring",
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "duration": 6,
+  "supersample": 1.5,
+  "seed": 73
+}

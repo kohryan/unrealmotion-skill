@@ -1,0 +1,27 @@
+{
+  "output": "/Users/kohryan/Documents/Storage-Terabox/codex/unrealmotion-skill/examples/media/water-imagegen-threejs.mp4",
+  "backend": "metal",
+  "sourceHash": "849f0a4fbcd092e84ea429f3f55e523908eea366272bfde4fda90271ede78045",
+  "sha256": "296822b5da27df0938c73021eda6bd1dbd8381d654b4e82d9a5d093cffaec86d",
+  "verified": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1080,
+        "height": 1920,
+        "r_frame_rate": "30/1",
+        "duration": "60.000000",
+        "nb_read_frames": "1800"
+      }
+    ],
+    "format": {
+      "duration": "60.000000"
+    }
+  },
+  "visualReview": "passed",
+  "frames": 1800,
+  "fps": 30
+}

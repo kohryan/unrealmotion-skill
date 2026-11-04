@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "prompt": "Reassembly thrust bearing berdasarkan referensi visual SimReady dan ImageGen. Balls masuk pocket brass cage, carrier turun ke race, top race mengunci lalu berputar. 6 detik, smooth dan konsisten.",
+  "template": "mechanical-reassembly",
+  "motion": "precision-assembly",
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "duration": 6,
+  "supersample": 1.5,
+  "seed": 73
+}

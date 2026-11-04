@@ -1,0 +1,18 @@
+{
+  "sourceHash": "ca33b39dbd4e1450f43d311b484d4e92b96da1377ed244277b3da5353b539cbf",
+  "checks": {
+    "subjectFidelity": true,
+    "materialsLighting": true,
+    "composition": true,
+    "motionContinuity": true,
+    "transitions": true,
+    "lateMotion": true
+  },
+  "evidence": [
+    "output/qa/frame-000000.png",
+    "output/qa/frame-000180.png",
+    "output/qa/frame-000359.png",
+    "output/qa/contact-sheet.png"
+  ],
+  "notes": "Inspected current native 1080p middle/end and the full transition contact sheet. Distinct steel raceways, integral open-bore lower hub, brass cage and 18 balls remain coherent. Balls seat into corresponding holes before the carrier descends; upper bore clears hub; upper race closes and rotation ramps during the latter half. All registered local alignment errors finish at zero and random seek repeats exactly. Material values were adjusted after comparison to the NVIDIA/ImageGen appearance references. The result is an appearance-guided explanatory reconstruction with illustrative clearances, not extracted NVIDIA CAD or a validated assembly procedure."
+}

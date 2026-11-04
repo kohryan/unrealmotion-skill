@@ -1,0 +1,35 @@
+# Source study and attribution
+
+Studied 4 November 2026. These links pin the actual research snapshots. UnrealMotion's renderer and templates are original implementations; installing an upstream skill does not relicense its source.
+
+| Source | Inspected implementation | What changed in UnrealMotion |
+| --- | --- | --- |
+| [CCORE ThreeJS-3D-Scenes](https://huggingface.co/datasets/ccore/ThreeJS-3D-Scenes/tree/57b77a19d38eee8316c8b1f9e71c772046d9f48c) | All five Parquet shards for metadata; JS scenes `scene-000005`, `000006`, `000009`, and `002322` for instruments, organic surfaces, machinery and camera internals | Full offline subject catalog, pinned/checksummed code retrieval; detailed component hierarchy; replace interactive clocks and mutable motion with seekable scene updates |
+| [Remotion](https://github.com/remotion-dev/remotion/tree/fe9f0c372706f2039da6b2a0a92b92aa746e69cf) | `packages/core/src/spring/index.ts`, `interpolate.ts`, `packages/renderer/src/render-frames.ts`, agent/codex skill instructions | Frame/FPS as the authority, explicit readiness, analytic easing/springs, exact frame counts, encoded metadata checks. No Remotion implementation code is vendored |
+| [HyperFrames](https://github.com/heygen-com/hyperframes/tree/183614bda3df15812d9f18fd4a71ee77a7da6387) | `skills/hyperframes`, its `runtimes.md` and 3D rules, `seek-dispatch.ts`, motion-doctrine/cut-the-curve skill and JS seam helpers | Await seeks and GPU work, assets ready before capture, direction/velocity continuity across transitions, local timeline scrubbing |
+| [img2threejs](https://github.com/img2threejs/img2threejs/tree/3e7099e1b7fe93e187e06db4bdbe1e1906c21a28) | `forge/_shared/material_physics.py`, `forge/stage3_build/generate_threejs_factory.py`, `scripts/capture_threejs_playwright.py`, staged sculpting skill | Identity/features before detail; inspect render evidence for structure, form, material and lighting; explicit limits on single-view reconstruction and no-op material parameters |
+| [Awesome Opus 5.5 Videos](https://github.com/yihui-dev/awesome-opus5-5-videos/tree/92aee2f586ac0715cb3cbcb6384834f98a33383d) | README/category index and published prompts, including `prompts/moritzkremb-466494.md` | Outcome-oriented briefs, actual subject assets, a concrete visual progression. This is a prompt/showcase collection, not an executable agent skill or a source-code library for all featured videos |
+| [Vox AI motion graphics generator](https://github.com/Anil-matcha/vox-ai-motion-graphics-generator/tree/c6856442a45761f86ae67cb05efbf25f65228e7c) | `SKILL.md`, `scripts/keyframes.py`, `assemble.py`, beat/layer and style references | Plan → shots → assets → motion → encode; stable style and timing. Its MuAPI image/video/audio generation is a paid optional external workflow, not a local programmatic renderer |
+| [Three.js Game Skills](https://github.com/majidmanzarpour/threejs-game-skills/tree/8286774b22a2566bf894dbc825825c16921866af) | Graphics-builder + four graphics references; TS `Renderer.ts`, `CameraRig.ts`, RNG scaffold; Python scaffold helper and JS `inspect-threejs-canvas.mjs` | Silhouette and authored geometry before effects; coherent material roles, microdetail/decals and environment reflections; runtime diagnostics and evidence. Game-loop camera lag is converted to an absolute camera path, not copied into a video seek |
+| [NVIDIA SimReady](https://huggingface.co/datasets/nvidia/simready-assets/tree/9d4556bfe80868c1d27a7a7ba1c2774e63e8cedd) | Paginated root metadata for 2,677 packages; one bearing's file metadata, thumbnail and per-asset license | A 391KB catalog and budgeted reference-only fetch; ImageGen appearance reference followed by original procedural 3D reconstruction. No USD/texture collection downloaded |
+| [teardown](https://github.com/elvarofficial/teardown/tree/a91262ac1109051e014662d42ecb0b7bc1f113b1) | `kin.js`, staged `engine.js` explosion, `stage3d.js`, `capture.mjs`, `paths.mjs`, score organization; built V8 film and captured a still | Stable assembled local transforms, subassembly dependency order, exact-time posing and inspection of contact/clearances. Original reassembly helper and bearing scene; no copied V8 geometry |
+| [User's explainer reference](https://www.threads.com/@haadziq_f/post/DfOqlnZE_Kd/media) | Browser inspection of portrait whole-system, pump close-up, tank/control and recap beats; no footage downloaded | Simple pastel cutaway style, a persistent system, motivated camera travel, short readable copy and visible cause/effect. A new ImageGen reference is reconstructed as original Three.js volumes; no reference artwork is redistributed |
+
+## Installation and runtime boundaries
+
+The development machine has 19 upstream skills: the Remotion best-practices bundle; HyperFrames authoring/CLI/registry and motion specialists; img2threejs; MuAPI director; all nine Three.js Game Skills; and teardown. See [installed-upstreams.json](../data/installed-upstreams.json) for reproducible sources and paths. `unrealmotion` itself is installed with `node scripts/install.mjs`.
+
+The active agent can read installed skills immediately by their absolute paths. Automatic discovery updates on a subsequent user turn. Skill files are not runtime packages: this repo installs Three.js/Playwright; it does not automatically install Remotion/HyperFrames executables or activate MuAPI, Tripo, Gemini, or ElevenLabs billing.
+
+## Licensing
+
+- UnrealMotion original code: MIT, [LICENSE](../LICENSE).
+- CCORE metadata/prompts and any retrieved code: MIT; [CCORE-LICENSE](../data/CCORE-LICENSE) is included and copied beside extracted scenes.
+- NVIDIA SimReady metadata/thumbnail reference: CC BY 4.0, attribution/source/license retained in `assets/references/bearing/`. Generated appearance reference and original mesh are identified separately; no NVIDIA USD mesh is redistributed.
+- Teardown declares MIT and was installed separately with its dependencies; its native V8 film build and one GPU still were tested with the existing Chromium executable. No upstream V8 implementation is vendored.
+- Three.js Game Skills and the Awesome Opus catalog declare MIT. The catalog does not automatically grant rights to creators' linked videos/assets.
+- HyperFrames and img2threejs declare Apache-2.0. They are studied/installed separately; their implementation is not copied into this MIT repo.
+- Remotion uses its own license. Read its current terms before choosing that runtime; “source available” is not blanket permission to relicense its renderer.
+- No license file was present in the inspected Vox snapshot. Keep it installed as the requested upstream; do not redistribute its code as MIT or copy its generated/demo assets into this repo.
+
+There is no model training, fine-tuning, screenshot-to-code model, or quantitative equivalence benchmark here. Examples validate the local prompt → agent-authored scene → frame capture → MP4 workflow. Visual parity with a specific reference requires matching that brief/assets and inspecting the resulting film.

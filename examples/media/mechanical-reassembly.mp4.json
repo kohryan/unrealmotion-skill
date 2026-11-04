@@ -1,0 +1,27 @@
+{
+  "output": "mechanical-reassembly.mp4",
+  "backend": "metal",
+  "sourceHash": "ca33b39dbd4e1450f43d311b484d4e92b96da1377ed244277b3da5353b539cbf",
+  "sha256": "50650cff9eef6a0fec0a1b8b4f19e40d814dc31e25aa8e41abefdc453bcb8029",
+  "verified": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "60/1",
+        "duration": "6.000000",
+        "nb_read_frames": "360"
+      }
+    ],
+    "format": {
+      "duration": "6.000000"
+    }
+  },
+  "visualReview": "passed",
+  "frames": 360,
+  "fps": 60
+}

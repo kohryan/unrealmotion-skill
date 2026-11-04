@@ -1,0 +1,287 @@
+{
+  "title": "Dari sumur ke toren",
+  "format": "silent-visual-explainer",
+  "duration": 60,
+  "visualLanguage": "Simple pastel cutaway matching ImageGen reference, rebuilt as real Three.js volumes; original SVG motion study is not the final renderer.",
+  "sources": [
+    {
+      "url": "https://www.threads.com/@haadziq_f/post/DfOqlnZE_Kd/media",
+      "use": "Style/structure reference inspected in browser at approximately 8, 20, 35, 45 and 56 seconds; no media downloaded or copied."
+    },
+    {
+      "url": "https://www.grundfos.com/content/dam/global/page-assets/learn/ecademy/pdfs/master-36-module-5-Centrifugal-pump-types.pdf",
+      "use": "Centrifugal pump: liquid enters the impeller eye and moves toward its periphery."
+    },
+    {
+      "url": "https://cms.media.wilo.com/dcianimpfinder/wilo718556/9646785/en-GB/2259793419.html",
+      "use": "Illustrative tank filling control: pump starts at a lower level and stops at an upper level. The demonstration uses a level controller, not a pressure-switch claim."
+    }
+  ],
+  "beats": [
+    {
+      "id": "question",
+      "start": 0,
+      "end": 5,
+      "caption": "Bagaimana air sumur\nsampai ke atap?",
+      "detail": "Ikuti satu sistem, dari sumber hingga toren.",
+      "purpose": "Establish the question and spatial relationship",
+      "action": "Reveal source, pump and tank in order",
+      "camera": {
+        "x": -0.25,
+        "y": 0.25,
+        "scale": 1,
+        "target": [
+          -0.25,
+          0.25,
+          0.3
+        ],
+        "position": [
+          4.15,
+          2.65,
+          18.3
+        ]
+      }
+    },
+    {
+      "id": "source",
+      "start": 5,
+      "end": 10,
+      "caption": "Perjalanan dimulai\ndi sumber air.",
+      "detail": "Ujung pipa terendam. Jalurnya terisi air.",
+      "purpose": "Show inlet and the source",
+      "action": "Follow water entering the submerged intake",
+      "camera": {
+        "x": -2.7,
+        "y": -1.5,
+        "scale": 1.9,
+        "target": [
+          -2.7,
+          -1.5,
+          0.9
+        ],
+        "position": [
+          1.7000000000000002,
+          0.8999999999999999,
+          18.9
+        ]
+      }
+    },
+    {
+      "id": "impeller",
+      "start": 10,
+      "end": 16,
+      "caption": "Motor memutar\nimpeller.",
+      "detail": "Putaran ini memberi energi pada air.",
+      "purpose": "Explain mechanical energy transfer",
+      "action": "Open pump cover; reveal rotor and radial flow",
+      "camera": {
+        "x": -0.95,
+        "y": 0.45,
+        "scale": 3.2,
+        "target": [
+          -0.95,
+          0.45,
+          1.2
+        ],
+        "position": [
+          3.45,
+          2.85,
+          19.2
+        ]
+      }
+    },
+    {
+      "id": "pressure",
+      "start": 16,
+      "end": 22,
+      "caption": "Masuk dari tengah.\nKeluar menuju tepi.",
+      "detail": "Rumah pompa membantu menaikkan tekanan.",
+      "purpose": "Explain the flow through a centrifugal pump",
+      "action": "Trace the eye-to-periphery flow and discharge",
+      "camera": {
+        "x": -0.95,
+        "y": 0.5,
+        "scale": 3.2,
+        "target": [
+          -0.95,
+          0.5,
+          1.2
+        ],
+        "position": [
+          3.45,
+          2.9,
+          19.2
+        ]
+      }
+    },
+    {
+      "id": "lift",
+      "start": 22,
+      "end": 28,
+      "caption": "Tekanan mendorong air\nmelewati pipa tegak.",
+      "detail": "Ketinggian dan hambatan pipa perlu diatasi.",
+      "purpose": "Connect pump energy to vertical transport",
+      "action": "Travel upward with the visible water stream",
+      "camera": {
+        "x": -0.6,
+        "y": 2.8,
+        "scale": 1.4,
+        "target": [
+          -0.6,
+          2.8,
+          0.8
+        ],
+        "position": [
+          3.8000000000000003,
+          5.199999999999999,
+          18.8
+        ]
+      }
+    },
+    {
+      "id": "storage",
+      "start": 28,
+      "end": 34,
+      "caption": "Di toren,\nair mulai terkumpul.",
+      "detail": "Cadangan air kini berada di atas.",
+      "purpose": "Reveal storage as the result of pumping",
+      "action": "Show inlet stream and rising water level",
+      "camera": {
+        "x": 1.0,
+        "y": 5.0,
+        "scale": 2.4,
+        "target": [
+          1.0,
+          5.0,
+          0.2
+        ],
+        "position": [
+          5.4,
+          7.4,
+          18.2
+        ]
+      }
+    },
+    {
+      "id": "control",
+      "start": 34,
+      "end": 40,
+      "caption": "Batas atas mengakhiri\npengisian.",
+      "detail": "Kontrol level mematikan pompa saat toren penuh.",
+      "purpose": "Explain automatic cutoff",
+      "action": "Lift the float, show controller signal, stop the impeller",
+      "camera": {
+        "x": 1.0,
+        "y": 5.0,
+        "scale": 2.4,
+        "target": [
+          1.0,
+          5.0,
+          0.2
+        ],
+        "position": [
+          5.4,
+          7.4,
+          18.2
+        ]
+      }
+    },
+    {
+      "id": "gravity",
+      "start": 40,
+      "end": 45,
+      "caption": "Pompa beristirahat.\nAir tetap bisa dipakai.",
+      "detail": "Dari toren, air turun oleh gravitasi.",
+      "purpose": "Distinguish filling from gravity-fed use",
+      "action": "Follow a separate outlet pipe down to the tap",
+      "camera": {
+        "x": 1.9,
+        "y": 2.6,
+        "scale": 1.4,
+        "target": [
+          1.9,
+          2.6,
+          1.0
+        ],
+        "position": [
+          6.300000000000001,
+          5.0,
+          19.0
+        ]
+      }
+    },
+    {
+      "id": "demand",
+      "start": 45,
+      "end": 50,
+      "caption": "Air dipakai.\nLevel toren turun.",
+      "detail": "Kontrol menunggu batas bawah.",
+      "purpose": "Explain why the system needs to restart",
+      "action": "Drain tank visibly while the tap runs",
+      "camera": {
+        "x": 1.0,
+        "y": 4.9,
+        "scale": 2.3,
+        "target": [
+          1.0,
+          4.9,
+          0.2
+        ],
+        "position": [
+          5.4,
+          7.300000000000001,
+          18.2
+        ]
+      }
+    },
+    {
+      "id": "restart",
+      "start": 50,
+      "end": 55,
+      "caption": "Batas bawah tercapai.\nPompa menyala lagi.",
+      "detail": "Siklus pengisian dimulai kembali.",
+      "purpose": "Complete the control loop",
+      "action": "Send ON signal, accelerate rotor and restart the rising stream",
+      "camera": {
+        "x": -1.3,
+        "y": 0.55,
+        "scale": 2.6,
+        "target": [
+          -1.3,
+          0.55,
+          1.1
+        ],
+        "position": [
+          3.1000000000000005,
+          2.95,
+          19.1
+        ]
+      }
+    },
+    {
+      "id": "recap",
+      "start": 55,
+      "end": 60,
+      "caption": "Putaran. Tekanan.\nAliran yang teratur.",
+      "detail": "Sumber → pompa → toren → pemakaian.",
+      "purpose": "Resolve the original question as a complete system",
+      "action": "Return to the full diagram with a running refill cycle",
+      "camera": {
+        "x": -0.25,
+        "y": 0.25,
+        "scale": 1,
+        "target": [
+          -0.25,
+          0.25,
+          0.3
+        ],
+        "position": [
+          4.15,
+          2.65,
+          18.3
+        ]
+      }
+    }
+  ],
+  "cameraSpan": 13.8
+}

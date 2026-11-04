@@ -1,0 +1,27 @@
+{
+  "output": "architectural-light.mp4",
+  "backend": "metal",
+  "sourceHash": "6ff5a784cd11bec4aef303c5c8e2a0d7a5698c6322e789d0b9d00991bafa2e40",
+  "sha256": "0f4cb4faa9dbf4bfe9c81b32383867277593057610fd4e619e29429c23a15b4e",
+  "verified": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "60/1",
+        "duration": "6.000000",
+        "nb_read_frames": "360"
+      }
+    ],
+    "format": {
+      "duration": "6.000000"
+    }
+  },
+  "visualReview": "passed",
+  "frames": 360,
+  "fps": 60
+}

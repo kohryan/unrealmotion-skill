@@ -1,0 +1,72 @@
+{
+  "status": "authored",
+  "reference": "assets/reference.png",
+  "style": "simple pastel cutaway; restrained detail; orthographic view and ink edges",
+  "parts": [
+    {
+      "id": "house",
+      "geometry": "cream extruded cutaway walls, two slabs, roof, single window",
+      "appearance": "ImageGen reference; no decorative furnishing"
+    },
+    {
+      "id": "well",
+      "geometry": "half-cylinder bore, pale aqua water and submerged intake",
+      "attachment": "intake joins pump eye through continuous suction tube"
+    },
+    {
+      "id": "pump",
+      "geometry": "blue finned motor, volute back and annular cavity rim, gold annular cover, six curved impeller blades",
+      "attachment": "casing rim extends z .18 \u2192 .38; cover face seats at z .38; opens axially then sideways and returns exactly"
+    },
+    {
+      "id": "fill-pipe",
+      "geometry": "continuous rounded Three.js TubeGeometry",
+      "attachment": "pump discharge to tank inlet"
+    },
+    {
+      "id": "tank",
+      "geometry": "back-half cylindrical shell, circular base, water volume, float and guide",
+      "attachment": "roof plinth; float position follows the same water level"
+    },
+    {
+      "id": "outlet",
+      "geometry": "separate continuous outlet tube and tap",
+      "attachment": "tank outlet to gravity-fed use"
+    }
+  ],
+  "attachments": [
+    "source \u2192 eye",
+    "impeller \u2192 discharge",
+    "discharge \u2192 fill-pipe \u2192 tank",
+    "tank \u2192 outlet \u2192 tap",
+    "float \u2192 controller \u2192 motor"
+  ],
+  "inferredGeometry": [
+    "Hidden wall thickness and depth are illustrative.",
+    "Pump internals are an educational centrifugal-pump diagram, not an OEM reconstruction.",
+    "Level controller differs from pressure-switch reference; no invented calibrated values."
+  ],
+  "qualityContract": {
+    "critical": [
+      "recognizable cutaway house/well/pump/tank",
+      "connected pipes",
+      "six coherent impeller blades and stable cover",
+      "level and float agree",
+      "cutaway and reassembly preserve one hierarchy"
+    ],
+    "simplification": "match low complexity of user example; no texture/detail escalation",
+    "reviewViews": [
+      "front oblique",
+      "opposite oblique",
+      "pump open",
+      "tank levels",
+      "cover reseated"
+    ]
+  },
+  "reviewViews": [
+    "front oblique: output/qa/frame-000000.png",
+    "pump open: output/qa/frame-000390.png",
+    "opposite oblique and reseated side: output/validation/",
+    "tank full/used: output/qa/frame-001198.png and frame-001425.png"
+  ]
+}

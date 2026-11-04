@@ -1,0 +1,18 @@
+{
+  "sourceHash": "9bae48812e5e8ee048e829eacf7e4e6f1d9d719eee6d8767c0131f8947a8814f",
+  "checks": {
+    "subjectFidelity": true,
+    "materialsLighting": true,
+    "composition": true,
+    "motionContinuity": true,
+    "transitions": true,
+    "lateMotion": true
+  },
+  "evidence": [
+    "output/qa/frame-000000.png",
+    "output/qa/frame-000060.png",
+    "output/qa/frame-000119.png",
+    "output/qa/contact-sheet.png"
+  ],
+  "notes": "Independent forward-test authored a translucent bell, attached radial canals, 24 travelling tentacles and four oral membranes from absolute time. Inspected source contact sheet and native/encoded motion evidence; the rehosted version uses upper-left copy and the same geometry/time functions. Organic pulse and distal phase lag continue late in the film, with no anchor detachment in reviewed frames. Illustrative raster transparency and planar oral membranes remain declared limits; not a species-specific photoreal simulation."
+}

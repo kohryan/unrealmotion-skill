@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "prompt": "Video produk kamera konsep, titanium dan lensa presisi, motion rakitan smooth, 6 detik",
+  "template": "optical-studio",
+  "motion": "precision-assembly",
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "duration": 6,
+  "supersample": 1.5,
+  "seed": 73
+}

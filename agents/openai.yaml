@@ -1,0 +1,6 @@
+interface:
+  display_name: "UnrealMotion"
+  short_description: "ImageGen → Three.js → video explainer tanpa audio"
+  default_prompt: "Gunakan $unrealmotion: buat referensi ImageGen sederhana dengan style pastel cutaway sesuai contoh, rekonstruksi menjadi model Three.js nyata, terapkan motion sebab-akibat/cutaway/reassembly sesuai prompt, lalu render video explainer tanpa suara atau musik beserta source yang bisa diedit."
+policy:
+  allow_implicit_invocation: true

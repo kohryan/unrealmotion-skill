@@ -1,0 +1,18 @@
+{
+  "sourceHash": "0aa6bced1d115739165f832e7d58dcfc64a9e9617659a94f6d34f872ddca4dec",
+  "checks": {
+    "subjectFidelity": true,
+    "materialsLighting": true,
+    "composition": true,
+    "motionContinuity": true,
+    "transitions": true,
+    "lateMotion": true
+  },
+  "evidence": [
+    "output/qa/frame-000000.png",
+    "output/qa/frame-000233.png",
+    "output/qa/frame-000359.png",
+    "output/qa/contact-sheet.png"
+  ],
+  "notes": "Inspected native 1080p middle/end plus start and transition contact sheets. Coherent beveled body, attached grip/dials and concentric barrel rings; deliberate axial separation returns to aligned stack in the latter half. No broken aperture facets after revision. Clear Indonesian copy, readable highlights, body feet grounded on pedestal. Concept optics are coated-surface approximations, not optical ray tracing."
+}

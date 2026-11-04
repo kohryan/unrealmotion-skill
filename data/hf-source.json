@@ -1,0 +1,44 @@
+{
+  "dataset": "ccore/ThreeJS-3D-Scenes",
+  "revision": "57b77a19d38eee8316c8b1f9e71c772046d9f48c",
+  "license": "MIT",
+  "rows": 4146,
+  "catalogSha256": "0f1847cc0327695c368642a214a63c9b6a48e1ad45522baf480e75c274904957",
+  "shards": [
+    {
+      "file": "train-00000.parquet",
+      "rows": 1024,
+      "bytes": 34031373,
+      "sha256": "aaf98fe253e72da5e416de6d1aedb8b054b1914b6ab99e3a35d3357c06f95720"
+    },
+    {
+      "file": "train-00001.parquet",
+      "rows": 1024,
+      "bytes": 28738338,
+      "sha256": "d366e25fc6fd529f299403f62c2fd8976b3672d3a8c84ce62394b398e69393da"
+    },
+    {
+      "file": "train-00002.parquet",
+      "rows": 1024,
+      "bytes": 33322976,
+      "sha256": "5d881277be2f00044a034212d500230dd1117e3dc7eb6769ce6b7d89b41bb310"
+    },
+    {
+      "file": "train-00003.parquet",
+      "rows": 861,
+      "bytes": 31391783,
+      "sha256": "96010b72367e5b3b81437784cc5d1f96b27fb8fb4e2f5bbee281c4788f306623"
+    },
+    {
+      "file": "validation-00000.parquet",
+      "rows": 213,
+      "bytes": 6959757,
+      "sha256": "ac6429626f1eb72c9e8cd62d2a9c7118a5feb7f8c49e2689600c479086192f62"
+    }
+  ],
+  "fieldsExcluded": [
+    "reasoning_content",
+    "assistant.content"
+  ],
+  "builtAt": "2026-11-04"
+}

@@ -1,0 +1,73 @@
+{
+  "recorded_on": "2026-11-04",
+  "source": "Local Codex session event_msg / token_count / info.total_token_usage counters; main agent only.",
+  "calculation": "For each production, subtract the last cumulative counter before its production prompt from the final counter after delivery and before the next user request. Counters were monotonic within both intervals.",
+  "accounting": {
+    "total_tokens": "input_tokens + output_tokens",
+    "cached_input_tokens": "Subset of input_tokens; do not add again.",
+    "uncached_input_tokens": "input_tokens - cached_input_tokens",
+    "reasoning_output_tokens": "Subset of output_tokens; do not add again."
+  },
+  "limitations": [
+    "Historical production usage, including iterative authoring and repeated context processing; not a per-render or per-minute benchmark.",
+    "Separate subagent usage and ImageGen model usage are not included in these main-agent counters.",
+    "Local Chromium and FFmpeg rendering does not consume language-model tokens.",
+    "Token counts are not a USD cost estimate. Raw conversation logs are not distributed."
+  ],
+  "productions": [
+    {
+      "id": "water-pipe-explainer",
+      "title": "Pipes / water flow",
+      "production_prompt_at_utc": "2026-11-04T04:54:09.154Z",
+      "baseline_counter_at_utc": "2026-11-04T04:51:22.039Z",
+      "final_counter_at_utc": "2026-11-04T06:09:12.269Z",
+      "production_scope": "Initial explainer pipeline development, brief and asset revisions, Three.js modeling, motion, rendering and visual QA.",
+      "format": {
+        "duration_seconds": 60,
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "audio": false
+      },
+      "usage": {
+        "input_tokens": 18600027,
+        "cached_input_tokens": 18406016,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 105839,
+        "reasoning_output_tokens": 44693,
+        "total_tokens": 18705866,
+        "uncached_input_tokens": 194011
+      }
+    },
+    {
+      "id": "house-lighting-explainer",
+      "title": "Rumah, Ramah Cahaya",
+      "production_prompt_at_utc": "2026-11-04T06:16:21.772Z",
+      "baseline_counter_at_utc": "2026-11-04T06:11:32.680Z",
+      "final_counter_at_utc": "2026-11-04T06:53:47.251Z",
+      "production_scope": "Application of the existing skill to a new prompt: custom reference and model, motion, rendering and visual QA.",
+      "format": {
+        "duration_seconds": 60,
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "audio": false
+      },
+      "usage": {
+        "input_tokens": 11549539,
+        "cached_input_tokens": 11463168,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 61597,
+        "reasoning_output_tokens": 40001,
+        "total_tokens": 11611136,
+        "uncached_input_tokens": 86371
+      }
+    }
+  ],
+  "production_model": {
+    "name": "GPT-6.1 Sol",
+    "reasoning_effort": "Extra High",
+    "scope": "Main Codex authoring agent for both productions.",
+    "attribution": "Production configuration supplied by the user."
+  }
+}

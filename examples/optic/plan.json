@@ -1,0 +1,39 @@
+{
+  "prompt": "Video produk kamera konsep, titanium dan lensa presisi, motion rakitan smooth, 6 detik",
+  "status": "authored",
+  "subject": "optical-studio",
+  "identity": [
+    "beveled titanium camera body",
+    "ribbed lens stack",
+    "coated recessed optic",
+    "grip/dials/strap mounts"
+  ],
+  "shots": [
+    {
+      "start": 0,
+      "end": 2,
+      "purpose": "Recognition and gradual reveal",
+      "camera": "precision-assembly"
+    },
+    {
+      "start": 2,
+      "end": 4,
+      "purpose": "Subject transformation: optical stack/roof assembly or kinetic band deformation"
+    },
+    {
+      "start": 4,
+      "end": 6,
+      "purpose": "Resolved silhouette with continuing mechanical/band motion"
+    }
+  ],
+  "datasetReferences": [
+    "scene-002322"
+  ],
+  "assetProvenance": [
+    {
+      "source": "Original procedural Three.js geometry and generated canvas surface maps",
+      "license": "MIT"
+    }
+  ],
+  "limitations": "Concept visualization; not measured industrial design, architectural engineering, or ray-traced photorealism."
+}

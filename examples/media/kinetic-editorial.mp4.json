@@ -1,0 +1,27 @@
+{
+  "output": "kinetic-editorial.mp4",
+  "backend": "metal",
+  "sourceHash": "7ece46c853a6fd23966790ad1c9010721fb732cd4f267bc4ee2de7756c61d632",
+  "sha256": "ea46cbd76bb5c67a1d9c71f8b218e519d113b78ed4b07ad67ab91b907bee238f",
+  "verified": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "60/1",
+        "duration": "6.000000",
+        "nb_read_frames": "360"
+      }
+    ],
+    "format": {
+      "duration": "6.000000"
+    }
+  },
+  "visualReview": "passed",
+  "frames": 360,
+  "fps": 60
+}

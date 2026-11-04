@@ -1,0 +1,172 @@
+{
+  "prompt": "Explainer visual 60 detik, diagram potongan rumah dan perjalanan air sumur ke toren dengan kontrol level, alur sebab-akibat dan zoom detail. Tanpa suara atau musik.",
+  "status": "authored",
+  "mode": "explainer",
+  "question": "Bagaimana energi pompa membawa air sumur ke toren dan bagaimana kontrol level mengatur pengisian?",
+  "resolution": "Putaran impeller memberi energi, tekanan memindahkan air, toren menyimpan, dan kontrol level menjalankan siklus ON/OFF.",
+  "shots": [
+    {
+      "id": "question",
+      "start": 0,
+      "end": 5,
+      "purpose": "Establish the question and spatial relationship",
+      "action": "Reveal source, pump and tank in order",
+      "camera": {
+        "x": 540,
+        "y": 920,
+        "scale": 1
+      }
+    },
+    {
+      "id": "source",
+      "start": 5,
+      "end": 10,
+      "purpose": "Show inlet and the source",
+      "action": "Follow water entering the submerged intake",
+      "camera": {
+        "x": 225,
+        "y": 1280,
+        "scale": 1.8
+      }
+    },
+    {
+      "id": "impeller",
+      "start": 10,
+      "end": 16,
+      "purpose": "Explain mechanical energy transfer",
+      "action": "Open pump cover; reveal rotor and radial flow",
+      "camera": {
+        "x": 425,
+        "y": 1080,
+        "scale": 2.7
+      }
+    },
+    {
+      "id": "pressure",
+      "start": 16,
+      "end": 22,
+      "purpose": "Explain the flow through a centrifugal pump",
+      "action": "Trace the eye-to-periphery flow and discharge",
+      "camera": {
+        "x": 450,
+        "y": 1050,
+        "scale": 3
+      }
+    },
+    {
+      "id": "lift",
+      "start": 22,
+      "end": 28,
+      "purpose": "Connect pump energy to vertical transport",
+      "action": "Travel upward with the visible water stream",
+      "camera": {
+        "x": 650,
+        "y": 800,
+        "scale": 1.65
+      }
+    },
+    {
+      "id": "storage",
+      "start": 28,
+      "end": 34,
+      "purpose": "Reveal storage as the result of pumping",
+      "action": "Show inlet stream and rising water level",
+      "camera": {
+        "x": 715,
+        "y": 400,
+        "scale": 2.15
+      }
+    },
+    {
+      "id": "control",
+      "start": 34,
+      "end": 40,
+      "purpose": "Explain automatic cutoff",
+      "action": "Lift the float, show controller signal, stop the impeller",
+      "camera": {
+        "x": 720,
+        "y": 400,
+        "scale": 2.15
+      }
+    },
+    {
+      "id": "gravity",
+      "start": 40,
+      "end": 45,
+      "purpose": "Distinguish filling from gravity-fed use",
+      "action": "Follow a separate outlet pipe down to the tap",
+      "camera": {
+        "x": 690,
+        "y": 830,
+        "scale": 1.45
+      }
+    },
+    {
+      "id": "demand",
+      "start": 45,
+      "end": 50,
+      "purpose": "Explain why the system needs to restart",
+      "action": "Drain tank visibly while the tap runs",
+      "camera": {
+        "x": 715,
+        "y": 420,
+        "scale": 2
+      }
+    },
+    {
+      "id": "restart",
+      "start": 50,
+      "end": 55,
+      "purpose": "Complete the control loop",
+      "action": "Send ON signal, accelerate rotor and restart the rising stream",
+      "camera": {
+        "x": 455,
+        "y": 1050,
+        "scale": 2.3
+      }
+    },
+    {
+      "id": "recap",
+      "start": 55,
+      "end": 60,
+      "purpose": "Resolve the original question as a complete system",
+      "action": "Return to the full diagram with a running refill cycle",
+      "camera": {
+        "x": 540,
+        "y": 920,
+        "scale": 1
+      }
+    }
+  ],
+  "assetProvenance": [
+    {
+      "source": "Original SVG cutaway architecture, pump, tank, pipelines, diagram and Indonesian copy, authored in code",
+      "license": "MIT"
+    },
+    {
+      "source": "Inter variable font, @fontsource-variable/inter 5.3.0",
+      "license": "SIL-OFL-1.1",
+      "local": "runtime/fonts/OFL.txt"
+    }
+  ],
+  "references": [
+    {
+      "url": "https://www.threads.com/@haadziq_f/post/DfOqlnZE_Kd/media",
+      "use": "Style/structure reference inspected in browser at approximately 8, 20, 35, 45 and 56 seconds; no media downloaded or copied."
+    },
+    {
+      "url": "https://www.grundfos.com/content/dam/global/page-assets/learn/ecademy/pdfs/master-36-module-5-Centrifugal-pump-types.pdf",
+      "use": "Centrifugal pump: liquid enters the impeller eye and moves toward its periphery."
+    },
+    {
+      "url": "https://cms.media.wilo.com/dcianimpfinder/wilo718556/9646785/en-GB/2259793419.html",
+      "use": "Illustrative tank filling control: pump starts at a lower level and stops at an upper level. The demonstration uses a level controller, not a pressure-switch claim."
+    }
+  ],
+  "limitations": [
+    "Conceptual non-scaled diagram, not a pump-sizing or installation guide.",
+    "Uses a tank-level controller; does not claim all domestic systems use this control arrangement.",
+    "Illustrative tank level and flow clocks are not a calibrated fluid/pressure simulation."
+  ],
+  "audio": "none"
+}

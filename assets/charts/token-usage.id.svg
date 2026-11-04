@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="590.4pt" viewBox="0 0 864 590.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title>Penggunaan token · riwayat produksi</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Penggunaan token · riwayat produksi</dc:title>
+    <dc:description>Agent utama: GPT-6.1 Sol (Extra High) · 4 Nov 2026</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.9.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 590.4
+L 864 590.4
+L 864 0
+L 0 0
+z
+" style="fill: #f7f9fc"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 181.44 270.097959
+L 743.04 270.097959
+L 743.04 147.6
+L 181.44 147.6
+z
+" style="fill: #f7f9fc"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 181.44 270.097959
+L 181.44 147.6
+" clip-path="url(#p276776b98e)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="fill: #53637a; font: 11px 'DejaVu Sans'; text-anchor: middle" x="181.44" y="288.45624" transform="rotate(-0 181.44 288.45624)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 315.154286 270.097959
+L 315.154286 147.6
+" clip-path="url(#p276776b98e)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_2">
+      <text style="fill: #53637a; font: 11px 'DejaVu Sans'; text-anchor: middle" x="315.154286" y="288.45624" transform="rotate(-0 315.154286 288.45624)">5M</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 448.868571 270.097959
+L 448.868571 147.6
+" clip-path="url(#p276776b98e)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_3">
+      <text style="fill: #53637a; font: 11px 'DejaVu Sans'; text-anchor: middle" x="448.868571" y="288.45624" transform="rotate(-0 448.868571 288.45624)">10M</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 582.582857 270.097959
+L 582.582857 147.6
+" clip-path="url(#p276776b98e)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_4">
+      <text style="fill: #53637a; font: 11px 'DejaVu Sans'; text-anchor: middle" x="582.582857" y="288.45624" transform="rotate(-0 582.582857 288.45624)">15M</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 716.297143 270.097959
+L 716.297143 147.6
+" clip-path="url(#p276776b98e)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_5">
+      <text style="fill: #53637a; font: 11px 'DejaVu Sans'; text-anchor: middle" x="716.297143" y="288.45624" transform="rotate(-0 716.297143 288.45624)">20M</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="fill: #53637a; font: 10px 'DejaVu Sans'; text-anchor: end" x="743.04" y="306.342334" transform="rotate(-0 743.04 306.342334)">Token</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_11"/>
+     <g id="text_7">
+      <text style="fill: #53637a; font: 11px 'DejaVu Sans'; text-anchor: end" x="171.44" y="183.861939" transform="rotate(-0 171.44 183.861939)">Pipa / aliran air</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_12"/>
+     <g id="text_8">
+      <text style="fill: #53637a; font: 11px 'DejaVu Sans'; text-anchor: end" x="171.44" y="242.194301" transform="rotate(-0 171.44 242.194301)">Pencahayaan rumah</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 181.44 167.141341
+L 673.669456 167.141341
+L 673.669456 192.224257
+L 181.44 192.224257
+z
+" clip-path="url(#p276776b98e)" style="fill: #bdc8e8"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 181.44 225.473703
+L 487.997864 225.473703
+L 487.997864 250.556618
+L 181.44 250.556618
+z
+" clip-path="url(#p276776b98e)" style="fill: #bdc8e8"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 673.669456 167.141341
+L 678.857865 167.141341
+L 678.857865 192.224257
+L 673.669456 192.224257
+z
+" clip-path="url(#p276776b98e)" style="fill: #7399b7"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 487.997864 225.473703
+L 490.307672 225.473703
+L 490.307672 250.556618
+L 487.997864 250.556618
+z
+" clip-path="url(#p276776b98e)" style="fill: #7399b7"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 678.857865 167.141341
+L 681.688302 167.141341
+L 681.688302 192.224257
+L 678.857865 192.224257
+z
+" clip-path="url(#p276776b98e)" style="fill: #edb482"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 490.307672 225.473703
+L 491.954951 225.473703
+L 491.954951 250.556618
+L 490.307672 250.556618
+z
+" clip-path="url(#p276776b98e)" style="fill: #edb482"/>
+   </g>
+   <g id="text_9">
+    <text style="fill: #203047; font: 700 12px 'DejaVu Sans'; text-anchor: start" x="691.235502" y="182.994049" transform="rotate(-0 691.235502 182.994049)">18.705.866</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #203047; font: 700 12px 'DejaVu Sans'; text-anchor: start" x="501.502151" y="241.32641" transform="rotate(-0 501.502151 241.32641)">11.611.136</text>
+   </g>
+   <g id="text_11">
+    <text style="fill: #203047; font: 700 14px 'DejaVu Sans'; text-anchor: start" x="181.44" y="125.6" transform="rotate(-0 181.44 125.6)">Total token, termasuk input dari cache</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_9">
+    <path d="M 181.44 507.744
+L 743.04 507.744
+L 743.04 385.246041
+L 181.44 385.246041
+z
+" style="fill: #f7f9fc"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_6">
+     <g id="line2d_13">
+      <path d="M 181.44 507.744
+L 181.44 385.246041
+" clip-path="url(#p56b1a786c0)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14"/>
+     <g id="text_12">
+      <text style="fill: #53637a; font: 11px 'DejaVu Sans'; text-anchor: middle" x="181.44" y="526.102281" transform="rotate(-0 181.44 526.102281)">0</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_15">
+      <path d="M 346.616471 507.744
+L 346.616471 385.246041
+" clip-path="url(#p56b1a786c0)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16"/>
+     <g id="text_13">
+      <text style="fill: #53637a; font: 11px 'DejaVu Sans'; text-anchor: middle" x="346.616471" y="526.102281" transform="rotate(-0 346.616471 526.102281)">100k</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_17">
+      <path d="M 511.792941 507.744
+L 511.792941 385.246041
+" clip-path="url(#p56b1a786c0)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18"/>
+     <g id="text_14">
+      <text style="fill: #53637a; font: 11px 'DejaVu Sans'; text-anchor: middle" x="511.792941" y="526.102281" transform="rotate(-0 511.792941 526.102281)">200k</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_19">
+      <path d="M 676.969412 507.744
+L 676.969412 385.246041
+" clip-path="url(#p56b1a786c0)" style="fill: none; stroke: #dce3ed; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_20"/>
+     <g id="text_15">
+      <text style="fill: #53637a; font: 11px 'DejaVu Sans'; text-anchor: middle" x="676.969412" y="526.102281" transform="rotate(-0 676.969412 526.102281)">300k</text>
+     </g>
+    </g>
+    <g id="text_16">
+     <text style="fill: #53637a; font: 10px 'DejaVu Sans'; text-anchor: end" x="743.04" y="543.988375" transform="rotate(-0 743.04 543.988375)">Token</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_3">
+     <g id="line2d_21"/>
+     <g id="text_17">
+      <text style="fill: #53637a; font: 11px 'DejaVu Sans'; text-anchor: end" x="171.44" y="421.50798" transform="rotate(-0 171.44 421.50798)">Pipa / aliran air</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_22"/>
+     <g id="text_18">
+      <text style="fill: #53637a; font: 11px 'DejaVu Sans'; text-anchor: end" x="171.44" y="479.840342" transform="rotate(-0 171.44 479.840342)">Pencahayaan rumah</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_10">
+    <path d="M 181.44 404.787382
+L 501.900522 404.787382
+L 501.900522 429.870297
+L 181.44 429.870297
+z
+" clip-path="url(#p56b1a786c0)" style="fill: #7399b7"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 181.44 463.119743
+L 324.104569 463.119743
+L 324.104569 488.202659
+L 181.44 488.202659
+z
+" clip-path="url(#p56b1a786c0)" style="fill: #7399b7"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 501.900522 404.787382
+L 676.721647 404.787382
+L 676.721647 429.870297
+L 501.900522 429.870297
+z
+" clip-path="url(#p56b1a786c0)" style="fill: #edb482"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 324.104569 463.119743
+L 425.84832 463.119743
+L 425.84832 488.202659
+L 324.104569 488.202659
+z
+" clip-path="url(#p56b1a786c0)" style="fill: #edb482"/>
+   </g>
+   <g id="text_19">
+    <text style="fill: #203047; font: 700 12px 'DejaVu Sans'; text-anchor: start" x="686.268847" y="420.64009" transform="rotate(-0 686.268847 420.64009)">299.850</text>
+   </g>
+   <g id="text_20">
+    <text style="fill: #203047; font: 700 12px 'DejaVu Sans'; text-anchor: start" x="435.39552" y="478.972451" transform="rotate(-0 435.39552 478.972451)">147.968</text>
+   </g>
+   <g id="text_21">
+    <text style="fill: #203047; font: 700 14px 'DejaVu Sans'; text-anchor: start" x="181.44" y="363.246041" transform="rotate(-0 181.44 363.246041)">Input tanpa cache + output</text>
+   </g>
+   <g id="text_22">
+    <text style="fill: #203047; font: 700 10.5px 'DejaVu Sans'; text-anchor: middle" x="341.670261" y="420.226183" transform="rotate(-0 341.670261 420.226183)">194.011</text>
+   </g>
+   <g id="text_23">
+    <text style="fill: #203047; font: 700 10.5px 'DejaVu Sans'; text-anchor: middle" x="252.772285" y="478.558545" transform="rotate(-0 252.772285 478.558545)">86.371</text>
+   </g>
+   <g id="text_24">
+    <text style="fill: #203047; font: 700 10.5px 'DejaVu Sans'; text-anchor: middle" x="589.311085" y="420.226183" transform="rotate(-0 589.311085 420.226183)">105.839</text>
+   </g>
+   <g id="text_25">
+    <text style="fill: #203047; font: 700 10.5px 'DejaVu Sans'; text-anchor: middle" x="374.976445" y="478.558545" transform="rotate(-0 374.976445 478.558545)">61.597</text>
+   </g>
+  </g>
+  <g id="text_26">
+   <text style="fill: #203047; font: 700 24px 'DejaVu Sans'; text-anchor: start" x="47.52" y="35.424" transform="rotate(-0 47.52 35.424)">Penggunaan token · riwayat produksi</text>
+  </g>
+  <g id="text_27">
+   <text style="fill: #53637a; font: 11px 'DejaVu Sans'; text-anchor: start" x="47.52" y="61.992" transform="rotate(-0 47.52 61.992)">Agent utama: GPT-6.1 Sol (Extra High) · 4 Nov 2026</text>
+  </g>
+  <g id="text_28">
+   <text style="fill: #53637a; font: 9.8px 'DejaVu Sans'; text-anchor: start" x="47.52" y="563.832" transform="rotate(-0 47.52 563.832)">Cache dihitung satu kali dalam total. Pemakaian ImageGen dan subagent terpisah tidak tercakup.</text>
+  </g>
+  <g id="legend_1">
+   <g id="patch_14">
+    <path d="M 53.1 96.781481
+L 69.6 96.781481
+L 69.6 89.081481
+L 53.1 89.081481
+z
+" style="fill: #bdc8e8"/>
+   </g>
+   <g id="text_29">
+    <text style="fill: #203047; font: 11px 'DejaVu Sans'; text-anchor: start" x="78.4" y="96.781481" transform="rotate(-0 78.4 96.781481)">Input dari cache</text>
+   </g>
+   <g id="patch_15">
+    <path d="M 191.954375 96.781481
+L 208.454375 96.781481
+L 208.454375 89.081481
+L 191.954375 89.081481
+z
+" style="fill: #7399b7"/>
+   </g>
+   <g id="text_30">
+    <text style="fill: #203047; font: 11px 'DejaVu Sans'; text-anchor: start" x="217.254375" y="96.781481" transform="rotate(-0 217.254375 96.781481)">Input tanpa cache</text>
+   </g>
+   <g id="patch_16">
+    <path d="M 341.255313 96.781481
+L 357.755313 96.781481
+L 357.755313 89.081481
+L 341.255313 89.081481
+z
+" style="fill: #edb482"/>
+   </g>
+   <g id="text_31">
+    <text style="fill: #203047; font: 11px 'DejaVu Sans'; text-anchor: start" x="366.555313" y="96.781481" transform="rotate(-0 366.555313 96.781481)">Output</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p276776b98e">
+   <rect x="181.44" y="147.6" width="561.6" height="122.497959"/>
+  </clipPath>
+  <clipPath id="p56b1a786c0">
+   <rect x="181.44" y="385.246041" width="561.6" height="122.497959"/>
+  </clipPath>
+ </defs>
+</svg>

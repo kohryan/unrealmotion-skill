@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "prompt": "Film paviliun modern, atap terangkat memperlihatkan material dan ruang, 6 detik",
+  "template": "architectural-light",
+  "motion": "precision-assembly",
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "duration": 6,
+  "supersample": 1.5,
+  "seed": 73
+}

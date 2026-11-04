@@ -1,0 +1,27 @@
+{
+  "output": "pelagic-bloom.mp4",
+  "backend": "metal",
+  "sourceHash": "9bae48812e5e8ee048e829eacf7e4e6f1d9d719eee6d8767c0131f8947a8814f",
+  "sha256": "d1ecb76867d35ac5a84d323d7b12add5c6576e2de1b3aec1a9ab609ae42aeab6",
+  "verified": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "30/1",
+        "duration": "4.000000",
+        "nb_read_frames": "120"
+      }
+    ],
+    "format": {
+      "duration": "4.000000"
+    }
+  },
+  "visualReview": "passed",
+  "frames": 120,
+  "fps": 30
+}

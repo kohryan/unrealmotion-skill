@@ -1,0 +1,76 @@
+{
+  "prompt": "Air sumur → pompa → toren → pemakaian. Simple pastel cutaway, ImageGen → real Three.js geometry → silent explainer.",
+  "status": "authored",
+  "subject": "Well pump and rooftop storage; simple ImageGen-guided Three.js model",
+  "pipeline": [
+    "prompt",
+    "ImageGen simple style reference",
+    "named mesh reconstruction",
+    "shared causal model",
+    "cutaway/reassembly and story camera",
+    "silent frame-rendered MP4"
+  ],
+  "shots": [
+    {
+      "id": "question",
+      "purpose": "Establish the question and spatial relationship",
+      "action": "Reveal source, pump and tank in order"
+    },
+    {
+      "id": "source",
+      "purpose": "Show inlet and the source",
+      "action": "Follow water entering the submerged intake"
+    },
+    {
+      "id": "impeller",
+      "purpose": "Explain mechanical energy transfer",
+      "action": "Open pump cover; reveal rotor and radial flow"
+    },
+    {
+      "id": "pressure",
+      "purpose": "Explain the flow through a centrifugal pump",
+      "action": "Trace the eye-to-periphery flow and discharge"
+    },
+    {
+      "id": "lift",
+      "purpose": "Connect pump energy to vertical transport",
+      "action": "Travel upward with the visible water stream"
+    },
+    {
+      "id": "storage",
+      "purpose": "Reveal storage as the result of pumping",
+      "action": "Show inlet stream and rising water level"
+    },
+    {
+      "id": "control",
+      "purpose": "Explain automatic cutoff",
+      "action": "Lift the float, show controller signal, stop the impeller"
+    },
+    {
+      "id": "gravity",
+      "purpose": "Distinguish filling from gravity-fed use",
+      "action": "Follow a separate outlet pipe down to the tap"
+    },
+    {
+      "id": "demand",
+      "purpose": "Explain why the system needs to restart",
+      "action": "Drain tank visibly while the tap runs"
+    },
+    {
+      "id": "restart",
+      "purpose": "Complete the control loop",
+      "action": "Send ON signal, accelerate rotor and restart the rising stream"
+    },
+    {
+      "id": "recap",
+      "purpose": "Resolve the original question as a complete system",
+      "action": "Return to the full diagram with a running refill cycle"
+    }
+  ],
+  "datasetReferences": [],
+  "assetProvenance": [
+    "asset-plan.json",
+    "reconstruction.json"
+  ],
+  "simplification": "House dimensions are illustrative; no USD, heavy texture packs, audio, or new art style."
+}

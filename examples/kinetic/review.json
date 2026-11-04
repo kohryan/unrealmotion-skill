@@ -1,0 +1,18 @@
+{
+  "sourceHash": "7ece46c853a6fd23966790ad1c9010721fb732cd4f267bc4ee2de7756c61d632",
+  "checks": {
+    "subjectFidelity": true,
+    "materialsLighting": true,
+    "composition": true,
+    "motionContinuity": true,
+    "transitions": true,
+    "lateMotion": true
+  },
+  "evidence": [
+    "output/qa/frame-000000.png",
+    "output/qa/frame-000233.png",
+    "output/qa/frame-000359.png",
+    "output/qa/contact-sheet.png"
+  ],
+  "notes": "Inspected native first/end and middle/transition contact sheets. Five closed spline bands remain visible on first frame, settle with staggered analytic springs, then rotate and deform continuously into late frames. Metal roles and restrained palette stay consistent; typography is unclipped. Adjacent encoded motion will be checked after export. Abstract graphics have no anatomy or measured mechanism."
+}

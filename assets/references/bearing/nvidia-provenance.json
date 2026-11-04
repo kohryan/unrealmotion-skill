@@ -1,0 +1,26 @@
+{
+  "asset": "consumable_bearing_ball_a01",
+  "dataset": "nvidia/simready-assets",
+  "revision": "9d4556bfe80868c1d27a7a7ba1c2774e63e8cedd",
+  "source": "https://huggingface.co/datasets/nvidia/simready-assets/tree/9d4556bfe80868c1d27a7a7ba1c2774e63e8cedd/consumable_bearing_ball_a01",
+  "attribution": "NVIDIA SimReady asset consumable_bearing_ball_a01, CC BY 4.0; reference thumbnail only. Any reconstruction is an approximation, not NVIDIA geometry.",
+  "license": "CC-BY-4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "downloadedBytes": 591209,
+  "downloadedGeometry": false,
+  "downloadedTextures": false,
+  "files": [
+    {
+      "file": "reference.png",
+      "sourcePath": "consumable_bearing_ball_a01/simready_usd/.thumbs/sm_consumable_bearing_ball_a01_01_thumbnail.png",
+      "bytes": 572552,
+      "sha256": "d2294dd362d7d707e98b005e8fbdc3427d5a6741423104bbb3f9845374325a57"
+    },
+    {
+      "file": "LICENSE.txt",
+      "sourcePath": "consumable_bearing_ball_a01/.metadata/LICENSE.txt",
+      "bytes": 18657,
+      "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411"
+    }
+  ]
+}

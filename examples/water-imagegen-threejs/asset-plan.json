@@ -1,0 +1,24 @@
+{
+  "status": "authored",
+  "prompt": "Air sumur → pompa → toren → pemakaian. Simple pastel cutaway, ImageGen → real Three.js geometry → silent explainer.",
+  "artDirection": "Follow the supplied example: cream architectural cutaway, dusty blue parts, pale aqua water, warm yellow impeller, restrained charcoal outlines. No photoreal architectural style, elaborate textures or ornament.",
+  "generationTool": "built-in image_gen",
+  "assets": [
+    {
+      "id": "reference",
+      "file": "assets/reference.png",
+      "generationPrompt": "Use case: scientific-educational.\nAsset type: simple design reference that will be rebuilt as actual Three.js geometry for a silent animated explainer.\nReference image role: use the attached image ONLY for the simple pastel cutaway visual language, clear ink outlines and restrained detail. Do not reproduce its text, labels or composition exactly.\nPrimary request: A simple educational cutaway of a home water system: one cream two-storey flat-roof house, one blue rooftop cylindrical water tank, a small blue surface centrifugal pump with a yellow circular impeller cover beside the house, a narrow well below ground at left, and two visibly separate pale blue pipes, one filling the tank and one supplying a simple tap at the house. The front of the house is open; only a floor slab and one small window inside. The tank has a straightforward open cutaway showing a flat water level and a float ball. No furniture, scenery, ornamental details or extra machinery.\nStyle: same gentle editorial pastel cutaway style as reference, minimal clean geometric illustration with subtle 3D depth, thin charcoal outlines, cream walls, dusty blue tank and pipes, pale turquoise water, muted green ground, warm yellow impeller. Flat color surfaces, very soft shading, pale mint plain background, three-quarter orthographic view. Simple enough to rebuild faithfully with cylinders, extrusions and connected tubes.\nComposition: complete system fits a tall portrait frame with clear separation between well, pump and tank. No text, labels, numbers, logos, arrows, effects or watermark. Do not add a new photoreal, cinematic or detailed architectural style. Keep the visual complexity low.",
+      "role": "Appearance and hierarchy reference for code-authored Three.js volumes, not a background plane",
+      "transparentBackground": false,
+      "sha256": "6f5a0190ead29d7b5ee288089c4a6fa7e3a096b4d4bd1b124af0c80dce8a0635"
+    }
+  ],
+  "provenance": [
+    {
+      "date": "2026-11-04",
+      "originalFilename": "exec-0f6bc45d-ac71-43cd-9911-432ca52bd792.png",
+      "styleReference": "Original water-explainer motion study frame-000000.png; no Threads artwork used",
+      "upstreamRoute": "NVIDIA bounded reference → ImageGen → img2threejs-style reconstruction → teardown-style shared mechanism → UnrealMotion frame render. No NVIDIA USD mesh used for this house."
+    }
+  ]
+}

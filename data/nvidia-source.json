@@ -1,0 +1,12 @@
+{
+  "dataset": "nvidia/simready-assets",
+  "revision": "9d4556bfe80868c1d27a7a7ba1c2774e63e8cedd",
+  "license": "CC-BY-4.0",
+  "rows": 2677,
+  "metadataOnly": true,
+  "catalogSha256": "1d5f8f43877d32353e4ba1d6fcb27fad7353e1a65da348a1c298418bf19a1f9b",
+  "source": "https://huggingface.co/datasets/nvidia/simready-assets",
+  "upstreamFormat": "USD packages with referenced textures/payloads",
+  "fullDatasetDownloaded": false,
+  "builtAt": "2026-11-04"
+}

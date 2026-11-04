@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "mode": "explainer",
+  "prompt": "Jelaskan cara air dari sumur dipompa ke toren lalu dipakai. ImageGen sebagai referensi sederhana pastel cutaway, bangun model Three.js nyata, cutaway dan reassembly, gerakan halus; tanpa suara atau musik.",
+  "template": "imagegen-explainer",
+  "motion": "cinematic-orbit",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 60,
+  "supersample": 1,
+  "seed": 73
+}

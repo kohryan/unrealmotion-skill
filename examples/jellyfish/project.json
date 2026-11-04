@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "prompt": "Buat video 4 detik, 960×540 30fps, seekor ubur-ubur translucent di laut gelap. Bell berdenyut, tentakel bergerak dengan phase lag; kamera dolly halus. Copy Indonesia minimal. Render MP4 dan source.",
+  "template": "pelagic-bloom",
+  "motion": "continuous-flow",
+  "width": 960,
+  "height": 540,
+  "fps": 30,
+  "duration": 4,
+  "supersample": 1.5,
+  "seed": 73
+}

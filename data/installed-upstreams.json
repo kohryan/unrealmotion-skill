@@ -1,0 +1,67 @@
+{
+  "installedAt": "2026-11-04",
+  "scope": "Codex user skills; no paid provider calls",
+  "sources": [
+    {
+      "repo": "remotion-dev/remotion",
+      "revision": "fe9f0c372706f2039da6b2a0a92b92aa746e69cf",
+      "paths": [
+        "packages/codex-plugin/skills/remotion-best-practices"
+      ]
+    },
+    {
+      "repo": "heygen-com/hyperframes",
+      "revision": "183614bda3df15812d9f18fd4a71ee77a7da6387",
+      "paths": [
+        "skills/hyperframes",
+        "skills/hyperframes-cli",
+        "skills/hyperframes-registry",
+        ".agents/skills/cut-the-curve",
+        ".agents/skills/motion-doctrine",
+        ".agents/skills/seam-craft"
+      ]
+    },
+    {
+      "repo": "img2threejs/img2threejs",
+      "revision": "3e7099e1b7fe93e187e06db4bdbe1e1906c21a28",
+      "paths": [
+        "."
+      ],
+      "installName": "img2threejs",
+      "note": "Root skill needs the entire repository, including forge/grimoire/scripts; a root-only sparse copy is insufficient."
+    },
+    {
+      "repo": "Anil-matcha/vox-ai-motion-graphics-generator",
+      "revision": "c6856442a45761f86ae67cb05efbf25f65228e7c",
+      "paths": [
+        "."
+      ],
+      "installName": "muapi-director",
+      "note": "Root skill needs scripts/references; MuAPI calls require a separate authorized provider configuration."
+    },
+    {
+      "repo": "majidmanzarpour/threejs-game-skills",
+      "revision": "8286774b22a2566bf894dbc825825c16921866af",
+      "paths": [
+        "skills/threejs-game-director",
+        "skills/threejs-gameplay-systems",
+        "skills/threejs-aaa-graphics-builder",
+        "skills/threejs-game-ui-designer",
+        "skills/threejs-debug-profiler",
+        "skills/threejs-qa-release",
+        "skills/threejs-3d-generator",
+        "skills/threejs-image-generator",
+        "skills/threejs-audio-generator"
+      ]
+    },
+    {
+      "repo": "elvarofficial/teardown",
+      "revision": "a91262ac1109051e014662d42ecb0b7bc1f113b1",
+      "paths": [
+        "."
+      ],
+      "installName": "teardown",
+      "note": "Full root checkout with sims/sfx/docs, npm dependencies installed; V8 film build and GPU still capture tested."
+    }
+  ]
+}

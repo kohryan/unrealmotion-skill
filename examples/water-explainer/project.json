@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "mode": "explainer",
+  "prompt": "Explainer visual 60 detik, diagram potongan rumah dan perjalanan air sumur ke toren dengan kontrol level, alur sebab-akibat dan zoom detail. Tanpa suara atau musik.",
+  "template": "water-system-explainer",
+  "motion": "cinematic-orbit",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 60,
+  "supersample": 1,
+  "seed": 73
+}

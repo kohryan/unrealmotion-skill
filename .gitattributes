@@ -1,0 +1,2 @@
+# Preserve the downloaded upstream license byte-for-byte, including its terminal blank line.
+assets/references/bearing/NVIDIA-LICENSE.txt -whitespace

@@ -1,0 +1,41 @@
+{
+  "sourceHash": "849f0a4fbcd092e84ea429f3f55e523908eea366272bfde4fda90271ede78045",
+  "checks": {
+    "subjectFidelity": true,
+    "materialsLighting": true,
+    "composition": true,
+    "motionContinuity": true,
+    "transitions": true,
+    "lateMotion": true,
+    "explanation": true,
+    "causalMotion": true,
+    "shotContinuity": true,
+    "promptFidelity": true,
+    "assetConsistency": true,
+    "reconstruction3D": true
+  },
+  "evidence": [
+    "output/qa/contact-sheet.png",
+    "output/qa/frame-000000.png",
+    "output/qa/frame-000390.png",
+    "output/qa/frame-001110.png",
+    "output/qa/frame-001198.png",
+    "output/qa/frame-001425.png",
+    "output/qa/frame-001725.png",
+    "output/validation/whole-opposite.png",
+    "output/validation/pump-open-side.png",
+    "output/validation/cover-reseated-side.png",
+    "output/encoded-cover.png",
+    "output/encoded-restart.png",
+    "output/final-encoded-events.png"
+  ],
+  "notes": "Compared saved ImageGen simple pastel cutaway against native Three.js views. Reviewed all 11 beat midpoints and sampled boundaries, open pump with six curved blades and eye-to-periphery particles, cover closure, tank filling/float, upper cutoff, gravity use, lower restart and final overview. Opposite oblique and side views show real volumes, stable attachments and a seated casing rim (z .38 meets cover face); not an image plane. Updated controller wording expresses its threshold rule rather than premature OFF. Part labels now fade before protected header/caption/edge zones. Encoded draft adjacent frames 634–642 and1514–1522 show continuous camera/cover motion and restart; subsequent native renders verify housing, copy and label corrections. Source geometry is an illustrative reconstruction, not measured CAD. Final encoded metadata/no-audio/full-decode will be verified after export. Final export fully decoded without errors; ffprobe confirms H.264 1080x1920, 30fps, 60.000s, 1800 frames, video stream only. Inspected final encoded frames389–397,1179–1187 and1514–1522 for impeller motion, control progression and the late camera/restart handoff.",
+  "encodedVerification": {
+    "sha256": "296822b5da27df0938c73021eda6bd1dbd8381d654b4e82d9a5d093cffaec86d",
+    "frames": 1800,
+    "duration": 60,
+    "fps": 30,
+    "audioStreams": 0,
+    "fullDecode": "passed"
+  }
+}
